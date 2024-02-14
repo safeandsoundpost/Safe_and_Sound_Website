@@ -1,3 +1,13 @@
+import NavBar from "../components/NavBar";
+import Projects from "../components/home/Projects";
+import Banner from "./Banner";
+
 export default function Home() {
-    return <h1>Home</h1>;
+    return (
+        <main className="flex flex-col">
+            <NavBar />
+            <Banner />
+            <Projects />
+        </main>
+    );
 }
