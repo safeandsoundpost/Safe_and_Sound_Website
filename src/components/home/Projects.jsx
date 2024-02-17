@@ -19,7 +19,6 @@ export default function Projects() {
                 query: "?url",
             }),
         ).map((x) => x.default);
-        console.log(img);
         setImages(img);
     }, []);
 
