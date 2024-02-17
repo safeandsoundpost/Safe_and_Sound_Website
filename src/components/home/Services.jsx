@@ -76,7 +76,7 @@ export default function Services() {
                 </div>
                 <img src={images.find((x) => x.includes("black-line"))} />
                 <div className="flex h-fit items-center justify-between py-6 align-middle">
-                    <p className="w-[65%] text-justify text-lg leading-5 tracking-widest text-black">
+                    <p className="w-[61%] text-justify text-lg leading-5 tracking-widest text-black">
                         Everything listed above with our heart and soul in every
                         aspect. We work with you from beginning to end to take
                         your vision and make it a reality. As a team, we

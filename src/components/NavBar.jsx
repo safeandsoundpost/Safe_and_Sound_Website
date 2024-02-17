@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import logo from "/images/logo.png";
 import Link from "./Link";
 
 export default function NavBar() {
-    const { hash } = useLocation();
-    console.log(hash);
+    // const { hash } = useLocation();
+    // console.log(hash);
 
     return (
         <nav className="fixed z-10 text-2xl font-bold m-3 mt-8 text-primary">
