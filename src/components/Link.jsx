@@ -1,25 +1,22 @@
 import PropTypes from "prop-types";
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function Link({ className, href, children, defActive }) {
+export default function Link({ currentSection, className, href, children, defActive }) {
     const location = useLocation();
-    // const nav = useNavigate();
-    let active = location.hash === href;
-    if (defActive && !active && !location.hash) active = true;
+    const [active, setActive] = useState(location.hash === href);
+    // let active = location.hash === href;
+    if (defActive && !active && !location.hash) setActive (true);
 
-    // console.log(nav);
-    // useEffect(() => {
-    //     // const el = document.querySelector(href);
-    //     // if (active && el) {
-    //     //     el.scrollIntoView({ behavior: "smooth" });
-    //     // }
-    //     console.log(history);
-    // }, [history]);
+    useEffect(() => {
+        if (!currentSection) return;
+        // console.log(currentSection);
+        setActive(`#${currentSection}` === href);
+    }, [currentSection, href]);
 
     return (
         <a
-            className={`${className} uppercase w-fit ${active ? "border-2 border-primary" : ""}`}
+            className={`${className} w-fit uppercase ${active ? "border-2 border-primary" : ""}`}
             href={href}
         >
             {children}
@@ -28,6 +25,7 @@ export default function Link({ className, href, children, defActive }) {
 }
 
 Link.propTypes = {
+    currentSection: PropTypes.string,
     className: PropTypes.string,
     href: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,

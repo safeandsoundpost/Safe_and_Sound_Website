@@ -68,13 +68,13 @@ export default function Services() {
                         the total package
                     </h4>
                     <img
-                        className="h-[1.2em] text-6xl"
+                        className="h-[1.2em] text-6xl select-none"
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
                     />
                 </div>
-                <img src={images.find((x) => x.includes("black-line"))} />
+                <img className="select-none" src={images.find((x) => x.includes("black-line"))} />
                 <div className="flex h-fit items-center justify-between py-6 align-middle">
                     <p className="w-[61%] text-justify text-lg leading-5 tracking-widest text-black">
                         Everything listed above with our heart and soul in every
@@ -107,6 +107,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
             </div>
             <div className="grid h-8 w-full  grid-cols-1 grid-rows-1">
                 <img
+                    className="select-none"
                     draggable="false"
                     src={images.find((x) => x.includes("white-line"))}
                 />
@@ -114,7 +115,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
             <p className="text-justify tracking-wider leading-5">
                 {serviceDescription}
             </p>
-            <img draggable="false" src={imgSrc} />
+            <img draggable="false" src={imgSrc} className="select-none" />
             <a
                 href={aHref}
                 className="h-full w-full rounded-full bg-[#f3f3f4] py-2 text-center text-3xl font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4]"
@@ -123,6 +124,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
             </a>
             <div className="flex flex-col">
                 <img
+                    className="select-none"
                     draggable="false"
                     src={generalImages.find((x) => x.includes("code.png"))}
                 />

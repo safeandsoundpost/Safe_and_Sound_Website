@@ -64,7 +64,7 @@ export default function Projects() {
                             >
                                 <img
                                     draggable="false"
-                                    className="aspect-[12/16] h-[22rem] select-none w-fit object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                    className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
                                     src={x}
                                     alt={`project-${i}`}
                                 />

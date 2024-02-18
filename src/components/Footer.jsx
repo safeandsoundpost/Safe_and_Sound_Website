@@ -49,7 +49,7 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="flex flex-col gap-5">
-                <img src={logoHorizontal} />
+                <img className="select-none" src={logoHorizontal} draggable="false" />
                 <p className="w-full text-center font-bold uppercase">
                     &#64; safe &#38; sound 2023
                 </p>

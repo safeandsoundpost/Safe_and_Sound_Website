@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Awards from "../components/home/Awards";
@@ -7,34 +7,31 @@ import Reviews from "../components/home/Reviews";
 import Services from "../components/home/Services";
 import TheTeam from "../components/home/TheTeam";
 import Banner from "./Banner";
+import Contact from "../components/home/Contact";
 
 export default function Home() {
-    // useEffect(() => {
-    //     // window.addEventListener("load", () => {
-    //     //     const headings = document.querySelectorAll("h1 a[name]");
-    //     // });
-    //     const headings = document.querySelectorAll("main section[id]");
-    //     // console.log(headings);
-    //     document.addEventListener(
-    //         "scroll",
-    //         () => {
-    //             // console.log("scrolling");
-    //             headings.forEach((ha) => {
-    //                 const rect = ha.getBoundingClientRect();
-    //                 // if (rect.top > 0) console.log(ha.id);
-    //                 if (rect.top > 0 && rect.top < 150) {
-    //                     const location = window.location.toString().split("#")[0];
-    //                     history.replaceState(null, null, location + "#" + ha.id);
-    //                 }
-    //             });
-    //         },
-    //         true,
-    //     );
-    // }, []);
+    const [currentSection, setCurrentSection] = useState("");
+
+    useEffect(() => {
+        const headings = Array.from(document.querySelectorAll("main section[id]"));
+        const scrollCallback = () => {
+            const visible_content = headings.filter((x) => {
+                const rect = x.getBoundingClientRect();
+                return (rect.height - (rect.height * 0.5)) + rect.top > 0;
+            });
+            const first = visible_content[0];
+
+            if (!first) return;
+            setCurrentSection(first.id);
+        };
+        document.addEventListener("scroll", scrollCallback, true);
+        return () =>
+            document.removeEventListener("scroll", scrollCallback, true);
+    }, []);
 
     return (
         <main className="flex w-full flex-col">
-            <NavBar />
+            <NavBar currentSection={currentSection} />
             <Banner />
             <section className="m-auto w-[65%]">
                 <Projects />
@@ -42,6 +39,7 @@ export default function Home() {
                 <TheTeam />
                 <Awards />
                 <Reviews />
+                <Contact />
             </section>
             <Footer />
         </main>

@@ -7,7 +7,7 @@ export default function Banner() {
     return (
         <section
             id="demo-reel"
-            className="h-2/5 max-h-[40%] min-h-[400px] w-full cursor-pointer bg-[#ffffff1f] bg-cover bg-left-top hover:bg-blend-color-burn"
+            className="h-2/5 max-h-[40%] min-h-[470px] w-full cursor-pointer bg-[#ffffff1f] bg-cover bg-left-top hover:bg-blend-color-burn"
             onClick={() => {}}
             style={{ backgroundImage: `url(${banner})` }}
         >
@@ -39,7 +39,7 @@ export default function Banner() {
                     target="_blank"
                 >
                     <img className="w-full" src={instagram} draggable="false" />
-                </a>
+                </a>    
                 <a
                     className="h-full w-12 select-none"
                     href="mailto:safeandsoundpost@gmail.com"
