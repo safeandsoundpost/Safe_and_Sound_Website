@@ -1,0 +1,33 @@
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
+export default function Link({ currentSection, className, href, children, defActive }) {
+    const location = useLocation();
+    const [active, setActive] = useState(location.hash === href);
+    // let active = location.hash === href;
+    if (defActive && !active && !location.hash) setActive (true);
+
+    useEffect(() => {
+        if (!currentSection) return;
+        // console.log(currentSection);
+        setActive(`#${currentSection}` === href);
+    }, [currentSection, href]);
+
+    return (
+        <a
+            className={`${className} w-fit uppercase ${active ? "border-2 border-primary" : ""}`}
+            href={href}
+        >
+            {children}
+        </a>
+    );
+}
+
+Link.propTypes = {
+    currentSection: PropTypes.string,
+    className: PropTypes.string,
+    href: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    defActive: PropTypes.bool,
+};
