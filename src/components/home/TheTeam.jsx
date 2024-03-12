@@ -1,6 +1,12 @@
-import teamPic from "../../assets/images/team/tempTeamPhoto.png";
+import mike from "../../assets/images/team/Mike S&S headshot.png";
+import chris from "../../assets/images/team/Chris S&S headshot.png";
+import jesse from "../../assets/images/team/Jesse S&S headshot.png";
+import thom from "../../assets/images/team/Thom S&S headshot.png";
 
 export default function TheTeam() {
+    // Array of imported images
+    const teamPhotos = [mike, chris, jesse, thom];
+
     return (
         <section
             id="the-team"
@@ -12,8 +18,8 @@ export default function TheTeam() {
 
             <div className="flex">
                 <div className="flex flex-col gap-5">
-                    {[...Array(4).keys()].map((num) => (
-                        <img draggable="false" src={teamPic} key={num} className="w-3/4 hover:invert select-none" />
+                    {teamPhotos.map((photo, index) => (
+                        <img draggable="false" src={photo} key={index} className="w-3/4 hover:invert select-none" />
                     ))}
                 </div>
                 <div className="w-full grow">
@@ -51,3 +57,4 @@ export default function TheTeam() {
         </section>
     );
 }
+

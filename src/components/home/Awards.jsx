@@ -1,61 +1,49 @@
 import PropTypes from "prop-types";
 
 export default function Awards() {
-    return (
-        <section
-            id="awards"
-            className="flex w-full flex-col items-center justify-center gap-10 py-10 align-middle"
-        >
-            <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
-                awards
-            </h2>
+    const awardsList = [
+        { event: "San Francisco Arthouse Short Festival", category: "Best Sound Design" },
+        { event: "Portland Moviemakers Award", category: "Best Sound Design" },
+        { event: "San Diego International Film Awards", category: "Best Sound Design" },
+        { event: "Dublin Movie Awards", category: "Best Sound Design" },
+        { event: "Denver Movie Awards", category: "BEST SOUND DESIGN" },
+        { event: "Rome International Short Festival", category: "Short Sound Design" },
+        { event: "Chicago Filmmaker Awards", category: "Best Sound Design" },
+        { event: "Arthouse Festival of Beverly Hills", category: "Best Short Score" },
+        { event: "Washington Film Awards", category: "Best Sound Design" },
+        { event: "Independent Shorts Awards", category: "Best Sound Design" },
+        { event: "Independent Shorts Awards", category: "Best Original Score" },
+        { event: "Cannes Shorts", category: "Best Sound Design" },
+    ];
 
-            <div className="flex w-full items-center justify-center gap-12 align-middle">
-                <AwardCard
-                    title={"figures\n2022"}
-                    subTitle={
-                        <>
-                            <span className="font-semibold">{"director:\n"}</span>
-                            <i>{"jamie\nhegland /\njade yurich"}</i>
-                        </>
-                    }
-                >
-                    <p className="text-xl uppercase leading-6">
-                        <span className="font-bold">
-                            washington film awards 2022
-                        </span>
-                        <br />
-                        <i>best sound design</i>
-                    </p>
-                    <br />
-                    <br />
-                    <p className="text-xl uppercase leading-6">
-                        <span className="font-bold">
-                            feel the reel internation film festival 2022
-                        </span>
-                        <br />
-                        <i>best original score nominee</i>
-                    </p>
-                </AwardCard>
+    return (
+        <section id="awards" className="py-10">
+            <h2 className="text-4xl font-bold uppercase tracking-widest text-center text-secondary my-10">
+                Awards
+            </h2>
+            <div className="flex flex-wrap justify-center gap-8">
+                {awardsList.map((award, index) => (
+                    <AwardCard
+                        key={index}
+                        title={award.event}
+                        category={award.category}
+                    />
+                ))}
             </div>
         </section>
     );
 }
 
-function AwardCard({ title, subTitle, children }) {
+function AwardCard({ title, category }) {
     return (
-        <div className="flex w-[90%] justify-start gap-16 border-y-2 py-8 align-middle text-primary">
-            <div className="whitespace-pre text-xl uppercase">{subTitle}</div>
-            <h4 className="whitespace-pre text-3xl font-bold uppercase">
-                {title}
-            </h4>
-            <div>{children}</div>
+        <div className="flex flex-col justify-center items-center min-h-[10rem] w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border border-gray-200 rounded shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out space-y-2">
+            <h3 className="text-xl font-semibold text-center">{title}</h3>
+            <p className="text-center text-secondary italic">{category}</p>
         </div>
     );
 }
 
 AwardCard.propTypes = {
     title: PropTypes.string.isRequired,
-    subTitle: PropTypes.node,
-    children: PropTypes.node,
+    category: PropTypes.string.isRequired,
 };
