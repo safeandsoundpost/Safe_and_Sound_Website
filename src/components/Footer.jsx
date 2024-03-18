@@ -30,7 +30,7 @@ export default function Footer() {
                     </li>
                     <li className="my-2">
                         <a
-                            href=""
+                            href="https://www.linkedin.com/company/safe-sound-post/"
                             className="font-semibold tracking-widest text-primary"
                             target="_blank"
                         >
@@ -39,7 +39,7 @@ export default function Footer() {
                     </li>
                     <li className="my-2">
                         <a
-                            href=""
+                            href="https://wa.me/17783638396"
                             className="font-semibold tracking-widest text-primary"
                             target="_blank"
                         >
@@ -49,7 +49,11 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="flex flex-col gap-5">
-                <img className="select-none" src={logoHorizontal} draggable="false" />
+                <img
+                    className="select-none"
+                    src={logoHorizontal}
+                    draggable="false"
+                />
                 <p className="w-full text-center font-bold uppercase">
                     &#64; safe &#38; sound 2023
                 </p>
