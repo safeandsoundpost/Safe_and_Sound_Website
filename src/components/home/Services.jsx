@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-// import { useEffect, useState } from "react";
+import serviceDecoration from "../../assets/images/symbols/services.png";
 
 const images = Object.values(
     import.meta.glob("@services/*.{png,jpg,jpeg,PNG,JPEG}", {
@@ -15,7 +15,7 @@ export default function Services() {
     return (
         <section
             id="services"
-            className="flex w-full flex-col items-center justify-center gap-10 py-10 align-middle"
+            className="relative flex w-full flex-col items-center justify-center gap-10 py-10 align-middle"
         >
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 services
@@ -42,7 +42,7 @@ export default function Services() {
                     aHref={"#contact"}
                     imgSrc={serviceImages[2]}
                     serviceDescription={
-                        "Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the \"end it all\" punch? We can offer Foley that will have you ask the question, did we get that on set?\"."
+                        "Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the \"end it all\" punch? We can offer Foley that will have you ask the question, did we get that on set?."
                     }
                 />
                 <ServiceCard
@@ -68,13 +68,16 @@ export default function Services() {
                         the total package
                     </h4>
                     <img
-                        className="h-[1.2em] text-6xl select-none"
+                        className="h-[1.2em] select-none text-6xl"
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
                     />
                 </div>
-                <img className="select-none" src={images.find((x) => x.includes("black-line"))} />
+                <img
+                    className="select-none"
+                    src={images.find((x) => x.includes("black-line"))}
+                />
                 <div className="flex h-fit items-center justify-between py-6 align-middle">
                     <p className="w-[61%] text-justify text-lg leading-5 tracking-widest text-black">
                         Everything listed above with our heart and soul in every
@@ -93,6 +96,11 @@ export default function Services() {
                     </a>
                 </div>
             </div>
+
+            <img
+                className="absolute -right-[45%] bottom-0 -z-20"
+                src={serviceDecoration}
+            />
         </section>
     );
 }
@@ -112,7 +120,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                     src={images.find((x) => x.includes("white-line"))}
                 />
             </div>
-            <p className="text-justify tracking-wider leading-5">
+            <p className="text-justify leading-5 tracking-wider">
                 {serviceDescription}
             </p>
             <img draggable="false" src={imgSrc} className="select-none" />

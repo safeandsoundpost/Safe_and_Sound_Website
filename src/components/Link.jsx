@@ -5,14 +5,13 @@ import { useLocation } from "react-router-dom";
 export default function Link({ currentSection, className, href, children, defActive }) {
     const location = useLocation();
     const [active, setActive] = useState(location.hash === href);
-    // let active = location.hash === href;
-    if (defActive && !active && !location.hash) setActive (true);
 
     useEffect(() => {
+        if (defActive && !currentSection) setActive(true);
         if (!currentSection) return;
-        // console.log(currentSection);
+
         setActive(`#${currentSection}` === href);
-    }, [currentSection, href]);
+    }, [currentSection, href, defActive]);
 
     return (
         <a

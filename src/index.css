@@ -5,7 +5,9 @@
 @layer base {
     @font-face {
         font-family: "ff-nort";
-        src: local("FF Nort Black"), local("FF-Nort-Black"),
+        src:
+            local("FF Nort Black"),
+            local("FF-Nort-Black"),
             url("/fonts/FFNort-Black.woff2") format("woff2"),
             url("/fonts/FFNort-Black.woff") format("woff"),
             url("/fonts/FFNort-Black.ttf") format("truetype");
@@ -82,3 +84,24 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 } */
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+    -webkit-border-radius: 10px;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(255, 255, 255);
+}

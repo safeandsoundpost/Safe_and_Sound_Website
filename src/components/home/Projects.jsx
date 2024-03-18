@@ -1,12 +1,62 @@
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-        
-function ProjectModal({ project, onClose }) {
-    if (!project) return null;
-        
+
+/**
+ * @param {object} params
+ * @param {{ project: object, image: string }} params.currentProject
+ * @returns
+ */
+function ProjectModal({ currentProject }) {
+    if (!currentProject) return <></>;
+
+    const { project, image } = currentProject;
+
+    if (!project) return <></>;
+
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={onClose}>
-            <div className="bg-white p-4 max-w-lg w-full relative" onClick={(e) => e.stopPropagation()}>
+        <>
+            <div className="modal-box max-w-6xl">
+                <div className="grid grid-cols-2 gap-5">
+                    <img className="aspect-auto rounded-3xl" src={image} />
+                    <div className="flex flex-col items-center justify-center gap-12 align-middle">
+                        <h3 className="text-4xl font-bold uppercase tracking-widest text-primary">
+                            {project.title}
+                        </h3>
+                        <div className="flex w-2/3 flex-col gap-5 text-2xl font-semibold">
+                            <div className="flex justify-between w-full">
+                                <p className="w-1/2">Released:</p>
+                                <p className="text-left w-1/2">{project.released}</p>
+                            </div>
+                            <div className="flex justify-between w-full">
+                                <p className="w-1/2">Director:</p>
+                                <p className="text-left w-1/2">{project.director}</p>
+                            </div>
+                            <div className="flex justify-between w-full">
+                                <p className="w-1/2">Producer:</p>
+                                <p className="text-left w-1/2">{project.producer}</p>
+                            </div>
+                            {project.imdb && (
+                                <a
+                                    href={project.imdb}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cursor-pointer text-primary hover:text-secondary text-center"
+                                >
+                                    IMDB
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+                <button>close</button>
+            </form>
+
+            {/* <div
+                className="relative w-full max-w-lg bg-white p-4"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <h3 className="text-xl font-bold">{project.title}</h3>
                 <ul>
                     <li>Released: {project.released}</li>
@@ -14,37 +64,51 @@ function ProjectModal({ project, onClose }) {
                     {project.producer && <li>Producer: {project.producer}</li>}
                     {project.imdb && (
                         <li>
-                                    IMDB:{" "}
-                            <a href={project.imdb} target="_blank" rel="noopener noreferrer">
+                            IMDB:{" "}
+                            <a
+                                href={project.imdb}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 {project.imdb}
                             </a>
                         </li>
                     )}
                 </ul>
-                <button onClick={onClose} className="absolute top-2 right-2 text-2xl cursor-pointer">
-                            &times;
+                <button
+                    onClick={onClose}
+                    className="absolute right-2 top-2 cursor-pointer text-2xl"
+                >
+                    &times;
                 </button>
-            </div>
-        </div>
+            </div> */}
+        </>
     );
 }
+
 ProjectModal.propTypes = {
-    project: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        released: PropTypes.string.isRequired,
-        director: PropTypes.string,
-        directors: PropTypes.arrayOf(PropTypes.string),
-        producer: PropTypes.string,
-        producers: PropTypes.arrayOf(PropTypes.string),
-        imdb: PropTypes.string,
+    currentProject: PropTypes.shape({
+        project: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            released: PropTypes.string.isRequired,
+            director: PropTypes.string,
+            // directors: PropTypes.arrayOf(PropTypes.string),
+            producer: PropTypes.string,
+            // producers: PropTypes.arrayOf(PropTypes.string),
+            imdb: PropTypes.string,
+        }),
+        image: PropTypes.string,
     }),
-    onClose: PropTypes.func.isRequired,
 };
-        
+
 export default function Projects() {
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
+    const modal = createRef(null);
+    /**
+     * @type {[{ project: object, image: string } | null, React.Dispatch<React.SetStateAction<{ project: object, image: string }>>]}
+     */
     const [currentProject, setCurrentProject] = useState(null);
     const quantity = 4;
 
@@ -83,24 +147,24 @@ export default function Projects() {
             imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
         },
     ];
-        
+
     useEffect(() => {
-        const img = Object.values(import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
-            eager: true,
-            query: "?url",
-        })).map((x) => x.default);
+        const img = Object.values(
+            import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
+                eager: true,
+                query: "?url",
+            }),
+        ).map((x) => x.default);
         setImages(img);
     }, []);
-        
-    const openModal = (project) => {
-        setCurrentProject(project);
-        setShowModal(true);
+
+    const openModal = (currentProject) => {
+        setCurrentProject(currentProject);
+        modal.current.showModal();
     };
-        
-    const closeModal = () => {
-        setShowModal(false);
-    };
-        
+
+    // const closeModal = () => setShowModal(false);
+
     const pageMove = (_amount) => {
         setPage((prev) => {
             const next = prev + _amount;
@@ -110,12 +174,15 @@ export default function Projects() {
             return next;
         });
     };
-        
+
     return (
-        <section id="projects" className="w-full py-10 relative">
+        <section id="projects" className="relative w-full py-10">
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
-                        Projects
+                Projects
             </h2>
+            <dialog ref={modal} className="modal">
+                <ProjectModal currentProject={currentProject} />
+            </dialog>
             <div className="flex w-full items-center justify-center gap-5 align-middle">
                 <button className="h-20 w-20" onClick={() => pageMove(-1)}>
                     <svg
@@ -129,23 +196,31 @@ export default function Projects() {
                     </svg>
                 </button>
                 {images &&
-                    images.slice((page - 1) * quantity, page * quantity).map((image, index) => {
-                        const projectIndex = ((page - 1) * quantity) + index;
-                        return (
-                            <div
-                                className="w-fit border-2 border-primary p-3 cursor-pointer"
-                                key={index} 
-                                onClick={() => openModal(projectDetails[projectIndex])}
-                            >
-                                <img
-                                    draggable="false"
-                                    className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                                    src={image}
-                                    alt={`project-${index}`}
-                                />
-                            </div>
-                        );
-                    })}
+                    images
+                        .slice((page - 1) * quantity, page * quantity)
+                        .map((image, index) => {
+                            const projectIndex = (page - 1) * quantity + index;
+                            return (
+                                <div
+                                    className="w-fit cursor-pointer border-2 border-primary p-3"
+                                    key={index}
+                                    onClick={() =>
+                                        openModal({
+                                            project:
+                                                projectDetails[projectIndex],
+                                            image,
+                                        })
+                                    }
+                                >
+                                    <img
+                                        draggable="false"
+                                        className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                        src={image}
+                                        alt={`project-${index}`}
+                                    />
+                                </div>
+                            );
+                        })}
                 <button className="h-20 w-20" onClick={() => pageMove(1)}>
                     <svg
                         className={`fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
@@ -158,7 +233,6 @@ export default function Projects() {
                     </svg>
                 </button>
             </div>
-            {showModal && <ProjectModal project={currentProject} onClose={closeModal} />}
         </section>
     );
 }

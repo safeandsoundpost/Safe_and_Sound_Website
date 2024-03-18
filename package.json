@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "autoprefixer": "^10.4.17",
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.35",

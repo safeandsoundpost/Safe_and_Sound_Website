@@ -2,15 +2,18 @@ import mike from "../../assets/images/team/Mike S&S headshot.png";
 import chris from "../../assets/images/team/Chris S&S headshot.png";
 import jesse from "../../assets/images/team/Jesse S&S headshot.png";
 import thom from "../../assets/images/team/Thom S&S headshot.png";
+import kyle from "../../assets/images/team/Kyle S&S headshot.png";
+
+import text from "../../assets/images/team/who-we-are-text.png";
 
 export default function TheTeam() {
     // Array of imported images
-    const teamPhotos = [mike, chris, jesse, thom];
+    const teamPhotos = [mike, chris, jesse, thom, kyle];
 
     return (
         <section
             id="the-team"
-            className="flex w-full flex-col items-center justify-center gap-10 py-10 align-middle max-h-[75%]"
+            className="flex max-h-[75%] w-full flex-col items-center justify-center gap-10 py-10 align-middle"
         >
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 who we are
@@ -19,11 +22,17 @@ export default function TheTeam() {
             <div className="flex">
                 <div className="flex flex-col gap-5">
                     {teamPhotos.map((photo, index) => (
-                        <img draggable="false" src={photo} key={index} className="w-3/4 hover:invert select-none" />
+                        <img
+                            draggable="false"
+                            src={photo}
+                            key={index}
+                            className="w-3/4 select-none hover:invert aspect-square"
+                        />
                     ))}
                 </div>
                 <div className="w-full grow">
-                    <p className="text-justify text-2xl font-semibold leading-8 tracking-[.35em]">
+                    <img className="pointer-events-none select-none" draggable="false" src={text} />
+                    {/* <p className="text-2xl font-semibold leading-8 tracking-[.35em]">
                         Supporting the needs of diverse and emerging filmmakers
                         is the driving force here at Safe & Sound. As passionate
                         artists ourselves we know the obsession that goes into
@@ -51,10 +60,9 @@ export default function TheTeam() {
                         <br />
                         With us, you are always{" "}
                         <span className="text-accent">Safe & Sound.</span>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </section>
     );
 }
-
