@@ -12,4 +12,5 @@ export default defineConfig({
             "@services": path.resolve(__dirname, "src/assets/images/services"),
         },
     },
+    base: "./",
 });
