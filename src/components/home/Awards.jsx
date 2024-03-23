@@ -34,7 +34,7 @@ export default function Awards() {
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Awards
             </h2>
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="grid grid-cols-2 gap-y-6 gap-x-4 md:flex md:flex-wrap md:justify-center md:gap-8">
                 {awardsList.map((award, index) => (
                     <AwardCard
                         key={index}
@@ -43,16 +43,23 @@ export default function Awards() {
                     />
                 ))}
             </div>
-            <img className="absolute -top-[20%] -left-[62%]" src={awardsDecoration} />
+            <img
+                className="absolute -left-64 -top-6 max-md:scale-75 md:-left-[62%] md:-top-[20%]"
+                src={awardsDecoration}
+            />
         </section>
     );
 }
 
 function AwardCard({ title, category }) {
     return (
-        <div className="flex min-h-[10rem] w-full flex-col items-center justify-center space-y-2 rounded border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
-            <h3 className="text-center text-xl font-semibold">{title}</h3>
-            <p className="text-center italic text-secondary">{category}</p>
+        <div className="flex md:min-h-[10rem] w-full flex-col items-center justify-center space-y-2 rounded border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:w-1/3 lg:w-1/4 xl:w-1/5">
+            <h3 className="text-center text-sm font-semibold md:text-xl">
+                {title}
+            </h3>
+            <p className="text-center text-xs italic text-secondary md:text-base">
+                {category}
+            </p>
         </div>
     );
 }

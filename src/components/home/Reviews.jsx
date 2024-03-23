@@ -51,7 +51,12 @@ export default function Reviews() {
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Reviews
             </h2>
-            <div className="flex justify-center gap-16">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8 ">
+                {reviews.map((review, index) => (
+                    <ReviewCard key={index} review={review} />
+                ))}
+            </div>
+            {/* <div className="flex justify-center gap-16 max-md:hidden">
                 <div className="flex flex-col gap-8">
                     {reviews.slice(0, 3).map((review, index) => (
                         <ReviewCard key={index} review={review} />
@@ -62,7 +67,7 @@ export default function Reviews() {
                         <ReviewCard key={index} review={review} />
                     ))}
                 </div>
-            </div>
+            </div> */}
             {selectedReview && (
                 <ReviewModal
                     review={selectedReview}

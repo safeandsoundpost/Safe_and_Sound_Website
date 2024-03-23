@@ -33,7 +33,7 @@ export default function Home() {
         <main className="flex w-full flex-col">
             <NavBar currentSection={currentSection} />
             <Banner />
-            <section className="m-auto w-[65%]">
+            <section className="m-auto w-[85%] md:w-[65%]">
                 <Projects />
                 <Services />
                 <TheTeam />

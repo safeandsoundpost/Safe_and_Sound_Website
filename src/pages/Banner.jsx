@@ -13,12 +13,12 @@ export default function Banner() {
     return (
         <section
             id="demo-reel"
-            className="relative h-2/5 max-h-[40%] min-h-[470px] w-full bg-[#ffffff1f] bg-cover bg-left-top hover:bg-blend-color-burn"
+            className="relative h-2/5 min-h-48 w-full bg-[#ffffff1f] bg-cover bg-center hover:bg-blend-color-burn md:max-h-[40%] md:min-h-[470px] md:bg-left-top"
             style={{ backgroundImage: `url(${banner})` }}
         >
             <div className="absolute inset-0 flex items-center justify-center">
                 <svg
-                    onClick={toggleVideoModal} // Moved onClick here
+                    onClick={toggleVideoModal}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ export default function Banner() {
                     className="absolute inset-0 z-40 flex items-center justify-center bg-black bg-opacity-75"
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <div className="relative aspect-video h-full">
+                    <div className="relative aspect-video w-full md:h-full">
                         <div
                             className="pointer-events-auto absolute right-12 top-2 z-50 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white"
                             onClick={(e) => {
@@ -80,7 +80,7 @@ export default function Banner() {
                 </div>
             )}
 
-            <div className="absolute mt-5 flex h-12 w-[98%] justify-end gap-5">
+            <div className="absolute mt-5 hidden h-12 w-[98%] justify-end gap-5 md:flex">
                 <a
                     className="h-full w-12 select-none"
                     href="https://www.instagram.com/safeandsoundpost/"
@@ -120,7 +120,10 @@ export default function Banner() {
                 </a>
             </div>
 
-            <img className="absolute top-[87%] right-0" src={topDecorator} />
+            <img
+                className="absolute right-0 top-[63%] max-md:w-2/4 md:top-[87%]"
+                src={topDecorator}
+            />
         </section>
     );
 }

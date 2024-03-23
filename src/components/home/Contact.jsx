@@ -94,11 +94,11 @@ export default function Contact() {
             className="relative my-16 flex w-full flex-col items-center justify-center gap-10 py-28 pb-28 align-middle"
         >
             <div
-                className="relative z-20 aspect-video h-fit w-full bg-contain bg-center bg-no-repeat text-4xl font-semibold text-black"
+                className="relative z-20 aspect-video h-fit w-full bg-contain bg-center bg-no-repeat text-xs font-semibold text-black md:text-4xl"
                 style={{ backgroundImage: `url(${contactForm})` }}
             >
-                <div className="absolute left-[80px] top-[31%] flex flex-col gap-6">
-                    <div className="flex gap-20">
+                <div className="absolute left-6 top-[31%] flex flex-col gap-0 md:left-[80px] md:gap-6">
+                    <div className="flex gap-0 md:gap-20">
                         <input
                             className="w-[37%] bg-transparent uppercase tracking-widest placeholder:text-black"
                             placeholder="[  N A M E  ]"
@@ -121,7 +121,7 @@ export default function Contact() {
                         onInput={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                <div className="absolute left-[140px] top-[49%] flex h-[13em] w-[54%] flex-col gap-6 text-xl leading-[1.85em]">
+                <div className="absolute left-10 top-[49%] flex h-[13em] w-[54%] flex-col gap-6 text-[.45em] leading-[1.85em] md:left-[140px] md:text-xl">
                     <textarea
                         className="h-full resize-none bg-transparent tracking-widest placeholder:text-black"
                         placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
@@ -132,7 +132,7 @@ export default function Contact() {
             </div>
             {!isSubmitted && (
                 <button
-                    className="btn btn-sm absolute right-[17%] top-[72.5%] z-30 h-[1em] w-[10em] uppercase tracking-[.2em]"
+                    className="btn btn-xs absolute max-md:text-[.55em] right-12 top-[16rem] z-30 h-[1em] w-[7em] uppercase tracking-[.2em] md:btn-sm md:right-[17%] md:top-[72.5%]"
                     src={contactForm}
                     onClick={submitForm}
                 >

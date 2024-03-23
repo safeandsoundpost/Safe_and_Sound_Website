@@ -15,23 +15,27 @@ export default function TheTeam() {
             id="the-team"
             className="flex max-h-[75%] w-full flex-col items-center justify-center gap-10 py-10 align-middle"
         >
-            <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
+            <h2 className="w-full py-0 text-center text-4xl font-bold uppercase tracking-widest text-secondary md:py-10">
                 who we are
             </h2>
 
-            <div className="flex">
-                <div className="flex flex-col gap-5">
+            <div className="flex flex-col-reverse md:flex-row">
+                <div className="flex flex-row gap-3 md:flex-col md:gap-5">
                     {teamPhotos.map((photo, index) => (
                         <img
                             draggable="false"
                             src={photo}
                             key={index}
-                            className="w-3/4 select-none hover:invert aspect-square"
+                            className="aspect-square w-1/6 select-none hover:invert md:w-3/4"
                         />
                     ))}
                 </div>
-                <div className="w-full grow">
-                    <img className="pointer-events-none select-none" draggable="false" src={text} />
+                <div className="w-full md:grow">
+                    <img
+                        className="pointer-events-none select-none"
+                        draggable="false"
+                        src={text}
+                    />
                     {/* <p className="text-2xl font-semibold leading-8 tracking-[.35em]">
                         Supporting the needs of diverse and emerging filmmakers
                         is the driving force here at Safe & Sound. As passionate

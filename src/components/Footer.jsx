@@ -4,14 +4,14 @@ import footerCheckers from "../assets/images/footer/checkersGraphic.png";
 export default function Footer() {
     return (
         <footer className="flex items-center justify-between align-middle">
-            <div className="w-[15%] px-7">
-                <ul>
-                    <li className="my-2">
-                        <p className="text-xl font-bold uppercase tracking-widest text-accent">
+            <div className="w-full px-2 md:w-[15%] md:px-7">
+                <ul className="text-[.5em] md:text-base">
+                    <li className="my-0 md:my-2">
+                        <p className="text-xs font-bold uppercase tracking-widest text-accent md:text-xl">
                             reach us
                         </p>
                     </li>
-                    <li className="my-2">
+                    <li className="my-0 md:my-2">
                         <a
                             href="mailto:safeandsoundpost@gmail.com"
                             className="font-semibold tracking-widest text-primary"
@@ -19,7 +19,7 @@ export default function Footer() {
                             Email
                         </a>
                     </li>
-                    <li className="my-2">
+                    <li className="my-0 md:my-2">
                         <a
                             href="https://www.instagram.com/safeandsoundpost/"
                             className="font-semibold tracking-widest text-primary"
@@ -28,7 +28,7 @@ export default function Footer() {
                             Instagram
                         </a>
                     </li>
-                    <li className="my-2">
+                    <li className="my-0 md:my-2">
                         <a
                             href="https://www.linkedin.com/company/safe-sound-post/"
                             className="font-semibold tracking-widest text-primary"
@@ -37,7 +37,7 @@ export default function Footer() {
                             Linkedin
                         </a>
                     </li>
-                    <li className="my-2">
+                    <li className="my-0 md:my-2">
                         <a
                             href="https://wa.me/17783638396"
                             className="font-semibold tracking-widest text-primary"
@@ -50,15 +50,15 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-5">
                 <img
-                    className="select-none"
+                    className="m-auto select-none max-md:w-10/12"
                     src={logoHorizontal}
                     draggable="false"
                 />
-                <p className="w-full text-center font-bold uppercase">
-                    &#64; safe &#38; sound 2023
+                <p className="w-full text-center text-xs font-bold uppercase md:text-base">
+                    &#64; safe &#38; sound {new Date(Date.now()).getFullYear()}
                 </p>
             </div>
-            <img src={footerCheckers} />
+            <img className="h-full w-1/4 md:w-full" src={footerCheckers} />
         </footer>
     );
 }

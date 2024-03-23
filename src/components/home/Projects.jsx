@@ -1,106 +1,6 @@
 import { createRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-/**
- * @param {object} params
- * @param {{ project: object, image: string }} params.currentProject
- * @returns
- */
-function ProjectModal({ currentProject }) {
-    if (!currentProject) return <></>;
-
-    const { project, image } = currentProject;
-
-    if (!project) return <></>;
-
-    return (
-        <>
-            <div className="modal-box max-w-6xl">
-                <div className="grid grid-cols-2 gap-5">
-                    <img className="aspect-auto rounded-3xl" src={image} />
-                    <div className="flex flex-col items-center justify-center gap-12 align-middle">
-                        <h3 className="text-4xl font-bold uppercase tracking-widest text-primary">
-                            {project.title}
-                        </h3>
-                        <div className="flex w-2/3 flex-col gap-5 text-2xl font-semibold">
-                            <div className="flex justify-between w-full">
-                                <p className="w-1/2">Released:</p>
-                                <p className="text-left w-1/2">{project.released}</p>
-                            </div>
-                            <div className="flex justify-between w-full">
-                                <p className="w-1/2">Director:</p>
-                                <p className="text-left w-1/2">{project.director}</p>
-                            </div>
-                            <div className="flex justify-between w-full">
-                                <p className="w-1/2">Producer:</p>
-                                <p className="text-left w-1/2">{project.producer}</p>
-                            </div>
-                            {project.imdb && (
-                                <a
-                                    href={project.imdb}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="cursor-pointer text-primary hover:text-secondary text-center"
-                                >
-                                    IMDB
-                                </a>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <form method="dialog" className="modal-backdrop">
-                <button>close</button>
-            </form>
-
-            {/* <div
-                className="relative w-full max-w-lg bg-white p-4"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <h3 className="text-xl font-bold">{project.title}</h3>
-                <ul>
-                    <li>Released: {project.released}</li>
-                    <li>Director: {project.director}</li>
-                    {project.producer && <li>Producer: {project.producer}</li>}
-                    {project.imdb && (
-                        <li>
-                            IMDB:{" "}
-                            <a
-                                href={project.imdb}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {project.imdb}
-                            </a>
-                        </li>
-                    )}
-                </ul>
-                <button
-                    onClick={onClose}
-                    className="absolute right-2 top-2 cursor-pointer text-2xl"
-                >
-                    &times;
-                </button>
-            </div> */}
-        </>
-    );
-}
-
-ProjectModal.propTypes = {
-    currentProject: PropTypes.shape({
-        project: PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            released: PropTypes.string.isRequired,
-            director: PropTypes.string,
-            // directors: PropTypes.arrayOf(PropTypes.string),
-            producer: PropTypes.string,
-            // producers: PropTypes.arrayOf(PropTypes.string),
-            imdb: PropTypes.string,
-        }),
-        image: PropTypes.string,
-    }),
-};
-
 export default function Projects() {
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
@@ -183,7 +83,29 @@ export default function Projects() {
             <dialog ref={modal} className="modal">
                 <ProjectModal currentProject={currentProject} />
             </dialog>
-            <div className="flex w-full items-center justify-center gap-5 align-middle">
+            <div className="carousel gap-5">
+                {images &&
+                    images.map((image, index) => (
+                        <div
+                            className="carousel-item w-3/4 cursor-pointer border-2 border-primary p-3"
+                            onClick={() =>
+                                openModal({
+                                    project: projectDetails[index],
+                                    image,
+                                })
+                            }
+                            key={index}
+                        >
+                            <img
+                                draggable="false"
+                                className="aspect-[12/16] h-full w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                src={image}
+                                alt={`project-${index}`}
+                            />
+                        </div>
+                    ))}
+            </div>
+            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full">
                 <button className="h-20 w-20" onClick={() => pageMove(-1)}>
                     <svg
                         className={`fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
@@ -236,3 +158,79 @@ export default function Projects() {
         </section>
     );
 }
+
+/**
+ * @param {object} params
+ * @param {{ project: object, image: string }} params.currentProject
+ * @returns
+ */
+function ProjectModal({ currentProject }) {
+    if (!currentProject) return <></>;
+
+    const { project, image } = currentProject;
+
+    if (!project) return <></>;
+
+    return (
+        <>
+            <div className="max-md:p-3 modal-box max-w-full md:max-w-6xl bg-[#1a1a1a]">
+                <div className="grid grid-cols-2 gap-3 md:gap-5">
+                    <img className="aspect-auto rounded-3xl" src={image} />
+                    <div className="flex flex-col items-center justify-center gap-2 md:gap-12 align-middle">
+                        <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">
+                            {project.title}
+                        </h3>
+                        <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-2/3 md:text-2xl">
+                            <div className="flex w-full justify-between">
+                                <p className="w-1/2">Released:</p>
+                                <p className="w-1/2 text-left">
+                                    {project.released}
+                                </p>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <p className="w-1/2">Director:</p>
+                                <p className="w-1/2 text-left">
+                                    {project.director}
+                                </p>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <p className="w-1/2">Producer:</p>
+                                <p className="w-1/2 text-left">
+                                    {project.producer}
+                                </p>
+                            </div>
+                            {project.imdb && (
+                                <a
+                                    href={project.imdb}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cursor-pointer text-center text-primary hover:text-secondary"
+                                >
+                                    IMDB
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+                <button>close</button>
+            </form>
+        </>
+    );
+}
+
+ProjectModal.propTypes = {
+    currentProject: PropTypes.shape({
+        project: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            released: PropTypes.string.isRequired,
+            director: PropTypes.string,
+            // directors: PropTypes.arrayOf(PropTypes.string),
+            producer: PropTypes.string,
+            // producers: PropTypes.arrayOf(PropTypes.string),
+            imdb: PropTypes.string,
+        }),
+        image: PropTypes.string,
+    }),
+};

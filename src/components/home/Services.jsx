@@ -20,7 +20,7 @@ export default function Services() {
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 services
             </h2>
-            <div className="flex w-full items-center justify-center gap-5 align-middle text-primary">
+            <div className="flex w-full flex-col items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5">
                 <ServiceCard
                     title={"adr /\nv.O rec"}
                     aHref={"#contact"}
@@ -42,7 +42,8 @@ export default function Services() {
                     aHref={"#contact"}
                     imgSrc={serviceImages[2]}
                     serviceDescription={
-                        "Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the \"end it all\" punch? We can offer Foley that will have you ask the question, did we get that on set?."
+                        // eslint-disable-next-line quotes
+                        `Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?.`
                     }
                 />
                 <ServiceCard
@@ -62,24 +63,24 @@ export default function Services() {
                     }
                 />
             </div>
-            <div className="h-fit w-full bg-[#f3f3f4] px-16">
-                <div className="flex items-center justify-between py-5 align-middle text-6xl">
-                    <h4 className="w-fit text-left text-6xl font-bold uppercase italic tracking-wide text-black">
+            <div className="h-fit w-screen bg-[#f3f3f4] px-8 py-5 max-md:flex max-md:flex-col max-md:gap-3 md:w-full md:px-16 md:py-0">
+                <div className="flex items-center justify-between py-0 align-middle text-3xl md:py-5 md:text-6xl">
+                    <h4 className="w-full text-center text-3xl font-bold uppercase italic tracking-wide text-black md:w-fit md:text-left md:text-6xl">
                         the total package
                     </h4>
                     <img
-                        className="h-[1.2em] select-none text-6xl"
+                        className="h-[1.2em] select-none text-3xl max-md:hidden md:text-6xl"
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
                     />
                 </div>
                 <img
-                    className="select-none"
+                    className="select-none max-md:hidden"
                     src={images.find((x) => x.includes("black-line"))}
                 />
-                <div className="flex h-fit items-center justify-between py-6 align-middle">
-                    <p className="w-[61%] text-justify text-lg leading-5 tracking-widest text-black">
+                <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:flex-row md:gap-0 md:py-6">
+                    <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-[61%] md:text-lg md:leading-5">
                         Everything listed above with our heart and soul in every
                         aspect. We work with you from beginning to end to take
                         your vision and make it a reality. As a team, we
@@ -89,7 +90,7 @@ export default function Services() {
                         head first with us and learn what makes us Safe & Sound.
                     </p>
                     <a
-                        className="w-fit rounded-[1.1em] bg-black px-10 py-8 text-5xl font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black"
+                        className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black md:px-10 md:py-8 md:text-5xl"
                         href="#contact"
                     >
                         book now
@@ -98,7 +99,7 @@ export default function Services() {
             </div>
 
             <img
-                className="absolute -right-[45%] bottom-0 -z-20"
+                className="absolute -right-52 bottom-48 z-20 max-md:scale-75 md:-right-[45%] md:bottom-0 md:-z-20"
                 src={serviceDecoration}
             />
         </section>
@@ -107,38 +108,47 @@ export default function Services() {
 
 function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
-        <div className="flex w-[20%] flex-col gap-5 text-[#f3f3f4]">
-            <div className="flex h-[2em] items-center align-middle text-6xl">
-                <h3 className=" h-fit whitespace-pre text-left font-bold uppercase italic">
-                    {title}
-                </h3>
+        <div className="flex w-full flex-row gap-5 text-[#f3f3f4] md:w-[20%] md:flex-col">
+            <div className="flex w-1/2 flex-col gap-5">
+                <div className="flex h-[2em] items-center align-middle text-5xl md:text-6xl">
+                    <h3 className="h-fit whitespace-pre text-left font-bold uppercase italic">
+                        {title}
+                    </h3>
+                </div>
+                <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">
+                    <img
+                        className="select-none"
+                        draggable="false"
+                        src={images.find((x) => x.includes("white-line"))}
+                    />
+                </div>
+                <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-base md:leading-5">
+                    {serviceDescription}
+                </p>
             </div>
-            <div className="grid h-8 w-full  grid-cols-1 grid-rows-1">
-                <img
-                    className="select-none"
-                    draggable="false"
-                    src={images.find((x) => x.includes("white-line"))}
-                />
-            </div>
-            <p className="text-justify leading-5 tracking-wider">
-                {serviceDescription}
-            </p>
-            <img draggable="false" src={imgSrc} className="select-none" />
-            <a
-                href={aHref}
-                className="h-full w-full rounded-full bg-[#f3f3f4] py-2 text-center text-3xl font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4]"
-            >
-                book now
-            </a>
-            <div className="flex flex-col">
-                <img
-                    className="select-none"
-                    draggable="false"
-                    src={generalImages.find((x) => x.includes("code.png"))}
-                />
-                <span className="m-0 w-full p-0 text-center text-sm uppercase">
-                    safe&sØundpost
-                </span>
+            <div className="flex w-1/2 flex-col gap-5">
+                <img draggable="false" src={imgSrc} className="select-none" />
+                <div className="flex flex-col md:hidden">
+                    <span className="m-0 w-full p-0 text-center text-sm uppercase">
+                        safe&sØundpost
+                    </span>
+                </div>
+                <a
+                    href={aHref}
+                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-xl font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-3xl"
+                >
+                    book now
+                </a>
+                <div className="flex flex-col max-md:hidden">
+                    <img
+                        className="select-none"
+                        draggable="false"
+                        src={generalImages.find((x) => x.includes("code.png"))}
+                    />
+                    <span className="m-0 w-full p-0 text-center text-sm uppercase">
+                        safe&sØundpost
+                    </span>
+                </div>
             </div>
         </div>
     );
