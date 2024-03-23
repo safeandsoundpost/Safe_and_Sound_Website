@@ -58,7 +58,7 @@ export default function Footer() {
                     &#64; safe &#38; sound {new Date(Date.now()).getFullYear()}
                 </p>
             </div>
-            <img className="h-full w-1/4 md:w-full" src={footerCheckers} />
+            <img className="h-full w-1/4 md:w-1/6" src={footerCheckers} />
         </footer>
     );
 }

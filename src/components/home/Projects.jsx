@@ -83,7 +83,7 @@ export default function Projects() {
             <dialog ref={modal} className="modal">
                 <ProjectModal currentProject={currentProject} />
             </dialog>
-            <div className="carousel gap-5">
+            <div className="carousel gap-5 md:hidden">
                 {images &&
                     images.map((image, index) => (
                         <div

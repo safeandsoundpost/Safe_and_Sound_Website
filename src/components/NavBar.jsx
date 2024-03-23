@@ -9,9 +9,9 @@ import burgerMenu from "../assets/icons/burger.svg";
 
 export default function NavBar({ currentSection }) {
     return (
-        <nav className="drawer relative z-50 m-0 text-2xl font-bold text-primary md:drawer-open md:fixed md:m-3 md:mt-8">
+        <nav className="max-md:drawer relative z-50 m-0 text-2xl font-bold text-primary md:drawer-open md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content my-3 mx-2 flex flex-row-reverse justify-between md:hidden">
+            <div className="max-md:drawer-content my-3 mx-2 flex flex-row-reverse justify-between md:hidden">
                 <label
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
