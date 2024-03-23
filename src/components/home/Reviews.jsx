@@ -83,7 +83,7 @@ function ReviewCard({ review }) {
 
     return (
         <button
-            className="flex h-[150px] w-[450px] items-center justify-start overflow-hidden rounded-l-[2em] bg-white pl-10 text-black"
+            className="flex h-[130px] md:h-[150px] md:w-[450px] items-center justify-start overflow-hidden rounded-l-[2em] bg-white pl-10 text-black"
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}
         >
@@ -92,7 +92,7 @@ function ReviewCard({ review }) {
                 if (onHover)
                     return (
                         <div className="ml-4 flex h-full items-center text-left">
-                            <p className="h-[80%] w-[95%] overflow-y-auto text-lg leading-tight">
+                            <p className="h-[80%] w-[95%] overflow-y-auto text-sm md:text-lg leading-tight">
                                 {review.content}
                             </p>
                         </div>

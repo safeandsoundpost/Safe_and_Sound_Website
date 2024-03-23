@@ -9,26 +9,29 @@ import burgerMenu from "../assets/icons/burger.svg";
 
 export default function NavBar({ currentSection }) {
     return (
-        <nav className="max-md:drawer relative z-50 m-0 text-2xl font-bold text-primary md:drawer-open md:fixed md:m-3 md:mt-8">
+        <nav className="relative z-50 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8 md:text-2xl">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
-            <div className="max-md:drawer-content my-3 mx-2 flex flex-row-reverse justify-between md:hidden">
+
+            <div className="mx-auto py-3 flex w-full flex-row-reverse justify-between md:hidden">
                 <label
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
                 >
-                    <img src={burgerMenu} className="h-3/4 m-auto" />
+                    <img src={burgerMenu} className="m-auto h-3/4" />
                 </label>
-                <img src={logoMobile} className="h-12 aspect-[10/3] w-3/4" />
+                <img src={logoMobile} className="aspect-[10/2] h-12 w-3/4" />
             </div>
+
             <div className="drawer-side">
                 <label
                     htmlFor="side-menu"
                     aria-label="close sidebar"
                     className="drawer-overlay md:hidden"
                 ></label>
-                <ul className="flex flex-col gap-2 tracking-widest">
-                    <li className="select-none">
+                <ul className="flex flex-col gap-2 tracking-widest max-md:h-full max-md:bg-black max-md:px-5">
+                    <li className="select-none max-md:h-fit">
                         <img
+                            className="max-md:h-44"
                             src={logo}
                             alt="safe & sound logo"
                             draggable="false"
@@ -46,7 +49,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="flex w-3/4 items-center justify-between self-end">
                         <img
-                            className="aspect-square h-fit"
+                            className="aspect-square h-[1.2em] md:h-fit"
                             src={projectSymbol}
                         />
                         <Link
@@ -83,7 +86,10 @@ export default function NavBar({ currentSection }) {
                         >
                             awards
                         </Link>
-                        <img className="h-[1.2em] w-fit" src={awardsSymbol} />
+                        <img
+                            className="h-[1.1em] w-fit md:h-[1.2em]"
+                            src={awardsSymbol}
+                        />
                     </li>
                     <li className="mr-4 self-end">
                         <Link
