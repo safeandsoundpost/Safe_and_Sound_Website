@@ -1,4 +1,3 @@
-// import { useLocation } from "react-router-dom";
 import logo from "/images/logo.png";
 import logoMobile from "/images/logo-mobile.png";
 import Link from "./Link";
@@ -28,7 +27,7 @@ export default function NavBar({ currentSection }) {
                     aria-label="close sidebar"
                     className="drawer-overlay md:hidden"
                 ></label>
-                <ul className="flex flex-col gap-2 tracking-widest max-md:h-full max-md:bg-black max-md:px-5">
+                <ul className="flex flex-col gap-3 tracking-widest max-md:h-full max-md:bg-black max-md:p-5">
                     <li className="select-none max-md:h-fit">
                         <img
                             className="max-md:h-44"
@@ -84,10 +83,10 @@ export default function NavBar({ currentSection }) {
                             href="#awards"
                             currentSection={currentSection}
                         >
-                            awards
+                            awards  
                         </Link>
                         <img
-                            className="h-[1.1em] w-fit md:h-[1.2em]"
+                            className="h-[60%] aspect-[2.3/1]"
                             src={awardsSymbol}
                         />
                     </li>

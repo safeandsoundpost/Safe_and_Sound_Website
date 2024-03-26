@@ -15,7 +15,7 @@ export default function Link({ currentSection, className, href, children, defAct
 
     return (
         <a
-            className={`${className} w-fit uppercase ${active ? "border-2 border-primary" : ""}`}
+            className={`${className} w-fit uppercase border-2 ${active ? "border-primary" : "border-transparent"}`}
             href={href}
         >
             {children}

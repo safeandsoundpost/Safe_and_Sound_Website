@@ -121,7 +121,7 @@ export default function Contact() {
                         onInput={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                <div className="absolute left-10 top-[49%] flex h-[13em] w-[54%] flex-col gap-6 text-[.45em] leading-[1.85em] md:left-[140px] md:text-xl">
+                <div className="absolute left-10 top-[49%] flex h-[8em] w-[54%] flex-col gap-6 text-[.45em] leading-[1.85em] md:left-[140px] md:text-xl">
                     <textarea
                         className="h-full resize-none bg-transparent tracking-widest placeholder:text-black"
                         placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
@@ -132,7 +132,7 @@ export default function Contact() {
             </div>
             {!isSubmitted && (
                 <button
-                    className="btn btn-xs absolute max-md:text-[.55em] right-12 top-[16rem] z-30 h-[1em] w-[7em] uppercase tracking-[.2em] md:btn-sm md:right-[17%] md:top-[72.5%]"
+                    className="btn btn-xs absolute max-md:text-[.55em] right-[44%] top-[59.5%] z-30 h-[1em] w-[12em] uppercase tracking-[.2em] md:btn-sm md:right-[17%] md:top-[72.5%]"
                     src={contactForm}
                     onClick={submitForm}
                 >
