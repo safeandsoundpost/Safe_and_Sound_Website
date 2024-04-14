@@ -20,8 +20,8 @@ const projectDetails = [
         poster: "figuresAlternatePoster",
         title: "FIGURES",
         released: "2022",
-        directors: "Jamie Hegland, Jade Yurich",
-        producers: "Jamie Hegland, Jade Yurich",
+        director: "Jamie Hegland, Jade Yurich",
+        producer: "Jamie Hegland, Jade Yurich",
         imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
     },
     {
