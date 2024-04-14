@@ -44,7 +44,7 @@ export default function Banner() {
                     className="absolute inset-0 z-40 flex items-center justify-center bg-black bg-opacity-75"
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <div className="relative aspect-video w-full md:h-full">
+                    <div className="relative aspect-video w-full md:w-fit md:h-full">
                         <div
                             className="pointer-events-auto absolute right-12 top-2 z-50 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white"
                             onClick={(e) => {
@@ -121,7 +121,7 @@ export default function Banner() {
             </div>
 
             <img
-                className="absolute right-0 top-[84 %] max-md:w-2/4 md:top-[87%]"
+                className="top-[84 %] absolute right-0 max-md:w-2/4 md:top-[87%]"
                 src={topDecorator}
             />
         </section>

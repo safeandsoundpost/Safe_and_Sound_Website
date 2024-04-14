@@ -1,14 +1,20 @@
-import mike from "../../assets/images/team/Mike S&S headshot.png";
-import chris from "../../assets/images/team/Chris S&S headshot.png";
-import jesse from "../../assets/images/team/Jesse S&S headshot.png";
-import thom from "../../assets/images/team/Thom S&S headshot.png";
-import kyle from "../../assets/images/team/Kyle S&S headshot.png";
+/* eslint-disable react/prop-types */
+// import mike from "../../assets/images/team/Mike S&S headshot.png";
+// import chris from "../../assets/images/team/Chris S&S headshot.png";
+// import jesse from "../../assets/images/team/Jesse S&S headshot.png";
+// import thom from "../../assets/images/team/Thom S&S headshot.png";
+// import kyle from "../../assets/images/team/Kyle S&S headshot.png";
 
+import { createRef, useEffect, useState } from "react";
 import text from "../../assets/images/team/who-we-are-text.png";
+import teamData from "./teamdata";
+import PropTypes from "prop-types";
 
 export default function TheTeam() {
     // Array of imported images
-    const teamPhotos = [mike, chris, jesse, thom, kyle];
+    // const teamPhotos = [mike, chris, jesse, thom, kyle];
+    const modal = createRef(null);
+    const [currentTeam, setCurrentTeam] = useState(null);
 
     return (
         <section
@@ -19,14 +25,23 @@ export default function TheTeam() {
                 who we are
             </h2>
 
+            <dialog ref={modal} className="modal">
+                <TeamModal currentTeam={currentTeam} />
+            </dialog>
+
             <div className="flex flex-col-reverse md:flex-row">
                 <div className="flex flex-row gap-3 md:flex-col md:gap-5">
-                    {teamPhotos.map((photo, index) => (
+                    {teamData.map((val, index) => (
                         <img
                             draggable="false"
-                            src={photo}
+                            src={val.pic}
                             key={index}
-                            className="aspect-square w-1/6 select-none hover:invert md:w-3/4"
+                            className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:w-3/4"
+                            onClick={() => {
+                                // console.log("clicked");
+                                modal.current.showModal();
+                                setCurrentTeam(val);
+                            }}
                         />
                     ))}
                 </div>
@@ -36,37 +51,91 @@ export default function TheTeam() {
                         draggable="false"
                         src={text}
                     />
-                    {/* <p className="text-2xl font-semibold leading-8 tracking-[.35em]">
-                        Supporting the needs of diverse and emerging filmmakers
-                        is the driving force here at Safe & Sound. As passionate
-                        artists ourselves we know the obsession that goes into
-                        crafting that perfect story, and how important it is to
-                        feel{" "}
-                        <span className="text-accent">
-                            safe and empowered in our decisions.
-                        </span>
-                        <br />
-                        <br />
-                        Our small team comes with the work experience and
-                        technical ability of a large post-audio studio without
-                        sacrificing that fun, personalized atmosphere you can
-                        only find with people truly invested in seeing your art
-                        succeed.
-                        <br />
-                        <br />
-                        We&apos;re forever dedicated to learning, and creating a
-                        space{" "}
-                        <span className="text-accent">
-                            free of hate discrimination and &quot;bad
-                            ideas&quot;.
-                        </span>
-                        <br />
-                        <br />
-                        With us, you are always{" "}
-                        <span className="text-accent">Safe & Sound.</span>
-                    </p> */}
                 </div>
             </div>
         </section>
     );
 }
+
+/**
+ * @param {object} params
+ * @param {{ name: string, role: string, pic: string, bio: string, favFilm: string }} params.currentTeam
+ * @returns
+ */
+function TeamModal({ currentTeam }) {
+    const [showActualFav, setShowActualFav] = useState(false);
+
+    useEffect(() => {
+        setShowActualFav(false);
+    }, [currentTeam]);
+
+    if (!currentTeam) return <></>;
+
+    const { bio, favFilm, name, pic, role } = currentTeam;
+
+    return (
+        <>
+            <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
+                <div className="relative gap-3 md:gap-0">
+                    <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-3">
+                        <div className="md:w-4/5">
+                            <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">
+                                {name}
+                            </h3>
+                            <p className="text-sm font-semibold uppercase tracking-widest text-secondary md:text-xl">
+                                {role}
+                            </p>
+                        </div>
+                        <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-4/5 md:text-2xl">
+                            <div className="flex w-full justify-between">
+                                <p className="h-fit w-1/4">Bio:</p>
+                                <p className="h-fit w-3/4 whitespace-pre-line text-justify md:text-lg">
+                                    <img
+                                        className="float-right mb-1 ml-4 aspect-square h-1/5 w-1/2 rounded-3xl md:mb-4 md:ml-8 md:h-fit md:w-fit"
+                                        src={pic}
+                                    />
+                                    {bio}
+                                </p>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <p className="w-1/4">Favorite film:</p>
+                                <p
+                                    className="w-3/4 text-left text-secondary"
+                                    onDoubleClick={() => {
+                                        if (currentTeam.actualFavFilm) {
+                                            setShowActualFav(!showActualFav);
+                                        }
+                                    }}
+                                >
+                                    {!showActualFav && favFilm}
+                                    {showActualFav && (
+                                        <>
+                                            {currentTeam.actualFavFilm}
+                                            <img
+                                                className="float-start mx-5 aspect-square h-10"
+                                                src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
+                                            ></img>
+                                        </>
+                                    )}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+                <button>close</button>
+            </form>
+        </>
+    );
+}
+
+TeamModal.propTypes = {
+    currentTeam: PropTypes.shape({
+        name: PropTypes.string,
+        role: PropTypes.string,
+        pic: PropTypes.string,
+        bio: PropTypes.string,
+        favFilm: PropTypes.string,
+    }),
+};

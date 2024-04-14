@@ -1,6 +1,55 @@
 import { createRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+const projectDetails = [
+    {
+        poster: "/src/assets/images/projects/diabolikaPosterBlackDone.png",
+        title: "DIABOLIKA",
+        released: "2024",
+        director: "Dexter Wilson",
+        producer: "Randy Singh, Dexter Wilson",
+        imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
+    },
+    {
+        poster: "/src/assets/images/projects/facesPoster.png",
+        title: "Faces",
+        released: "TBA",
+        director: "Paul Persic",
+    },
+    {
+        poster: "/src/assets/images/projects/figuresAlternatePoster.jpeg",
+        title: "FIGURES",
+        released: "2022",
+        directors: "Jamie Hegland, Jade Yurich",
+        producers: "Jamie Hegland, Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
+    },
+    {
+        poster: "/src/assets/images/projects/taxiAlongTheBridgePoster.jpeg",
+        title: "Taxi Along the Bridge",
+        released: "2023",
+        director: "Paul Persic",
+        producer: "Antonia Sinn",
+        imdb: "https://www.imdb.com/title/tt25666636/?ref_=nv_sr_srsg_0_tt_2_nm_0_q_taxi%2520along%2520th",
+    },
+    {
+        poster: "/src/assets/images/projects/wykykPosterV2.jpeg",
+        title: "When You Know You Know",
+        released: "2024",
+        director: "Katie Uhlmann",
+        producer: "Katie Uhlmann, Nick Hendrik",
+        imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
+    },
+    {
+        poster: "/src/assets/images/projects/a-great-big-terrible-dream.jpg",
+        title: "A great big terrible dream",
+        released: "2024",
+        director: "Maxine Lemieux",
+        producer: "Maxine Lemieux",
+        ytsrc: "https://www.youtube.com/watch?v=WFYjwC8b6DU",
+    },
+];
+
 export default function Projects() {
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
@@ -12,49 +61,15 @@ export default function Projects() {
     const [currentProject, setCurrentProject] = useState(null);
     const quantity = 4;
 
-    const projectDetails = [
-        {
-            title: "DIABOLIKA",
-            released: "2024",
-            director: "Dexter Wilson",
-            producer: "Randy Singh, Dexter Wilson",
-            imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
-        },
-        {
-            title: "Faces",
-            released: "TBA",
-            director: "Paul Persic",
-        },
-        {
-            title: "FIGURES",
-            released: "2022",
-            directors: "Jamie Hegland, Jade Yurich",
-            producers: "Jamie Hegland, Jade Yurich",
-            imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
-        },
-        {
-            title: "Taxi Along the Bridge",
-            released: "2023",
-            director: "Paul Persic",
-            producer: "Antonia Sinn",
-            imdb: "https://www.imdb.com/title/tt25666636/?ref_=nv_sr_srsg_0_tt_2_nm_0_q_taxi%2520along%2520th",
-        },
-        {
-            title: "When You Know You Know",
-            released: "2024",
-            director: "Katie Uhlmann",
-            producer: "Katie Uhlmann, Nick Hendrik",
-            imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
-        },
-    ];
-
     useEffect(() => {
-        const img = Object.values(
-            import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
-                eager: true,
-                query: "?url",
-            }),
-        ).map((x) => x.default);
+        // const img = Object.values(
+        //     import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
+        //         eager: true,
+        //         query: "?url",
+        //     }),
+        // ).map((x) => x.default);
+        // console.log(img);
+        const img = projectDetails.map((project) => project.poster);
         setImages(img);
     }, []);
 
@@ -173,10 +188,10 @@ function ProjectModal({ currentProject }) {
 
     return (
         <>
-            <div className="max-md:p-3 modal-box max-w-full md:max-w-6xl bg-[#1a1a1a]">
+            <div className="modal-box max-w-full bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
                 <div className="grid grid-cols-2 gap-3 md:gap-5">
                     <img className="aspect-auto rounded-3xl" src={image} />
-                    <div className="flex flex-col items-center justify-center gap-2 md:gap-12 align-middle">
+                    <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-12">
                         <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">
                             {project.title}
                         </h3>
@@ -209,6 +224,16 @@ function ProjectModal({ currentProject }) {
                                     IMDB
                                 </a>
                             )}
+                            {project.ytsrc && (
+                                <a
+                                    href={project.ytsrc}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cursor-pointer text-center text-primary hover:text-secondary"
+                                >
+                                    YOUTUBE
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -230,6 +255,7 @@ ProjectModal.propTypes = {
             producer: PropTypes.string,
             // producers: PropTypes.arrayOf(PropTypes.string),
             imdb: PropTypes.string,
+            ytsrc: PropTypes.string,
         }),
         image: PropTypes.string,
     }),

@@ -52,7 +52,7 @@ export default function Contact() {
             return;
         }
 
-        console.log(name, email, phone, message);
+        // console.log(name, email, phone, message);
 
         setIsLoading(true);
         setTimeout(() => {

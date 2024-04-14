@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -80,19 +81,42 @@ export default function Reviews() {
 
 function ReviewCard({ review }) {
     const [onHover, setOnHover] = useState(false);
+    const [isMobile, setIsMobile] = useState(false); // just a workaround for touch events. Not the best solution.
 
     return (
         <button
-            className="flex h-[130px] md:h-[150px] md:w-[450px] items-center justify-start overflow-hidden rounded-l-[2em] bg-white pl-10 text-black"
-            onMouseEnter={() => setOnHover(true)}
-            onMouseLeave={() => setOnHover(false)}
+            id="review-card"
+            className="flex h-[130px] items-center justify-start overflow-hidden rounded-l-[2em] bg-white pl-10 text-black md:h-[150px] md:w-[450px]"
+            onTouchStart={(e) => {
+                setIsMobile(true);
+
+                /** @type {HTMLElement} */
+                const target = e.target;
+                if (target.getAttribute("review-card-type") === "content")
+                    return;
+                setOnHover(!onHover);
+            }}
+            onMouseEnter={() => {
+                if (isMobile) return;
+                setOnHover(true);
+            }}
+            onMouseLeave={() => {
+                if (isMobile) return;
+                setOnHover(false);
+            }}
+            onBlur={() => {
+                setOnHover(false);
+            }}
         >
             <div className="h-6 w-6 flex-shrink-0 rounded-full bg-black"></div>
             {(() => {
                 if (onHover)
                     return (
                         <div className="ml-4 flex h-full items-center text-left">
-                            <p className="h-[80%] w-[95%] overflow-y-auto text-sm md:text-lg leading-tight">
+                            <p
+                                review-card-type="content"
+                                className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-lg"
+                            >
                                 {review.content}
                             </p>
                         </div>
@@ -100,8 +124,15 @@ function ReviewCard({ review }) {
 
                 return (
                     <div className="ml-4 flex-grow text-left">
-                        <p className="text-xl font-bold">{review.name}</p>
-                        <p className="w-11/12 text-lg">{review.credentials}</p>
+                        <p
+                            review-card-type="title"
+                            className="text-xl font-bold"
+                        >
+                            {review.name}
+                        </p>
+                        <p review-card-type="title" className="w-11/12 text-lg">
+                            {review.credentials}
+                        </p>
                     </div>
                 );
             })()}
