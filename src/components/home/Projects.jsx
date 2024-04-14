@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const projectDetails = [
     {
-        poster: "/src/assets/images/projects/diabolikaPosterBlackDone.png",
+        poster: "diabolikaPosterBlackDone",
         title: "DIABOLIKA",
         released: "2024",
         director: "Dexter Wilson",
@@ -11,13 +11,13 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
     },
     {
-        poster: "/src/assets/images/projects/facesPoster.png",
+        poster: "facesPoster",
         title: "Faces",
         released: "TBA",
         director: "Paul Persic",
     },
     {
-        poster: "/src/assets/images/projects/figuresAlternatePoster.jpeg",
+        poster: "figuresAlternatePoster",
         title: "FIGURES",
         released: "2022",
         directors: "Jamie Hegland, Jade Yurich",
@@ -25,7 +25,7 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
     },
     {
-        poster: "/src/assets/images/projects/taxiAlongTheBridgePoster.jpeg",
+        poster: "taxiAlongTheBridgePoster",
         title: "Taxi Along the Bridge",
         released: "2023",
         director: "Paul Persic",
@@ -33,7 +33,7 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt25666636/?ref_=nv_sr_srsg_0_tt_2_nm_0_q_taxi%2520along%2520th",
     },
     {
-        poster: "/src/assets/images/projects/wykykPosterV2.jpeg",
+        poster: "wykykPosterV2",
         title: "When You Know You Know",
         released: "2024",
         director: "Katie Uhlmann",
@@ -41,7 +41,7 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
     },
     {
-        poster: "/src/assets/images/projects/a-great-big-terrible-dream.jpg",
+        poster: "a-great-big-terrible-dream",
         title: "A great big terrible dream",
         released: "2024",
         director: "Maxine Lemieux",
@@ -62,14 +62,22 @@ export default function Projects() {
     const quantity = 4;
 
     useEffect(() => {
-        // const img = Object.values(
-        //     import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
-        //         eager: true,
-        //         query: "?url",
-        //     }),
-        // ).map((x) => x.default);
-        // console.log(img);
+        const img_paths = Object.values(
+            import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
+                eager: true,
+                query: "?url",
+            }),
+        ).map((x) => x.default);
+
+        console.log("raw paths", img_paths);
+
+        projectDetails.forEach((project) => {
+            const img = img_paths.find((x) => x.includes(project.poster));
+            project.poster = img;
+        });
+
         const img = projectDetails.map((project) => project.poster);
+        console.log(img);
         setImages(img);
     }, []);
 

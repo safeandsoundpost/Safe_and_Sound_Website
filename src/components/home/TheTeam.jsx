@@ -1,20 +1,28 @@
 /* eslint-disable react/prop-types */
-// import mike from "../../assets/images/team/Mike S&S headshot.png";
-// import chris from "../../assets/images/team/Chris S&S headshot.png";
-// import jesse from "../../assets/images/team/Jesse S&S headshot.png";
-// import thom from "../../assets/images/team/Thom S&S headshot.png";
-// import kyle from "../../assets/images/team/Kyle S&S headshot.png";
-
 import { createRef, useEffect, useState } from "react";
 import text from "../../assets/images/team/who-we-are-text.png";
 import teamData from "./teamdata";
 import PropTypes from "prop-types";
 
 export default function TheTeam() {
-    // Array of imported images
-    // const teamPhotos = [mike, chris, jesse, thom, kyle];
     const modal = createRef(null);
     const [currentTeam, setCurrentTeam] = useState(null);
+
+    useEffect(() => {
+        const img_paths = Object.values(
+            import.meta.glob("@team/*.{png,jpg,jpeg,PNG,JPEG}", {
+                eager: true,
+                query: "?url",
+            }),
+        ).map((x) => x.default);
+        console.log("raw paths", img_paths);
+        teamData.forEach((project) => {
+            const img = img_paths.find((x) => x.includes(project.pic));
+            project.pic = img;
+        });
+
+        console.log(teamData);
+    }, []);
 
     return (
         <section
