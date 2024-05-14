@@ -13,7 +13,7 @@ export default function Awards() {
             category: "Best Sound Design",
         },
         { event: "Dublin Movie Awards", category: "Best Sound Design" },
-        { event: "Denver Movie Awards", category: "BEST SOUND DESIGN" },
+        { event: "Denver Movie Awards", category: "Best Sound Design" },
         {
             event: "Rome International Short Festival",
             category: "Short Sound Design",

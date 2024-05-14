@@ -37,7 +37,12 @@ export default function Contact() {
             return;
         }
 
-        if (/^\d{10}$/.test(phone) === false) {
+        if (
+            // eslint-disable-next-line no-useless-escape
+            /^(?:\(\d{3}\) \d{3}\-\d{4}|\d{1}(?:(?:\d{2}\.\d{3}\.\d{4}|\d{2}\-\d{3}\-\d{4})|\d{9}))$/.test(
+                phone,
+            ) === false
+        ) {
             alert("Please enter a valid phone number");
             return;
         }
@@ -100,13 +105,13 @@ export default function Contact() {
                 <div className="absolute left-6 top-[31%] flex flex-col gap-0 md:left-[80px] md:gap-6">
                     <div className="flex gap-0 md:gap-20">
                         <input
-                            className="w-[37%] bg-transparent uppercase tracking-widest placeholder:text-black"
+                            className="w-[37%] bg-transparent uppercase tracking-widest placeholder:text-gray-600"
                             placeholder="[  N A M E  ]"
                             value={name}
                             onInput={(e) => setName(e.target.value)}
                         />
                         <input
-                            className="w-[50%] bg-transparent uppercase tracking-widest placeholder:px-16 placeholder:text-black"
+                            className="w-[50%] bg-transparent uppercase tracking-widest placeholder:px-16 placeholder:text-gray-600"
                             type="email"
                             placeholder="[  E M A I L  ]"
                             value={email}
@@ -114,7 +119,7 @@ export default function Contact() {
                         />
                     </div>
                     <input
-                        className="w-[88%] bg-transparent uppercase tracking-widest placeholder:text-black"
+                        className="w-[88%] bg-transparent uppercase tracking-widest placeholder:text-gray-600"
                         type="tel"
                         placeholder="[  P H O N E   N U M B E R  ]"
                         value={phone}
@@ -123,7 +128,7 @@ export default function Contact() {
                 </div>
                 <div className="absolute left-10 top-[49%] flex h-[8em] w-[54%] flex-col gap-6 text-[.45em] leading-[1.85em] md:left-[140px] md:text-xl">
                     <textarea
-                        className="h-full resize-none bg-transparent tracking-widest placeholder:text-black"
+                        className="h-full resize-none bg-transparent tracking-widest placeholder:text-gray-600"
                         placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
                         value={message}
                         onInput={(e) => setMessage(e.target.value)}
@@ -132,7 +137,7 @@ export default function Contact() {
             </div>
             {!isSubmitted && (
                 <button
-                    className="btn btn-xs absolute max-md:text-[.55em] right-[44%] top-[59.5%] z-30 h-[1em] w-[12em] uppercase tracking-[.2em] md:btn-sm md:right-[17%] md:top-[72.5%]"
+                    className="btn btn-xs absolute right-[44%] top-[59.5%] z-30 h-[1em] w-[12em] uppercase tracking-[.2em] md:btn-sm max-md:text-[.55em] md:right-[17%] md:top-[72.5%]"
                     src={contactForm}
                     onClick={submitForm}
                 >

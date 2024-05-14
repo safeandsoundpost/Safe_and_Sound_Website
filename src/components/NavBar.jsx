@@ -105,7 +105,7 @@ export default function NavBar({ currentSection }) {
                             href="#contact"
                             currentSection={currentSection}
                         >
-                            contact
+                            contact us
                         </Link>
                     </li>
                 </ul>

@@ -39,19 +39,21 @@ export default function TheTeam() {
 
             <div className="flex flex-col-reverse md:flex-row">
                 <div className="flex flex-row gap-3 md:flex-col md:gap-5">
-                    {teamData.map((val, index) => (
-                        <img
-                            draggable="false"
-                            src={val.pic}
-                            key={index}
-                            className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:w-3/4"
-                            onClick={() => {
-                                // console.log("clicked");
-                                modal.current.showModal();
-                                setCurrentTeam(val);
-                            }}
-                        />
-                    ))}
+                    {teamData
+                        .sort((a, b) => a.order - b.order)
+                        .map((val, index) => (
+                            <img
+                                draggable="false"
+                                src={val.pic}
+                                key={index}
+                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:w-3/4"
+                                onClick={() => {
+                                    // console.log("clicked");
+                                    modal.current.showModal();
+                                    setCurrentTeam(val);
+                                }}
+                            />
+                        ))}
                 </div>
                 <div className="w-full md:grow">
                     <img
@@ -85,6 +87,24 @@ function TeamModal({ currentTeam }) {
         <>
             <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
                 <div className="relative gap-3 md:gap-0">
+                    <form method="dialog">
+                        <button className="btn btn-circle btn-ghost absolute right-2 top-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2.5}
+                                stroke="currentColor"
+                                className="h-3/4 w-3/4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18 18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                    </form>
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-3">
                         <div className="md:w-4/5">
                             <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">

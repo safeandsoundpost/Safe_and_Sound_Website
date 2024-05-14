@@ -197,6 +197,24 @@ function ProjectModal({ currentProject }) {
     return (
         <>
             <div className="modal-box max-w-full bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
+                <form method="dialog">
+                    <button className="btn btn-circle btn-ghost absolute right-2 top-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2.5}
+                            stroke="currentColor"
+                            className="h-3/4 w-3/4"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18 18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </form>
                 <div className="grid grid-cols-2 gap-3 md:gap-5">
                     <img className="aspect-auto rounded-3xl" src={image} />
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-12">

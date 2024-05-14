@@ -44,7 +44,7 @@ export default function Banner() {
                     className="absolute inset-0 z-40 flex items-center justify-center bg-black bg-opacity-75"
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <div className="relative aspect-video w-full md:w-fit md:h-full">
+                    <div className="relative aspect-video w-full md:h-full md:w-fit">
                         <div
                             className="pointer-events-auto absolute right-12 top-2 z-50 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white"
                             onClick={(e) => {
@@ -69,12 +69,21 @@ export default function Banner() {
                         </div>
                         <div className="relative pt-[56.25%]">
                             <iframe
+                                className="absolute left-0 top-0 h-full w-full"
+                                title="Safe & Sound Demo Reel 2024"
+                                src="https://player.vimeo.com/video/920587179?h=5e65119881"
+                                width="640"
+                                height="360"
+                                frameBorder="0"
+                                allowfullscreen
+                            ></iframe>
+                            {/* <iframe
                                 src="https://player.vimeo.com/video/920587179?badge=0&autopause=0&player_id=0&app_id=58479"
                                 frameBorder="0"
                                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                                 className="absolute left-0 top-0 h-full w-full"
                                 title="Safe & Sound Demo Reel 2024"
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
@@ -107,7 +116,7 @@ export default function Banner() {
                 </a>
                 <a
                     className="h-full w-12 select-none"
-                    href="https://vimeo.com/839330843"
+                    href="https://vimeo.com/user214948086"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
