@@ -1,5 +1,6 @@
 import logo from "/images/logo.png";
 import logoMobile from "/images/logo-mobile.png";
+// import logoCircle from "/images/ss-logo-circle.png";
 import Link from "./Link";
 import PropTypes from "prop-types";
 import awardsSymbol from "../assets/images/symbols/awards-symbol.png";
@@ -11,7 +12,7 @@ export default function NavBar({ currentSection }) {
         <nav className="relative z-50 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8 md:text-2xl">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
 
-            <div className="mx-auto py-3 flex w-full flex-row-reverse justify-between md:hidden">
+            <div className="fixed mx-auto flex w-full flex-row-reverse justify-between bg-black py-3 pl-3 md:hidden">
                 <label
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
@@ -30,7 +31,7 @@ export default function NavBar({ currentSection }) {
                 <ul className="flex flex-col gap-3 tracking-widest max-md:h-full max-md:bg-black max-md:p-5">
                     <li className="select-none max-md:h-fit">
                         <img
-                            className="max-md:h-44"
+                            className="max-md:h-44" // aspect-square w-[299px] max-md:w-[200px]
                             src={logo}
                             alt="safe & sound logo"
                             draggable="false"
@@ -83,10 +84,10 @@ export default function NavBar({ currentSection }) {
                             href="#awards"
                             currentSection={currentSection}
                         >
-                            awards  
+                            awards
                         </Link>
                         <img
-                            className="h-[60%] aspect-[2.3/1]"
+                            className="aspect-[2.3/1] h-[60%]"
                             src={awardsSymbol}
                         />
                     </li>

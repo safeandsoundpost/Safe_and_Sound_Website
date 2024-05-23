@@ -13,7 +13,7 @@ export default function Banner() {
     return (
         <section
             id="demo-reel"
-            className="relative h-2/5 min-h-48 w-full bg-[#ffffff1f] bg-cover bg-center hover:bg-blend-color-burn md:max-h-[40%] md:min-h-[470px] md:bg-left-top"
+            className="relative mt-[72px] h-2/5 min-h-48 w-full bg-[#ffffff1f] bg-cover bg-center hover:bg-blend-color-burn md:mt-0 md:max-h-[40%] md:min-h-[470px] md:bg-left-top"
             style={{ backgroundImage: `url(${banner})` }}
         >
             <div className="absolute inset-0 flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function Banner() {
             </div>
 
             <img
-                className="top-[84 %] absolute right-0 max-md:w-2/4 md:top-[87%]"
+                className="absolute right-0 top-[84.5%] max-md:w-2/4 md:top-[87%]"
                 src={topDecorator}
             />
         </section>
