@@ -52,10 +52,10 @@ export default function Contact() {
             return;
         }
 
-        if (/^[a-zA-Z\s]*$/.test(message) === false) {
-            alert("Please enter a valid message");
-            return;
-        }
+        // if (/^[a-zA-Z\s]*$/.test(message) === false) {
+        //     alert("Please enter a valid message");
+        //     return;
+        // }
 
         // console.log(name, email, phone, message);
 
