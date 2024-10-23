@@ -22,9 +22,9 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
     {
         name: "Jesse Lawrence",
         order: 1,
-        role: "Co-Owner & Sound Designer",
+        role: "Co-Owner & Sound Supervisor",
         pic: "jesse",
-        bio: "Originally from British Columbia, Jesse attended The Ontario Institute of Audio Recording Technology where he graduated top of his class. He got his start in Toronto where he worked up the ranks at one of the top sound studios recording content for A24, HBO, Disney, and more. Jesse is now living in Amsterdam, Netherlands for a year to experience European culture and drink incredible beer! Having a passion for film, he enjoys all aspects of the process from sound design, to foley, to dialogue editing. In his spare time, Jesse likes to travel, dig for records, and enjoy the outdoors.",
+        bio: 'Jesse Lawrence is a queer Métis audio engineer from Kelowna, British Columbia. Graduating at the top of his class from The Ontario Institute of Audio Recording Technology in 2021, Jesse has built a noteworthy career in the audio industry. He began his professional journey in Toronto, where he gained extensive experience at a leading sound studio, contributing to projects for prestigious clients such as A24, HBO, EOne, and Disney. Since 2022, Jesse has partnered with Thomas and together have been building Safe & Sound project by project. Jesse\'s expertise spans a wide range of audio disciplines, including sound supervision, sound design, foley artistry, and dialogue editing. His deep-seated respect and passion for film and audio production drives his commitment to excellence in every project he undertakes. \“With every project, I am on a mission to enhance the story with sound, aiming to immerse the audience completely without distractions.\" Outside of his professional pursuits, Jesse enjoys traveling, making music, digging for records, and embracing the outdoors.',
         favFilm: "Whiplash",
     },
     {
