@@ -34,7 +34,7 @@ export default function Awards() {
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Awards
             </h2>
-            <div className="grid grid-cols-2 gap-y-6 gap-x-4 md:flex md:flex-wrap md:justify-center md:gap-8">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-center md:gap-8">
                 {awardsList.map((award, index) => (
                     <AwardCard
                         key={index}
@@ -44,7 +44,7 @@ export default function Awards() {
                 ))}
             </div>
             <img
-                className="absolute -left-64 -top-6 max-md:scale-75 md:-left-[62%] md:-top-[20%]"
+                className="absolute -left-[70%] -top-6 max-md:scale-75 md:-left-[95%] md:-top-[20%] lg:-left-[80%] xl:-left-[65%]"
                 src={awardsDecoration}
             />
         </section>
@@ -53,7 +53,7 @@ export default function Awards() {
 
 function AwardCard({ title, category }) {
     return (
-        <div className="flex md:min-h-[10rem] w-full flex-col items-center justify-center space-y-2 rounded border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:w-1/3 lg:w-1/4 xl:w-1/5">
+        <div className="flex w-full flex-col items-center justify-center space-y-2 rounded border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:min-h-[10rem] md:w-1/3 lg:w-1/4 xl:w-1/5">
             <h3 className="text-center text-sm font-semibold md:text-xl">
                 {title}
             </h3>

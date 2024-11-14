@@ -20,13 +20,14 @@ export default function Services() {
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 services
             </h2>
-            <div className="flex w-full flex-col items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5">
+            <div className="flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5">
+                {/* <div className="grid w-full grid-flow-col items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:gap-5"> */}
                 <ServiceCard
                     title={"adr /\nv.O rec"}
                     aHref={"#contact"}
                     imgSrc={serviceImages[0]}
                     serviceDescription={
-                        "Subtle breaths, blood curt- ling screams, and everyt- hing in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while captu- ring honest performances."
+                        "Subtle breaths, blood curtling screams, and everyt- hing in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while captu- ring honest performances."
                     }
                 />
                 <ServiceCard
@@ -79,8 +80,8 @@ export default function Services() {
                     className="select-none max-md:hidden"
                     src={images.find((x) => x.includes("black-line"))}
                 />
-                <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:flex-row md:gap-0 md:py-6">
-                    <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-[61%] md:text-lg md:leading-5">
+                <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:py-6 lg:flex-row lg:gap-0">
+                    <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-[80%] lg:w-[61%] md:text-lg md:leading-5">
                         Everything listed above with our heart and soul in every
                         aspect. We work with you from beginning to end to take
                         your vision and make it a reality. As a team, we
@@ -90,7 +91,9 @@ export default function Services() {
                         head first with us and learn what makes us Safe & Sound.
                     </p>
                     <a
-                        className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black md:px-10 md:py-8 md:text-5xl"
+                        className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold 
+                        uppercase tracking-widest text-white hover:bg-white hover:text-black 
+                        md:px-10 md:py-8 md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl"
                         href="#contact"
                     >
                         book now
@@ -108,8 +111,8 @@ export default function Services() {
 
 function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
-        <div className="flex w-full flex-row gap-5 text-[#f3f3f4] md:w-[20%] md:flex-col">
-            <div className="flex w-1/2 md:w-full flex-col gap-5">
+        <div className="flex w-full flex-row gap-5 text-[#f3f3f4] md:w-[35%] md:flex-col lg:w-[30%] 2xl:w-[18%]">
+            <div className="flex w-1/2 flex-col gap-5 md:w-full">
                 <div className="flex h-[2em] items-center align-middle text-5xl md:text-6xl">
                     <h3 className="h-fit whitespace-pre text-left font-bold uppercase italic">
                         {title}
@@ -126,7 +129,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                     {serviceDescription}
                 </p>
             </div>
-            <div className="flex w-1/2 md:w-full flex-col gap-5">
+            <div className="flex w-1/2 flex-col gap-5 md:w-full">
                 <img draggable="false" src={imgSrc} className="select-none" />
                 <div className="flex flex-col md:hidden">
                     <span className="m-0 w-full p-0 text-center text-sm uppercase">
@@ -135,7 +138,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                 </div>
                 <a
                     href={aHref}
-                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-xl font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-3xl"
+                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-xl lg:text-2xl"
                 >
                     book now
                 </a>

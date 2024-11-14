@@ -15,13 +15,12 @@ export default function TheTeam() {
                 query: "?url",
             }),
         ).map((x) => x.default);
-        console.log("raw paths", img_paths);
         teamData.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.pic));
             project.pic = img;
         });
 
-        console.log(teamData);
+        // console.log(teamData);
     }, []);
 
     return (
@@ -37,7 +36,7 @@ export default function TheTeam() {
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex flex-col-reverse md:flex-row">
+            <div className="flex flex-col-reverse md:flex-row gap-5">
                 <div className="flex flex-row gap-3 md:flex-col md:gap-5">
                     {teamData
                         .sort((a, b) => a.order - b.order)
@@ -46,9 +45,8 @@ export default function TheTeam() {
                                 draggable="false"
                                 src={val.pic}
                                 key={index}
-                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:w-3/4"
+                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:ml-auto md:w-[45%] xl:w-3/4"
                                 onClick={() => {
-                                    // console.log("clicked");
                                     modal.current.showModal();
                                     setCurrentTeam(val);
                                 }}

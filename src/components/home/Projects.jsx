@@ -53,13 +53,13 @@ const projectDetails = [
 export default function Projects() {
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
-    // const [showModal, setShowModal] = useState(false);
+    const [quantity, setQuantity] = useState(4);
+
     const modal = createRef(null);
     /**
      * @type {[{ project: object, image: string } | null, React.Dispatch<React.SetStateAction<{ project: object, image: string }>>]}
      */
     const [currentProject, setCurrentProject] = useState(null);
-    const quantity = 4;
 
     useEffect(() => {
         const img_paths = Object.values(
@@ -69,24 +69,49 @@ export default function Projects() {
             }),
         ).map((x) => x.default);
 
-        console.log("raw paths", img_paths);
-
         projectDetails.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.poster));
             project.poster = img;
         });
 
         const img = projectDetails.map((project) => project.poster);
-        console.log(img);
         setImages(img);
+    }, []);
+
+    useEffect(() => {
+        console.log("loading projects");
+
+        const handleResize = (event) => {
+            // console.log(window.innerWidth);
+            console.log(event.target.innerWidth);
+            if (event.target.innerWidth >= 640) {
+                setQuantity(2);
+                setPage(1);
+            }
+            if (event.target.innerWidth >= 1280) {
+                setQuantity(3);
+                setPage(1);
+            }
+            if (event.target.innerWidth >= 1920) {
+                setQuantity(4);
+                setPage(1);
+            }
+        };
+
+        handleResize({ target: window });
+
+        window.addEventListener("resize", (event) => handleResize(event), true);
+        return window.removeEventListener(
+            "resize",
+            (event) => handleResize(event),
+            true,
+        );
     }, []);
 
     const openModal = (currentProject) => {
         setCurrentProject(currentProject);
         modal.current.showModal();
     };
-
-    // const closeModal = () => setShowModal(false);
 
     const pageMove = (_amount) => {
         setPage((prev) => {
@@ -129,7 +154,10 @@ export default function Projects() {
                     ))}
             </div>
             <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full">
-                <button className="h-20 w-20" onClick={() => pageMove(-1)}>
+                <button
+                    className="z-50 h-20 w-20"
+                    onClick={() => pageMove(-1)}
+                >
                     <svg
                         className={`fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
                         width="100%"

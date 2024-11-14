@@ -99,10 +99,10 @@ export default function Contact() {
             className="relative my-16 flex w-full flex-col items-center justify-center gap-10 py-28 pb-28 align-middle"
         >
             <div
-                className="relative z-20 aspect-video h-fit w-full bg-contain bg-center bg-no-repeat text-xs font-semibold text-black md:text-4xl"
+                className="relative z-20 aspect-video h-fit w-full bg-contain bg-center bg-no-repeat text-xs font-semibold text-black md:text-base lg:text-xl xl:text-3xl"
                 style={{ backgroundImage: `url(${contactForm})` }}
             >
-                <div className="absolute left-6 top-[31%] flex flex-col gap-0 md:left-[90px] md:gap-6">
+                <div className="absolute left-6 top-[31%] flex flex-col gap-0 md:left-[40px] md:gap-0 lg:left-[60px] lg:gap-2 xl:gap-3">
                     <div className="flex gap-0 md:gap-5">
                         <input
                             className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
@@ -126,9 +126,14 @@ export default function Contact() {
                         onInput={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                <div className="absolute left-[12%] top-[50%] flex h-[8em] w-[54%] flex-col gap-6 text-[.45em] md:left-[150px] md:top-[50.3%] md:text-xl">
+                <div
+                    className="absolute left-[12%] top-[50%] flex h-[8em] w-[54%] flex-col gap-6 text-[.45em] 
+                md:left-[75px] md:top-[50.5%] md:text-xs
+                lg:left-[80px] lg:top-[50.3%] lg:text-lg
+                xl:left-[110px] xl:top-[50%] xl:text-lg"
+                >
                     <textarea
-                        className="h-full resize-none bg-transparent leading-[0.65rem] tracking-widest placeholder:text-gray-600 md:leading-[2.3rem]"
+                        className="h-full resize-none bg-transparent leading-[0.65rem] tracking-widest placeholder:text-gray-600 md:leading-[1.2rem] lg:leading-[2.3rem]"
                         placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
                         value={message}
                         onInput={(e) => setMessage(e.target.value)}
@@ -137,7 +142,10 @@ export default function Contact() {
             </div>
             {!isSubmitted && (
                 <button
-                    className="btn btn-xs absolute right-[44%] top-[59.5%] z-30 h-[1em] w-[12em] uppercase tracking-[.2em] md:btn-sm max-md:text-[.55em] md:right-[15.5%] md:top-[72.5%]"
+                    className=" btn btn-xs absolute right-[44%] top-[59.5%] z-30 h-[1em] w-[12em] text-[.55em] uppercase tracking-[.2em]
+                                md:btn-sm md:right-[9%] md:top-[67%] md:text-xs 
+                                lg:right-[9%] lg:top-[68%] lg:text-base lg:btn-md
+                                xl:right-[10%] xl:top-[70%] xl:text-lg xl:btn-md"
                     src={contactForm}
                     onClick={submitForm}
                 >

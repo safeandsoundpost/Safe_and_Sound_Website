@@ -57,18 +57,6 @@ export default function Reviews() {
                     <ReviewCard key={index} review={review} />
                 ))}
             </div>
-            {/* <div className="flex justify-center gap-16 max-md:hidden">
-                <div className="flex flex-col gap-8">
-                    {reviews.slice(0, 3).map((review, index) => (
-                        <ReviewCard key={index} review={review} />
-                    ))}
-                </div>
-                <div className="flex flex-col gap-8">
-                    {reviews.slice(3).map((review, index) => (
-                        <ReviewCard key={index} review={review} />
-                    ))}
-                </div>
-            </div> */}
             {selectedReview && (
                 <ReviewModal
                     review={selectedReview}
@@ -86,7 +74,9 @@ function ReviewCard({ review }) {
     return (
         <button
             id="review-card"
-            className="flex h-[130px] items-center justify-start overflow-hidden rounded-l-[2em] bg-white pl-10 text-black md:h-[150px] md:w-[450px]"
+            className="flex h-[130px] border-2 border-black items-center 
+            justify-start overflow-hidden rounded-l-[2em] bg-white pl-10
+            text-black md:h-[150px] w-[450px] md:w-[300px] lg:w-[350px] xl:w-[450px]"
             onTouchStart={(e) => {
                 setIsMobile(true);
 
@@ -115,7 +105,7 @@ function ReviewCard({ review }) {
                         <div className="ml-4 flex h-full items-center text-left">
                             <p
                                 review-card-type="content"
-                                className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-lg"
+                                className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-sm lg:text-base"
                             >
                                 {review.content}
                             </p>
@@ -126,11 +116,11 @@ function ReviewCard({ review }) {
                     <div className="ml-4 flex-grow text-left">
                         <p
                             review-card-type="title"
-                            className="text-xl font-bold"
+                            className="text-sm font-bold md:text-base lg:text-xl"
                         >
                             {review.name}
                         </p>
-                        <p review-card-type="title" className="w-11/12 text-lg">
+                        <p review-card-type="title" className="w-11/12 text-sm md:text-base">
                             {review.credentials}
                         </p>
                     </div>
