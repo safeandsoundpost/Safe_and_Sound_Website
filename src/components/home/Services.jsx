@@ -15,12 +15,12 @@ export default function Services() {
     return (
         <section
             id="services"
-            className="relative flex w-full flex-col items-center justify-center gap-10 py-10 align-middle"
+            className="relative m-auto flex w-full flex-col items-center justify-center gap-10 py-10 align-middle"
         >
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 services
             </h2>
-            <div className="flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5">
+            <div className="flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5 lg:w-10/12 xl:w-full">
                 {/* <div className="grid w-full grid-flow-col items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:gap-5"> */}
                 <ServiceCard
                     title={"adr /\nv.O rec"}
@@ -64,13 +64,13 @@ export default function Services() {
                     }
                 />
             </div>
-            <div className="h-fit w-screen bg-[#f3f3f4] px-8 py-5 max-md:flex max-md:flex-col max-md:gap-3 md:w-full md:px-16 md:py-0">
-                <div className="flex items-center justify-between py-0 align-middle text-3xl md:py-5 md:text-6xl">
-                    <h4 className="w-full text-center text-3xl font-bold uppercase italic tracking-wide text-black md:w-fit md:text-left md:text-6xl">
+            <div className="h-fit w-screen bg-[#f3f3f4] px-8 py-5 max-md:flex max-md:flex-col max-md:gap-3 md:w-9/12 md:px-10 md:py-0 xl:w-full xl:px-16">
+                <div className="flex items-center justify-between py-0 align-middle text-3xl md:py-5 md:text-2xl xl:text-6xl">
+                    <h4 className="w-full text-center text-3xl font-bold uppercase italic tracking-wide text-black md:w-fit md:text-left md:text-3xl xl:text-6xl">
                         the total package
                     </h4>
                     <img
-                        className="h-[1.2em] select-none text-3xl max-md:hidden md:text-6xl"
+                        className="h-[1.2em] select-none max-md:hidden md:h-[2.8rem] xl:h-[5rem]"
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
@@ -80,8 +80,8 @@ export default function Services() {
                     className="select-none max-md:hidden"
                     src={images.find((x) => x.includes("black-line"))}
                 />
-                <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:py-6 lg:flex-row lg:gap-0">
-                    <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-[80%] lg:w-[61%] md:text-lg md:leading-5">
+                <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:py-6 lg:flex-col xl:flex-row xl:gap-7">
+                    <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-full md:text-base md:leading-5 xl:w-[80%] xl:text-xl">
                         Everything listed above with our heart and soul in every
                         aspect. We work with you from beginning to end to take
                         your vision and make it a reality. As a team, we
@@ -91,9 +91,11 @@ export default function Services() {
                         head first with us and learn what makes us Safe & Sound.
                     </p>
                     <a
-                        className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold 
+                        className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold
                         uppercase tracking-widest text-white hover:bg-white hover:text-black 
-                        md:px-10 md:py-8 md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl"
+                        md:px-10 md:py-8 md:text-xl
+                        lg:w-full lg:px-8 lg:py-5 lg:text-center lg:text-xl
+                        xl:w-2/4 xl:px-10 xl:py-6 xl:text-3xl 2xl:text-5xl"
                         href="#contact"
                     >
                         book now
@@ -102,7 +104,9 @@ export default function Services() {
             </div>
 
             <img
-                className="absolute -right-52 bottom-48 z-20 max-md:scale-75 md:-right-[45%] md:bottom-0 md:-z-20"
+                className="absolute -right-52 bottom-48 z-20 
+                max-md:scale-75 md:-right-[85%] md:bottom-0 md:-z-20
+                xl:-right-[70%]"
                 src={serviceDecoration}
             />
         </section>
@@ -113,7 +117,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
         <div className="flex w-full flex-row gap-5 text-[#f3f3f4] md:w-[35%] md:flex-col lg:w-[30%] 2xl:w-[18%]">
             <div className="flex w-1/2 flex-col gap-5 md:w-full">
-                <div className="flex h-[2em] items-center align-middle text-5xl md:text-6xl">
+                <div className="flex h-[2em] items-center align-middle text-5xl md:text-4xl xl:text-5xl">
                     <h3 className="h-fit whitespace-pre text-left font-bold uppercase italic">
                         {title}
                     </h3>
@@ -125,7 +129,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                         src={images.find((x) => x.includes("white-line"))}
                     />
                 </div>
-                <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-base md:leading-5">
+                <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:text-base">
                     {serviceDescription}
                 </p>
             </div>
@@ -138,7 +142,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                 </div>
                 <a
                     href={aHref}
-                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-xl lg:text-2xl"
+                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-3xl"
                 >
                     book now
                 </a>

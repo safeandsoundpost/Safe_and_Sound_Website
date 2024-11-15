@@ -36,7 +36,7 @@ export default function TheTeam() {
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex flex-col-reverse md:flex-row gap-5">
+            <div className="flex flex-col-reverse gap-5 md:flex-row">
                 <div className="flex flex-row gap-3 md:flex-col md:gap-5">
                     {teamData
                         .sort((a, b) => a.order - b.order)
@@ -45,7 +45,7 @@ export default function TheTeam() {
                                 draggable="false"
                                 src={val.pic}
                                 key={index}
-                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:ml-auto md:w-[45%] xl:w-3/4"
+                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:ml-auto md:w-[45%] lg:w-[40%] xl:w-[58%] 2xl:w-[80%]"
                                 onClick={() => {
                                     modal.current.showModal();
                                     setCurrentTeam(val);

@@ -47,12 +47,12 @@ export default function Reviews() {
     return (
         <section
             id="reviews"
-            className="flex flex-col items-center justify-center gap-10 py-10"
+            className="flex w-10/12 flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-10/12 xl:w-full"
         >
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Reviews
             </h2>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8 ">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
                 {reviews.map((review, index) => (
                     <ReviewCard key={index} review={review} />
                 ))}
@@ -74,9 +74,12 @@ function ReviewCard({ review }) {
     return (
         <button
             id="review-card"
-            className="flex h-[130px] border-2 border-black items-center 
-            justify-start overflow-hidden rounded-l-[2em] bg-white pl-10
-            text-black md:h-[150px] w-[450px] md:w-[300px] lg:w-[350px] xl:w-[450px]"
+            className="flex h-[130px] w-[450px] items-center justify-start 
+            overflow-hidden rounded-l-[2em] border-2 border-black bg-white pl-10 text-black
+            md:h-[120px] md:w-[225px] md:pl-5
+            lg:h-[130px] lg:w-[260px] lg:pl-6
+            xl:w-[380px] xl:pl-10
+            2xl:w-[450px] 2xl:pl-10"
             onTouchStart={(e) => {
                 setIsMobile(true);
 
@@ -105,7 +108,7 @@ function ReviewCard({ review }) {
                         <div className="ml-4 flex h-full items-center text-left">
                             <p
                                 review-card-type="content"
-                                className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-sm lg:text-base"
+                                className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-xs xl:text-sm 2xl:text-base"
                             >
                                 {review.content}
                             </p>
@@ -120,7 +123,10 @@ function ReviewCard({ review }) {
                         >
                             {review.name}
                         </p>
-                        <p review-card-type="title" className="w-11/12 text-sm md:text-base">
+                        <p
+                            review-card-type="title"
+                            className="w-11/12 text-sm md:text-sm xl:text-base"
+                        >
                             {review.credentials}
                         </p>
                     </div>

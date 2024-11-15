@@ -22,16 +22,16 @@ export default function NavBar({ currentSection }) {
                 <img src={logoMobile} className="aspect-[10/2] h-12 w-3/4" />
             </div>
 
-            <div className="drawer-side md:h-fit md:!overflow-hidden">
+            <div className="drawer-side md:h-[70vh] md:!overflow-hidden">
                 <label
                     htmlFor="side-menu"
                     aria-label="close sidebar"
                     className="drawer-overlay md:hidden"
                 ></label>
                 <ul className="flex flex-col gap-3 tracking-widest max-md:h-full max-md:bg-black max-md:p-5">
-                    <li className="select-none h-22">
+                    <li className="h-22 select-none">
                         <img
-                            className="h-48 lg:h-64 xl:g-fit" // aspect-square w-[299px] max-md:w-[200px]
+                            className="h-48 md:h-36 lg:h-52" // aspect-square w-[299px] max-md:w-[200px]
                             src={logo}
                             alt="safe & sound logo"
                             draggable="false"
@@ -39,7 +39,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li>
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#demo-reel"
                             defActive={true}
                             currentSection={currentSection}
@@ -49,11 +49,11 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="flex w-3/4 items-center justify-between self-end">
                         <img
-                            className="aspect-square h-[1.2em] md:h-fit"
+                            className="aspect-square h-[1.2em] md:h-[1.1em] lg:h-[1em]"
                             src={projectSymbol}
                         />
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#projects"
                             currentSection={currentSection}
                         >
@@ -62,7 +62,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-5">
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#services"
                             currentSection={currentSection}
                         >
@@ -71,7 +71,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-2 self-end">
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#the-team"
                             currentSection={currentSection}
                         >
@@ -80,7 +80,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-10 flex items-center justify-between">
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#awards"
                             currentSection={currentSection}
                         >
@@ -93,7 +93,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-4 self-end">
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#reviews"
                             currentSection={currentSection}
                         >
@@ -102,7 +102,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-6">
                         <Link
-                            className="px-2 py-1 hover:border-secondary hover:text-secondary text-sm md:text-base lg:text-2xl"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
                             href="#contact"
                             currentSection={currentSection}
                         >

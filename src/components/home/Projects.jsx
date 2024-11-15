@@ -79,11 +79,8 @@ export default function Projects() {
     }, []);
 
     useEffect(() => {
-        console.log("loading projects");
 
         const handleResize = (event) => {
-            // console.log(window.innerWidth);
-            console.log(event.target.innerWidth);
             if (event.target.innerWidth >= 640) {
                 setQuantity(2);
                 setPage(1);
