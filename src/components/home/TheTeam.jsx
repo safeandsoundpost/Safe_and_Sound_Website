@@ -36,7 +36,7 @@ export default function TheTeam() {
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex flex-col-reverse gap-5 md:flex-row">
+            <div className="flex flex-col-reverse gap-5 md:w-[80%] md:flex-row md:gap-3 lg:gap-5 lg:w-full">
                 <div className="flex flex-row gap-3 md:flex-col md:gap-5">
                     {teamData
                         .sort((a, b) => a.order - b.order)
@@ -45,7 +45,7 @@ export default function TheTeam() {
                                 draggable="false"
                                 src={val.pic}
                                 key={index}
-                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:ml-auto md:w-[45%] lg:w-[40%] xl:w-[58%] 2xl:w-[80%]"
+                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:m-auto lg:ml-auto md:w-[70%] lg:w-[40%] xl:w-[58%] 2xl:w-[80%]"
                                 onClick={() => {
                                     modal.current.showModal();
                                     setCurrentTeam(val);
@@ -83,7 +83,7 @@ function TeamModal({ currentTeam }) {
 
     return (
         <>
-            <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
+            <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 lg:max-w-6xl">
                 <div className="relative gap-3 md:gap-0">
                     <form method="dialog">
                         <button className="btn btn-circle btn-ghost absolute right-2 top-2">

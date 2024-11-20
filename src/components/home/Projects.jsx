@@ -79,7 +79,6 @@ export default function Projects() {
     }, []);
 
     useEffect(() => {
-
         const handleResize = (event) => {
             if (event.target.innerWidth >= 640) {
                 setQuantity(2);
@@ -150,52 +149,60 @@ export default function Projects() {
                         </div>
                     ))}
             </div>
-            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full">
+            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full md:gap-1 lg:gap-5">
                 <button
-                    className="z-50 h-20 w-20"
+                    className={`z-50 h-20 w-20 md:btn-md lg:btn-lg ${page === 1 ? "" : "btn btn-circle btn-ghost"}`}
                     onClick={() => pageMove(-1)}
                 >
                     <svg
-                        className={`fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
-                        width="100%"
-                        height="100%"
+                        className={`mr-3 fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
+                        width="80%"
+                        height="80%"
                         viewBox="0 0 5 10"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path d="M5 0L0 5L5 10V0Z" />
                     </svg>
                 </button>
-                {images &&
-                    images
-                        .slice((page - 1) * quantity, page * quantity)
-                        .map((image, index) => {
-                            const projectIndex = (page - 1) * quantity + index;
-                            return (
-                                <div
-                                    className="w-fit cursor-pointer border-2 border-primary p-3"
-                                    key={index}
-                                    onClick={() =>
-                                        openModal({
-                                            project:
-                                                projectDetails[projectIndex],
-                                            image,
-                                        })
-                                    }
-                                >
-                                    <img
-                                        draggable="false"
-                                        className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                                        src={image}
-                                        alt={`project-${index}`}
-                                    />
-                                </div>
-                            );
-                        })}
-                <button className="h-20 w-20" onClick={() => pageMove(1)}>
+                <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full">
+                    {images &&
+                        images
+                            .slice((page - 1) * quantity, page * quantity)
+                            .map((image, index) => {
+                                const projectIndex =
+                                    (page - 1) * quantity + index;
+                                return (
+                                    <div
+                                        className="w-fit cursor-pointer border-2 border-primary p-3"
+                                        key={index}
+                                        onClick={() =>
+                                            openModal({
+                                                project:
+                                                    projectDetails[
+                                                        projectIndex
+                                                    ],
+                                                image,
+                                            })
+                                        }
+                                    >
+                                        <img
+                                            draggable="false"
+                                            className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                            src={image}
+                                            alt={`project-${index}`}
+                                        />
+                                    </div>
+                                );
+                            })}
+                </div>
+                <button
+                    className="btn btn-circle btn-ghost h-20 w-20 md:btn-md lg:btn-lg"
+                    onClick={() => pageMove(1)}
+                >
                     <svg
-                        className={`fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
-                        width="100%"
-                        height="100%"
+                        className={`ml-3 fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
+                        width="80%"
+                        height="80%"
                         viewBox="0 0 5 10"
                         xmlns="http://www.w3.org/2000/svg"
                     >

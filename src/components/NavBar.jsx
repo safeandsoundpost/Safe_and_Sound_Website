@@ -9,7 +9,7 @@ import burgerMenu from "../assets/icons/burger.svg";
 
 export default function NavBar({ currentSection }) {
     return (
-        <nav className="relative z-50 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8 md:text-2xl">
+        <nav className="relative z-50 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
 
             <div className="fixed mx-auto flex w-full flex-row-reverse justify-between bg-black py-3 pl-3 md:hidden">
@@ -19,7 +19,7 @@ export default function NavBar({ currentSection }) {
                 >
                     <img src={burgerMenu} className="m-auto h-3/4" />
                 </label>
-                <img src={logoMobile} className="aspect-[10/2] h-12 w-3/4" />
+                <img src={logoMobile} className="aspect-[10/2] h-12 w-fit" />
             </div>
 
             <div className="drawer-side md:h-[70vh] md:!overflow-hidden">
@@ -39,7 +39,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li>
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#demo-reel"
                             defActive={true}
                             currentSection={currentSection}
@@ -53,7 +53,7 @@ export default function NavBar({ currentSection }) {
                             src={projectSymbol}
                         />
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#projects"
                             currentSection={currentSection}
                         >
@@ -62,7 +62,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-5">
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#services"
                             currentSection={currentSection}
                         >
@@ -71,7 +71,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-2 self-end">
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#the-team"
                             currentSection={currentSection}
                         >
@@ -80,7 +80,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-10 flex items-center justify-between">
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#awards"
                             currentSection={currentSection}
                         >
@@ -93,7 +93,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-4 self-end">
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#reviews"
                             currentSection={currentSection}
                         >
@@ -102,7 +102,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="ml-6">
                         <Link
-                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg"
+                            className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#contact"
                             currentSection={currentSection}
                         >

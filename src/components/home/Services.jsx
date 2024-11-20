@@ -21,13 +21,13 @@ export default function Services() {
                 services
             </h2>
             <div className="flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:flex-row md:gap-5 lg:w-10/12 xl:w-full">
-                {/* <div className="grid w-full grid-flow-col items-center justify-center gap-12 align-middle text-primary max-md:mb-16 md:gap-5"> */}
+                {/* <div className="mb-16 grid w-full grid-flow-col-dense items-center justify-center gap-12 align-middle text-primary md:gap-5 md:mb-0"> */}
                 <ServiceCard
                     title={"adr /\nv.O rec"}
                     aHref={"#contact"}
                     imgSrc={serviceImages[0]}
                     serviceDescription={
-                        "Subtle breaths, blood curtling screams, and everyt- hing in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while captu- ring honest performances."
+                        "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while capturing honest performances."
                     }
                 />
                 <ServiceCard
@@ -44,7 +44,7 @@ export default function Services() {
                     imgSrc={serviceImages[2]}
                     serviceDescription={
                         // eslint-disable-next-line quotes
-                        `Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?.`
+                        `Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?`
                     }
                 />
                 <ServiceCard
@@ -64,13 +64,13 @@ export default function Services() {
                     }
                 />
             </div>
-            <div className="h-fit w-screen bg-[#f3f3f4] px-8 py-5 max-md:flex max-md:flex-col max-md:gap-3 md:w-9/12 md:px-10 md:py-0 xl:w-full xl:px-16">
+            <div className="h-fit w-screen bg-[#f3f3f4] px-8 py-5 max-md:flex max-md:flex-col max-md:gap-3 md:w-[80%] md:px-10 md:py-0 xl:w-full xl:px-16">
                 <div className="flex items-center justify-between py-0 align-middle text-3xl md:py-5 md:text-2xl xl:text-6xl">
                     <h4 className="w-full text-center text-3xl font-bold uppercase italic tracking-wide text-black md:w-fit md:text-left md:text-3xl xl:text-6xl">
                         the total package
                     </h4>
                     <img
-                        className="h-[1.2em] select-none max-md:hidden md:h-[2.8rem] xl:h-[5rem]"
+                        className="h-[1.2em] select-none max-md:hidden md:h-[2.5rem] xl:h-[5rem]"
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
@@ -93,7 +93,7 @@ export default function Services() {
                     <a
                         className="w-fit rounded-[1.1em] bg-black px-8 py-2 text-2xl font-bold
                         uppercase tracking-widest text-white hover:bg-white hover:text-black 
-                        md:px-10 md:py-8 md:text-xl
+                        md:w-full md:px-10 md:py-5 md:text-center md:text-xl
                         lg:w-full lg:px-8 lg:py-5 lg:text-center lg:text-xl
                         xl:w-2/4 xl:px-10 xl:py-6 xl:text-3xl 2xl:text-5xl"
                         href="#contact"
@@ -104,7 +104,7 @@ export default function Services() {
             </div>
 
             <img
-                className="absolute -right-52 bottom-48 z-20 
+                className="absolute -right-[75%] bottom-48 -z-20 
                 max-md:scale-75 md:-right-[85%] md:bottom-0 md:-z-20
                 xl:-right-[70%]"
                 src={serviceDecoration}
@@ -115,10 +115,10 @@ export default function Services() {
 
 function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
-        <div className="flex w-full flex-row gap-5 text-[#f3f3f4] md:w-[35%] md:flex-col lg:w-[30%] 2xl:w-[18%]">
-            <div className="flex w-1/2 flex-col gap-5 md:w-full">
+        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:w-[37%] md:flex-col lg:w-[30%] 2xl:w-[17%] 2xl:flex-grow md:min-h-[640px] xl:min-h-[740px]">
+            <div className="flex w-1/2 flex-auto flex-col gap-5 md:w-full self-stretch">
                 <div className="flex h-[2em] items-center align-middle text-5xl md:text-4xl xl:text-5xl">
-                    <h3 className="h-fit whitespace-pre text-left font-bold uppercase italic">
+                    <h3 className="h-fit w-full whitespace-pre text-left font-bold uppercase italic">
                         {title}
                     </h3>
                 </div>
@@ -133,7 +133,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                     {serviceDescription}
                 </p>
             </div>
-            <div className="flex w-1/2 flex-col gap-5 md:w-full">
+            <div className="flex w-1/2 flex-col gap-5 md:w-full self-end">
                 <img draggable="false" src={imgSrc} className="select-none" />
                 <div className="flex flex-col md:hidden">
                     <span className="m-0 w-full p-0 text-center text-sm uppercase">
@@ -142,7 +142,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                 </div>
                 <a
                     href={aHref}
-                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-3xl"
+                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold uppercase tracking-widest text-black hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-2xl"
                 >
                     book now
                 </a>
