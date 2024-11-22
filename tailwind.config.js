@@ -5,7 +5,13 @@ import daisyui from "daisyui";
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            screens: {
+                xxxs: "375px",
+                xxs: "425px",
+                xs: "550px",
+            },
+        },
     },
     plugins: [daisyui],
     daisyui: {

@@ -26,7 +26,7 @@ export default function TheTeam() {
     return (
         <section
             id="the-team"
-            className="flex max-h-[75%] w-full flex-col items-center justify-center gap-10 py-10 align-middle"
+            className="flex max-h-[75%] w-full flex-col items-center justify-center gap-10 pt-10 align-middle"
         >
             <h2 className="w-full py-0 text-center text-4xl font-bold uppercase tracking-widest text-secondary md:py-10">
                 who we are
@@ -36,8 +36,10 @@ export default function TheTeam() {
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex flex-col-reverse gap-5 md:w-[80%] md:flex-row md:gap-3 lg:gap-5 lg:w-full">
-                <div className="flex flex-row gap-3 md:flex-col md:gap-5">
+            {/* flex flex-col-reverse gap-5 md:w-[80%] md:flex-row md:gap-3 lg:gap-5 lg:w-full */}
+            <div className="flex flex-col justify-center gap-5 md:w-[80%] md:gap-3 lg:w-full lg:flex-row lg:gap-5 xl:gap-10">
+                {/* <div className="flex w-[14%] flex-row gap-3 lg:flex-col md:gap-2 lg:gap-2 xl:gap-5 md:w-[18%] lg:w-[10%] xl:w-[11.5%] 2xl:w-[9.5%]"> */}
+                <div className="grid w-full grid-flow-col gap-3 md:gap-2 lg:grid-flow-row lg:h-fit lg:w-[10%] lg:gap-2 xl:w-[9%] xl:gap-5 2xl:w-[9.5%]">
                     {teamData
                         .sort((a, b) => a.order - b.order)
                         .map((val, index) => (
@@ -45,7 +47,7 @@ export default function TheTeam() {
                                 draggable="false"
                                 src={val.pic}
                                 key={index}
-                                className="aspect-square w-1/6 select-none hover:cursor-pointer hover:invert md:m-auto lg:ml-auto md:w-[70%] lg:w-[40%] xl:w-[58%] 2xl:w-[80%]"
+                                className="aspect-square w-fit select-none hover:cursor-pointer hover:invert md:m-0 lg:m-0 lg:ml-auto lg:mr-0 lg:p-0"
                                 onClick={() => {
                                     modal.current.showModal();
                                     setCurrentTeam(val);
@@ -53,7 +55,10 @@ export default function TheTeam() {
                             />
                         ))}
                 </div>
-                <div className="w-full md:grow">
+                <div
+                    className="h-fit lg:max-w-[60%] w-fit lg:w-[60%] xl:w-[75%] 2xl:w-fit"
+                    // style={{ flexBasis: "content" }}
+                >
                     <img
                         className="pointer-events-none select-none"
                         draggable="false"

@@ -47,7 +47,7 @@ export default function Reviews() {
     return (
         <section
             id="reviews"
-            className="flex w-10/12 flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-10/12 xl:w-full"
+            className="flex w-10/12 m-auto flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-10/12 xl:w-full"
         >
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Reviews
@@ -74,8 +74,9 @@ function ReviewCard({ review }) {
     return (
         <button
             id="review-card"
-            className="flex h-[130px] w-[450px] items-center justify-start 
+            className="flex h-[130px] w-[300px] items-center justify-start 
             overflow-hidden rounded-l-[2em] border-2 border-black bg-white pl-10 text-black
+            xs:h-[120px] xs:w-[400px] xs:pl-5
             md:h-[120px] md:w-[225px] md:pl-5
             lg:h-[130px] lg:w-[260px] lg:pl-6
             xl:w-[380px] xl:pl-10
