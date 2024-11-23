@@ -19,7 +19,7 @@ export default function NavBar({ currentSection }) {
                 >
                     <img src={burgerMenu} className="m-auto h-3/4" />
                 </label>
-                <img src={logoMobile} className="aspect-[10/2] h-12 w-fit" />
+                <img src={logoMobile} className="aspect-[10/2] h-12 w-max max-w-fit" />
             </div>
 
             <div className="drawer-side md:h-[100vh] md:!overflow-hidden">
