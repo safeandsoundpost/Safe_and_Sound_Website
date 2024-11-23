@@ -3,7 +3,7 @@ import footerCheckers from "../assets/images/footer/checkersGraphic.png";
 
 export default function Footer() {
     return (
-        <footer className="flex items-center justify-between align-middle z-50 max-w-full">
+        <footer className="relative z-50 flex max-w-full select-none items-center justify-between align-middle">
             <div className="w-full px-2 md:w-[15%] md:px-7">
                 <ul className="text-[.5em] md:text-base">
                     <li className="my-0 md:my-2">
@@ -14,7 +14,7 @@ export default function Footer() {
                     <li className="my-0 md:my-2">
                         <a
                             href="mailto:safeandsoundpost@gmail.com"
-                            className="font-semibold tracking-widest text-primary"
+                            className="link-hover font-semibold tracking-widest text-primary"
                         >
                             Email
                         </a>
@@ -22,7 +22,7 @@ export default function Footer() {
                     <li className="my-0 md:my-2">
                         <a
                             href="https://www.instagram.com/safeandsoundpost/"
-                            className="font-semibold tracking-widest text-primary"
+                            className="link-hover font-semibold tracking-widest text-primary"
                             target="_blank"
                         >
                             Instagram
@@ -31,7 +31,7 @@ export default function Footer() {
                     <li className="my-0 md:my-2">
                         <a
                             href="https://www.linkedin.com/company/safe-sound-post/"
-                            className="font-semibold tracking-widest text-primary"
+                            className="link-hover font-semibold tracking-widest text-primary"
                             target="_blank"
                         >
                             Linkedin
@@ -40,7 +40,7 @@ export default function Footer() {
                     <li className="my-0 md:my-2">
                         <a
                             href="https://wa.me/17783638396"
-                            className="font-semibold tracking-widest text-primary"
+                            className="link-hover font-semibold tracking-widest text-primary"
                             target="_blank"
                         >
                             Whatsapp

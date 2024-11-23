@@ -80,11 +80,16 @@ export default function Projects() {
 
     useEffect(() => {
         const handleResize = (event) => {
+            console.log(event.target.innerWidth);
             if (event.target.innerWidth >= 640) {
+                setQuantity(1);
+                setPage(1);
+            }
+            if (event.target.innerWidth >= 900) {
                 setQuantity(2);
                 setPage(1);
             }
-            if (event.target.innerWidth >= 1280) {
+            if (event.target.innerWidth >= 1450) {
                 setQuantity(3);
                 setPage(1);
             }
@@ -164,7 +169,7 @@ export default function Projects() {
                         <path d="M5 0L0 5L5 10V0Z" />
                     </svg>
                 </button>
-                <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full">
+                <div className="flex w-fit items-center justify-center gap-5 overflow-auto overflow-x-hidden align-middle max-md:hidden md:w-full">
                     {images &&
                         images
                             .slice((page - 1) * quantity, page * quantity)
@@ -173,7 +178,7 @@ export default function Projects() {
                                     (page - 1) * quantity + index;
                                 return (
                                     <div
-                                        className="w-fit cursor-pointer border-2 border-primary p-3"
+                                        className="w-fit max-w-80 cursor-pointer border-2 border-primary p-3"
                                         key={index}
                                         onClick={() =>
                                             openModal({
@@ -187,7 +192,7 @@ export default function Projects() {
                                     >
                                         <img
                                             draggable="false"
-                                            className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                            className="aspect-[12/16] h-[22rem] w-fit max-w-56 select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
                                             src={image}
                                             alt={`project-${index}`}
                                         />

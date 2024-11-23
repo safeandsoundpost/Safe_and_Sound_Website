@@ -9,7 +9,7 @@ import burgerMenu from "../assets/icons/burger.svg";
 
 export default function NavBar({ currentSection }) {
     return (
-        <nav className="relative z-50 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8">
+        <nav className="relative z-40 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
 
             <div className="fixed mx-auto flex w-full flex-row-reverse justify-between bg-black py-3 pl-3 md:hidden">
@@ -22,7 +22,7 @@ export default function NavBar({ currentSection }) {
                 <img src={logoMobile} className="aspect-[10/2] h-12 w-fit" />
             </div>
 
-            <div className="drawer-side md:h-[70vh] md:!overflow-hidden">
+            <div className="drawer-side md:h-[100vh] md:!overflow-hidden">
                 <label
                     htmlFor="side-menu"
                     aria-label="close sidebar"

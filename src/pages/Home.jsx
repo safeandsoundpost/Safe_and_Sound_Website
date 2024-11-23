@@ -13,11 +13,13 @@ export default function Home() {
     const [currentSection, setCurrentSection] = useState("");
 
     useEffect(() => {
-        const headings = Array.from(document.querySelectorAll("main section[id]"));
+        const headings = Array.from(
+            document.querySelectorAll("main section[id]"),
+        );
         const scrollCallback = () => {
             const visible_content = headings.filter((x) => {
                 const rect = x.getBoundingClientRect();
-                return (rect.height - (rect.height * 0.5)) + rect.top > 0;
+                return rect.height - rect.height * 0.5 + rect.top > 0;
             });
             const first = visible_content[0];
 
@@ -30,18 +32,20 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="flex w-full flex-col">
-            <NavBar currentSection={currentSection} />
-            <Banner />
-            <section className="m-auto w-[85%] md:ml-auto md:mr-[8%] md:w-[70%] lg:m-auto lg:w-[65%]">
-                <Projects />
-                <Services />
-                <TheTeam />
-                <Awards />
-                <Reviews />
-                <Contact />
-            </section>
+        <>
+            <main className="flex w-full flex-col">
+                <NavBar currentSection={currentSection} />
+                <Banner />
+                <section className="m-auto w-[85%] md:ml-auto md:mr-[8%] md:w-[70%] lg:m-auto lg:w-[65%]">
+                    <Projects />
+                    <Services />
+                    <TheTeam />
+                    <Awards />
+                    <Reviews />
+                    <Contact />
+                </section>
+            </main>
             <Footer />
-        </main>
+        </>
     );
 }
