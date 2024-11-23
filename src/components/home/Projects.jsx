@@ -80,7 +80,6 @@ export default function Projects() {
 
     useEffect(() => {
         const handleResize = (event) => {
-            console.log(event.target.innerWidth);
             if (event.target.innerWidth >= 640) {
                 setQuantity(1);
                 setPage(1);

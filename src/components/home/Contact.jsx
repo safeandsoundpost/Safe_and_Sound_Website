@@ -1,11 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import contactForm from "../../assets/images/contact/contact-form.png";
 
 export default function Contact() {
-    // const submitBtn = useRef(null);
-    // const formContainer = useRef(null);
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -13,11 +10,6 @@ export default function Contact() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-
-    // useEffect(() => {
-    //     console.log(submitBtn.current.offsetLeft, submitBtn.current.offsetTop);
-    //     console.log(formContainer.current.style["background-image"]);
-    // }, [submitBtn?.current?.offsetLeft, submitBtn?.current?.offsetTop]);
 
     const submitForm = () => {
         if (!name) {
@@ -109,8 +101,24 @@ export default function Contact() {
             <div
                 className="relative z-20 aspect-video h-fit w-full bg-contain bg-center bg-no-repeat text-xs font-semibold text-black sm:text-lg md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl"
                 style={{ backgroundImage: `url(${contactForm})` }}
-                // ref={formContainer}
             >
+                <div className="m-auto flex h-full w-[78%] flex-grow">
+                    <div className="m-auto h-[75%] w-full"></div>
+                    <div className="m-auto flex h-[75%] w-[40%] justify-center">
+                        {!isSubmitted && (
+                            <button
+                                className="btn btn-xs z-30 h-[1em] w-[10em] self-end text-[.45em] uppercase tracking-[.2em] md:btn-xs lg:btn-sm xl:btn-md xxs:text-[.55em] sm:text-xs md:text-xs lg:text-sm xl:text-lg 2xl:text-lg"
+                                src={contactForm}
+                                onClick={submitForm}
+                            >
+                                {isLoading && (
+                                    <span className="loading loading-spinner loading-md"></span>
+                                )}
+                                submit
+                            </button>
+                        )}
+                    </div>
+                </div>
                 <div className="absolute left-[8%] top-[30%] flex flex-col gap-0 sm:left-[7%] md:left-[8%] md:gap-0 lg:left-[8%] lg:gap-1 xl:left-[8%] xl:top-[32%] 2xl:gap-6">
                     <div className="flex gap-0 md:gap-5">
                         <input
@@ -150,26 +158,6 @@ export default function Contact() {
                     />
                 </div>
             </div>
-            {!isSubmitted && (
-                <button
-                    // ref={submitBtn}
-                    className=" xxxs:right-[11%] xxxs:top-[63%] xxs:right-[10%] xxs:top-[64%] xxs:text-[.55em] btn btn-xs absolute right-[9%] top-[61%] z-30
-                                h-[1em] w-[10em]
-                                text-[.45em] uppercase tracking-[.2em]
-                                md:btn-xs lg:btn-sm xl:btn-md
-                                sm:right-[11%] sm:top-[67%] sm:text-xs md:right-[10%]
-                                md:top-[67%] md:text-xs lg:right-[11.5%] lg:top-[68%]
-                                lg:text-sm xl:right-[12.5%] xl:top-[70%] xl:text-lg
-                                2xl:right-[17%] 2xl:top-[74%] 2xl:text-lg"
-                    src={contactForm}
-                    onClick={submitForm}
-                >
-                    {isLoading && (
-                        <span className="loading loading-spinner loading-md"></span>
-                    )}
-                    submit
-                </button>
-            )}
             <img
                 draggable="false"
                 className="absolute left-[-10%] top-[65%] z-10 w-1/2 -rotate-6 opacity-90"
