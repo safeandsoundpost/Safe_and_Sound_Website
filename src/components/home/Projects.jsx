@@ -84,7 +84,7 @@ export default function Projects() {
                 setQuantity(1);
                 setPage(1);
             }
-            if (event.target.innerWidth >= 900) {
+            if (event.target.innerWidth >= 900) { //1050
                 setQuantity(2);
                 setPage(1);
             }
@@ -153,13 +153,13 @@ export default function Projects() {
                         </div>
                     ))}
             </div>
-            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full md:gap-1 lg:gap-5">
+            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full md:gap-1 lg:gap-0 xl:gap-5">
                 <button
-                    className={`z-50 h-20 w-20 md:btn-md lg:btn-lg ${page === 1 ? "" : "btn btn-circle btn-ghost"}`}
+                    className={`z-50 h-20 w-20 md:btn-md xl:btn-lg ${page === 1 ? "pointer-events-none" : "btn btn-square btn-ghost"}`}
                     onClick={() => pageMove(-1)}
                 >
                     <svg
-                        className={`mr-3 fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
+                        className={`mr-2 fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
                         width="80%"
                         height="80%"
                         viewBox="0 0 5 10"
@@ -168,7 +168,7 @@ export default function Projects() {
                         <path d="M5 0L0 5L5 10V0Z" />
                     </svg>
                 </button>
-                <div className="flex w-fit items-center justify-center gap-5 overflow-auto overflow-x-hidden align-middle max-md:hidden md:w-full">
+                <div className="clear-both flex w-full max-w-fit items-center justify-center gap-5 align-middle max-md:hidden">
                     {images &&
                         images
                             .slice((page - 1) * quantity, page * quantity)
@@ -177,7 +177,7 @@ export default function Projects() {
                                     (page - 1) * quantity + index;
                                 return (
                                     <div
-                                        className="w-fit max-w-80 cursor-pointer border-2 border-primary p-3"
+                                        className="z-30 cursor-pointer border-2 border-primary p-3"
                                         key={index}
                                         onClick={() =>
                                             openModal({
@@ -191,7 +191,7 @@ export default function Projects() {
                                     >
                                         <img
                                             draggable="false"
-                                            className="aspect-[12/16] h-[22rem] w-fit max-w-56 select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                            className="aspect-[12/16] h-[22rem] w-fit md:max-w-48 lg:max-w-52 xl:max-w-56 select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
                                             src={image}
                                             alt={`project-${index}`}
                                         />
@@ -200,11 +200,11 @@ export default function Projects() {
                             })}
                 </div>
                 <button
-                    className="btn btn-circle btn-ghost h-20 w-20 md:btn-md lg:btn-lg"
+                    className="btn btn-square btn-ghost h-20 w-20 md:btn-md xl:btn-lg"
                     onClick={() => pageMove(1)}
                 >
                     <svg
-                        className={`ml-3 fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
+                        className={`ml-2 fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
                         width="80%"
                         height="80%"
                         viewBox="0 0 5 10"
