@@ -106,7 +106,7 @@ export default function Services() {
             <img
                 className="absolute -right-[75%] bottom-48 -z-20 
                 max-md:scale-75 md:-right-[85%] md:bottom-0 md:-z-20
-                xl:-right-[70%]"
+                xl:-right-[70%] 2xl:-right-[65%]"
                 src={serviceDecoration}
             />
         </section>

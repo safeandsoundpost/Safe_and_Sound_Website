@@ -3,18 +3,41 @@ import PropTypes from "prop-types";
 
 const projectDetails = [
     {
-        poster: "diabolikaPosterBlackDone",
-        title: "DIABOLIKA",
+        poster: "YouAreHere",
+        title: "You Are Here",
+        released: "TBA",
+        director: "Spencer Lackey",
+        producer: "Ryan Vergara",
+    },
+    {
+        poster: "MTA",
+        title: "Motion To Approve",
         released: "2024",
-        director: "Dexter Wilson",
-        producer: "Randy Singh, Dexter Wilson",
-        imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
+        director: "Janet-Rose Nguyen",
+        producer: "Connie Wang and Janet-Rose Nguyen",
+        imdb: "https://m.imdb.com/title/tt33594182/?ref_=nm_flmg_job_5_unrel_t_1",
+    },
+    {
+        poster: "wykykPosterV2",
+        title: "When You Know You Know",
+        released: "2024",
+        director: "Katie Uhlmann",
+        producer: "Katie Uhlmann, Nick Hendrik",
+        imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
     },
     {
         poster: "facesPoster",
         title: "Faces",
         released: "TBA",
         director: "Paul Persic",
+    },
+    {
+        poster: "diabolikaPosterBlackDone",
+        title: "DIABOLIKA",
+        released: "2024",
+        director: "Dexter Wilson",
+        producer: "Randy Singh, Dexter Wilson",
+        imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
     },
     {
         poster: "figuresAlternatePoster",
@@ -33,12 +56,12 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt25666636/?ref_=nv_sr_srsg_0_tt_2_nm_0_q_taxi%2520along%2520th",
     },
     {
-        poster: "wykykPosterV2",
-        title: "When You Know You Know",
+        poster: "imabigfan",
+        title: "I'm A Big Fan",
         released: "2024",
-        director: "Katie Uhlmann",
-        producer: "Katie Uhlmann, Nick Hendrik",
-        imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
+        director: "Janet-Rose Nguyen",
+        producer: "Janet-Rose Nguyen",
+        imdb: "https://m.imdb.com/title/tt32656761/?ref_=nm_flmg_job_1_cred_t_1",
     },
     {
         poster: "a-great-big-terrible-dream",
@@ -71,10 +94,18 @@ export default function Projects() {
 
         projectDetails.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.poster));
+            if (!img) {
+                console.error(`Image not found for ${project.title}`);
+                return;
+            }
             project.poster = img;
+            project.posterSrc = img;
         });
 
-        const img = projectDetails.map((project) => project.poster);
+        const img = projectDetails.map((project) => ({
+            poster: project.poster,
+            posterSrc: project.posterSrc,
+        }));
         setImages(img);
     }, []);
 
@@ -84,7 +115,8 @@ export default function Projects() {
                 setQuantity(1);
                 setPage(1);
             }
-            if (event.target.innerWidth >= 900) { //1050
+            if (event.target.innerWidth >= 900) {
+                //1050
                 setQuantity(2);
                 setPage(1);
             }
@@ -94,6 +126,14 @@ export default function Projects() {
             }
             if (event.target.innerWidth >= 1920) {
                 setQuantity(4);
+                setPage(1);
+            }
+            if (event.target.innerWidth >= 1920) {
+                setQuantity(4);
+                setPage(1);
+            }
+            if (event.target.innerWidth >= 2200) {
+                setQuantity(5);
                 setPage(1);
             }
         };
@@ -147,13 +187,13 @@ export default function Projects() {
                             <img
                                 draggable="false"
                                 className="aspect-[12/16] h-full w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                                src={image}
-                                alt={`project-${index}`}
+                                src={image.posterSrc}
+                                alt={image.poster}
                             />
                         </div>
                     ))}
             </div>
-            <div className="flex w-fit items-center justify-center gap-5 overflow-auto align-middle max-md:hidden md:w-full md:gap-1 lg:gap-0 xl:gap-5">
+            <div className="flex w-fit items-center justify-center gap-5 overflow-auto overflow-x-hidden align-middle max-md:hidden md:w-full md:gap-1 lg:gap-0 xl:gap-5">
                 <button
                     className={`z-50 h-20 w-20 md:btn-md xl:btn-lg ${page === 1 ? "pointer-events-none" : "btn btn-square btn-ghost"}`}
                     onClick={() => pageMove(-1)}
@@ -191,9 +231,9 @@ export default function Projects() {
                                     >
                                         <img
                                             draggable="false"
-                                            className="aspect-[12/16] h-[22rem] w-fit md:max-w-48 lg:max-w-52 xl:max-w-56 select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                                            src={image}
-                                            alt={`project-${index}`}
+                                            className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
+                                            src={image.posterSrc}
+                                            alt={image.poster}
                                         />
                                     </div>
                                 );
@@ -220,7 +260,7 @@ export default function Projects() {
 
 /**
  * @param {object} params
- * @param {{ project: object, image: string }} params.currentProject
+ * @param {{ project: object, image: object }} params.currentProject
  * @returns
  */
 function ProjectModal({ currentProject }) {
@@ -252,7 +292,11 @@ function ProjectModal({ currentProject }) {
                     </button>
                 </form>
                 <div className="grid grid-cols-2 gap-3 md:gap-5">
-                    <img className="aspect-auto rounded-3xl" src={image} />
+                    <img
+                        className="aspect-auto rounded-3xl"
+                        src={image.posterSrc}
+                        alt={image.poster}
+                    />
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-12">
                         <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">
                             {project.title}
