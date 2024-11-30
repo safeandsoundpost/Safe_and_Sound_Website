@@ -1,6 +1,5 @@
 import logo from "/images/logo.png";
 import logoMobile from "/images/logo-mobile.png";
-// import logoCircle from "/images/ss-logo-circle.png";
 import Link from "./Link";
 import PropTypes from "prop-types";
 import awardsSymbol from "../assets/images/symbols/awards-symbol.png";
@@ -12,14 +11,19 @@ export default function NavBar({ currentSection }) {
         <nav className="relative z-40 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
 
-            <div className="fixed mx-auto flex w-full flex-row-reverse justify-between bg-black py-3 pl-3 md:hidden">
+            <div className="fixed mx-auto flex h-20 w-full flex-row-reverse items-center justify-between bg-black align-middle md:hidden">
                 <label
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
                 >
                     <img src={burgerMenu} className="m-auto h-3/4" />
                 </label>
-                <img src={logoMobile} className="aspect-[10/2] h-12 w-max max-w-fit" />
+                <div className="max-h-full max-w-full">
+                    <img
+                        src={logoMobile}
+                        className="block h-auto max-h-12 w-full"
+                    />
+                </div>
             </div>
 
             <div className="drawer-side md:h-[100vh] md:!overflow-hidden">

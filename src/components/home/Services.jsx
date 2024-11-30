@@ -35,7 +35,7 @@ export default function Services() {
                     aHref={"#contact"}
                     imgSrc={serviceImages[1]}
                     serviceDescription={
-                        "Whether it's reating an otherworldly sound we have never heard before, to making that old door creak just right. We can offer blockbuster level quality with our personality engrained in every sound."
+                        "Whether it's creating an otherworldly sound we have never heard before, to making that old door creak just right. We can offer blockbuster level quality with our personality engrained in every sound."
                     }
                 />
                 <ServiceCard
