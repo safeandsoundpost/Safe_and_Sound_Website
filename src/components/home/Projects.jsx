@@ -68,7 +68,7 @@ const projectDetails = [
         title: "A great big terrible dream",
         released: "2024",
         director: "Maxine Lemieux",
-        producer: "Maxine Lemieux & Jesse Lawrence",
+        producer: "Maxine Lemieux",
         ytsrc: "https://www.youtube.com/watch?v=WFYjwC8b6DU",
     },
 ];
