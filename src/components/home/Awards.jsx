@@ -46,6 +46,7 @@ export default function Awards() {
             <img
                 className="absolute -left-[70%] -top-6 max-md:scale-75 md:-left-[95%] md:-top-[20%] lg:-left-[90%] xl:-left-[82%] 2xl:-left-[75%]"
                 src={awardsDecoration}
+                alt="Awards decorator"
             />
         </section>
     );

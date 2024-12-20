@@ -47,7 +47,7 @@ export default function Reviews() {
     return (
         <section
             id="reviews"
-            className="flex w-10/12 m-auto flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-10/12 xl:w-full"
+            className="m-auto flex w-10/12 flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-10/12 xl:w-full"
         >
             <h2 className="my-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Reviews
@@ -72,7 +72,7 @@ function ReviewCard({ review }) {
     const [isMobile, setIsMobile] = useState(false); // just a workaround for touch events. Not the best solution.
 
     return (
-        <button
+        <div
             id="review-card"
             className="flex h-[130px] w-[300px] items-center justify-start 
             overflow-hidden rounded-l-[2em] border-2 border-black bg-white pl-10 text-black
@@ -133,7 +133,7 @@ function ReviewCard({ review }) {
                     </div>
                 );
             })()}
-        </button>
+        </div>
     );
 }
 
@@ -151,6 +151,7 @@ function ReviewModal({ review, onClose }) {
                 </p>
                 <p className="mb-6 whitespace-pre-wrap">{review.content}</p>
                 <button
+                    name="Close Review"
                     className="rounded border px-4 py-2 text-lg"
                     onClick={onClose}
                 >

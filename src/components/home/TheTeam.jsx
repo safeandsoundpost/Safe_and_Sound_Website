@@ -20,7 +20,7 @@ export default function TheTeam() {
             project.pic = img;
         });
 
-        // console.log(teamData);
+        console.log(teamData);
     }, []);
 
     return (
@@ -39,7 +39,7 @@ export default function TheTeam() {
             {/* flex flex-col-reverse gap-5 md:w-[80%] md:flex-row md:gap-3 lg:gap-5 lg:w-full */}
             <div className="flex flex-col justify-center gap-5 md:w-[80%] md:gap-3 lg:w-full lg:flex-row lg:gap-5 xl:gap-10">
                 {/* <div className="flex w-[14%] flex-row gap-3 lg:flex-col md:gap-2 lg:gap-2 xl:gap-5 md:w-[18%] lg:w-[10%] xl:w-[11.5%] 2xl:w-[9.5%]"> */}
-                <div className="grid w-full grid-flow-col gap-3 md:gap-2 lg:grid-flow-row lg:h-fit lg:w-[10%] lg:gap-2 xl:w-[9%] xl:gap-5 2xl:w-[9.5%]">
+                <div className="grid w-full grid-flow-col gap-3 md:gap-2 lg:h-fit lg:w-[10%] lg:grid-flow-row lg:gap-2 xl:w-[9%] xl:gap-5 2xl:w-[9.5%]">
                     {teamData
                         .sort((a, b) => a.order - b.order)
                         .map((val, index) => (
@@ -52,17 +52,19 @@ export default function TheTeam() {
                                     modal.current.showModal();
                                     setCurrentTeam(val);
                                 }}
+                                alt={val.name}
                             />
                         ))}
                 </div>
                 <div
-                    className="h-fit lg:max-w-[60%] w-fit lg:w-[60%] xl:w-[75%] 2xl:w-fit"
+                    className="h-fit w-fit lg:w-[60%] lg:max-w-[60%] xl:w-[75%] 2xl:w-fit"
                     // style={{ flexBasis: "content" }}
                 >
                     <img
                         className="pointer-events-none select-none"
                         draggable="false"
                         src={text}
+                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. AS passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
                     />
                 </div>
             </div>
@@ -91,7 +93,10 @@ function TeamModal({ currentTeam }) {
             <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 lg:max-w-6xl">
                 <div className="relative gap-3 md:gap-0">
                     <form method="dialog">
-                        <button className="btn btn-circle btn-ghost absolute right-2 top-2">
+                        <button
+                            className="btn btn-circle btn-ghost absolute right-2 top-2"
+                            name="Close team card"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -124,6 +129,7 @@ function TeamModal({ currentTeam }) {
                                     <img
                                         className="float-right mb-1 ml-4 aspect-square h-1/5 w-1/2 rounded-3xl md:mb-4 md:ml-8 md:h-fit md:w-fit"
                                         src={pic}
+                                        alt={currentTeam.name}
                                     />
                                     {bio}
                                 </p>
@@ -145,6 +151,7 @@ function TeamModal({ currentTeam }) {
                                             <img
                                                 className="float-start mx-5 aspect-square h-10"
                                                 src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
+                                                alt="actual favorite movie"
                                             ></img>
                                         </>
                                     )}
@@ -155,7 +162,7 @@ function TeamModal({ currentTeam }) {
                 </div>
             </div>
             <form method="dialog" className="modal-backdrop">
-                <button>close</button>
+                <button name="Close team card">close</button>
             </form>
         </>
     );

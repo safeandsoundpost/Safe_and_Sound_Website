@@ -8,6 +8,7 @@ import Services from "../components/home/Services";
 import TheTeam from "../components/home/TheTeam";
 import Banner from "./Banner";
 import Contact from "../components/home/Contact";
+import CookieBanner from "../components/CookieBanner";
 
 export default function Home() {
     const [currentSection, setCurrentSection] = useState("");
@@ -33,7 +34,8 @@ export default function Home() {
 
     return (
         <>
-            <main className="flex w-full flex-col">
+            <main className="flex w-full select-none flex-col">
+                <CookieBanner />
                 <NavBar currentSection={currentSection} />
                 <Banner />
                 <section className="m-auto w-[85%] md:ml-auto md:mr-[8%] md:w-[70%] lg:m-auto lg:w-[65%]">

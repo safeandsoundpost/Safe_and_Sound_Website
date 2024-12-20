@@ -130,8 +130,9 @@ export default function Banner() {
             </div>
 
             <img
-                className="absolute right-0 top-[91%] xxxs:top-[88%] xxs:top-[80%] xs:top-[73%] max-md:w-2/4 md:top-[87%] md:-right-[8%] lg:right-0"
+                className="absolute right-0 top-[91%] max-md:w-2/4 xxxs:top-[88%] xxs:top-[80%] xs:top-[73%] md:-right-[8%] md:top-[87%] lg:right-0"
                 src={topDecorator}
+                alt="Top decorator"
             />
         </section>
     );

@@ -195,6 +195,7 @@ export default function Projects() {
             </div>
             <div className="flex w-fit items-center justify-center gap-5 overflow-auto overflow-x-hidden align-middle max-md:hidden md:w-full md:gap-1 lg:gap-0 xl:gap-5">
                 <button
+                    name="Move page to the left"
                     className={`z-50 h-20 w-20 md:btn-md xl:btn-lg ${page === 1 ? "pointer-events-none" : "btn btn-square btn-ghost"}`}
                     onClick={() => pageMove(-1)}
                 >
@@ -240,6 +241,7 @@ export default function Projects() {
                             })}
                 </div>
                 <button
+                    name="Move page to the right"
                     className="btn btn-square btn-ghost h-20 w-20 md:btn-md xl:btn-lg"
                     onClick={() => pageMove(1)}
                 >
@@ -274,7 +276,7 @@ function ProjectModal({ currentProject }) {
         <>
             <div className="modal-box max-w-full bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
                 <form method="dialog">
-                    <button className="btn btn-circle btn-ghost absolute right-2 top-2">
+                    <button name="Close project" className="btn btn-circle btn-ghost absolute right-2 top-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -345,7 +347,7 @@ function ProjectModal({ currentProject }) {
                 </div>
             </div>
             <form method="dialog" className="modal-backdrop">
-                <button>close</button>
+                <button name="Close project">close</button>
             </form>
         </>
     );

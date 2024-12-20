@@ -105,7 +105,7 @@ export default function Contact() {
                 <div className="m-auto flex h-3/4 w-[87%] flex-col">
                     <div className="flex h-full flex-col justify-end gap-2 pb-3">
                         <div className="flex h-[46%] flex-col gap-0 md:gap-2">
-                            <div className="flex gap-0 md:gap-5 w-[94%]">
+                            <div className="flex w-[94%] gap-0 md:gap-5">
                                 <input
                                     className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
                                     placeholder="[  N A M E  ]"
@@ -143,9 +143,10 @@ export default function Contact() {
                             <div className="m-auto flex h-full w-[38%] justify-center">
                                 {!isSubmitted && (
                                     <button
-                                        className="btn btn-xs z-30 h-[1em] w-[10em] p-0 self-end text-[.55em] uppercase tracking-[.2em] md:btn-xs lg:btn-sm xl:btn-md xxs:text-[.75em] sm:text-xs md:text-xs lg:text-sm xl:text-lg 2xl:text-lg"
+                                        className="btn btn-xs z-30 h-[1em] w-[10em] self-end p-0 text-[.55em] uppercase tracking-[.2em] md:btn-xs lg:btn-sm xl:btn-md xxs:text-[.75em] sm:text-xs md:text-xs lg:text-sm xl:text-lg 2xl:text-lg"
                                         src={contactForm}
                                         onClick={submitForm}
+                                        name="Submit contact form"
                                     >
                                         {isLoading && (
                                             <span className="loading loading-spinner loading-md"></span>
@@ -218,16 +219,19 @@ export default function Contact() {
                 draggable="false"
                 className="absolute left-[-10%] top-[65%] z-10 w-1/2 -rotate-6 opacity-90"
                 src={contactForm}
+                alt="Contact form background"
             />
             <img
                 draggable="false"
                 className="absolute left-[62%] top-[8%] z-10 w-1/2 rotate-[23deg] opacity-90"
                 src={contactForm}
+                alt="Contact form background"
             />
             <img
                 draggable="false"
                 className="absolute left-[60%] top-[40%] z-10 w-1/2 rotate-[230deg] opacity-90"
                 src={contactForm}
+                alt="Contact form background"
             />
         </section>
     );

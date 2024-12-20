@@ -74,11 +74,13 @@ export default function Services() {
                         src={generalImages.filter((x) =>
                             x.includes("code2.png"),
                         )}
+                        alt="Barcode decorator"
                     />
                 </div>
                 <img
                     className="select-none max-md:hidden"
                     src={images.find((x) => x.includes("black-line"))}
+                    alt="Separator decorator"
                 />
                 <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:py-6 lg:flex-col xl:flex-row xl:gap-7">
                     <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-full md:text-base md:leading-5 xl:w-[80%] xl:text-xl">
@@ -108,6 +110,7 @@ export default function Services() {
                 max-md:scale-75 md:-right-[85%] md:bottom-0 md:-z-20
                 xl:-right-[70%] 2xl:-right-[65%]"
                 src={serviceDecoration}
+                alt="Services page decorator"
             />
         </section>
     );
@@ -115,8 +118,8 @@ export default function Services() {
 
 function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
-        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:w-[37%] md:flex-col lg:w-[30%] 2xl:w-[17%] 2xl:flex-grow md:min-h-[640px] xl:min-h-[740px]">
-            <div className="flex w-1/2 flex-auto flex-col gap-5 md:w-full self-stretch">
+        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:flex-grow">
+            <div className="flex w-1/2 flex-auto flex-col gap-5 self-stretch md:w-full">
                 <div className="flex h-[2em] items-center align-middle text-5xl md:text-4xl xl:text-5xl">
                     <h3 className="h-fit w-full whitespace-pre text-left font-bold uppercase italic">
                         {title}
@@ -127,14 +130,20 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                         className="select-none"
                         draggable="false"
                         src={images.find((x) => x.includes("white-line"))}
+                        alt="Separator"
                     />
                 </div>
                 <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:text-base">
                     {serviceDescription}
                 </p>
             </div>
-            <div className="flex w-1/2 flex-col gap-5 md:w-full self-end">
-                <img draggable="false" src={imgSrc} className="select-none" />
+            <div className="flex w-1/2 flex-col gap-5 self-end md:w-full">
+                <img
+                    draggable="false"
+                    src={imgSrc}
+                    className="select-none"
+                    alt={title}
+                />
                 <div className="flex flex-col md:hidden">
                     <span className="m-0 w-full p-0 text-center text-sm uppercase">
                         safe&sØundpost
@@ -151,6 +160,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                         className="select-none"
                         draggable="false"
                         src={generalImages.find((x) => x.includes("code.png"))}
+                        alt="Barcode"
                     />
                     <span className="m-0 w-full p-0 text-center text-sm uppercase">
                         safe&sØundpost

@@ -53,12 +53,17 @@ export default function Footer() {
                     className="m-auto select-none max-md:w-10/12"
                     src={logoHorizontal}
                     draggable="false"
+                    alt="Safe and Sound logo - Horizontal version"
                 />
                 <p className="w-full text-center text-xs font-bold uppercase md:text-base">
                     &#64; safe &#38; sound {new Date(Date.now()).getFullYear()}
                 </p>
             </div>
-            <img className="h-full w-1/4 md:w-1/6" src={footerCheckers} />
+            <img
+                className="h-full w-1/4 md:w-1/6"
+                src={footerCheckers}
+                alt="Footer decorator"
+            />
         </footer>
     );
 }

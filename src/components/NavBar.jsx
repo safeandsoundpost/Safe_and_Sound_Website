@@ -16,12 +16,17 @@ export default function NavBar({ currentSection }) {
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
                 >
-                    <img src={burgerMenu} className="m-auto h-3/4" />
+                    <img
+                        src={burgerMenu}
+                        className="m-auto h-3/4"
+                        alt="Burger menu icon"
+                    />
                 </label>
                 <div className="max-h-full max-w-full">
                     <img
                         src={logoMobile}
                         className="block h-auto max-h-12 w-full"
+                        alt="Safe and Sound logo - Mobile version"
                     />
                 </div>
             </div>
@@ -55,6 +60,7 @@ export default function NavBar({ currentSection }) {
                         <img
                             className="aspect-square h-[1.2em] md:h-[1.1em] lg:h-[1em]"
                             src={projectSymbol}
+                            alt="Project decorator"
                         />
                         <Link
                             className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
@@ -93,6 +99,7 @@ export default function NavBar({ currentSection }) {
                         <img
                             className="aspect-[2.3/1] h-[60%]"
                             src={awardsSymbol}
+                            alt="Awards decorator"
                         />
                     </li>
                     <li className="mr-4 self-end">

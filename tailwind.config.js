@@ -1,4 +1,5 @@
 import daisyui from "daisyui";
+import tailwindAnimate from "tailwindcss-animate";
 
 /* eslint-disable */
 /** @type {import('tailwindcss').Config} */
@@ -13,7 +14,12 @@ export default {
             },
         },
     },
-    plugins: [daisyui],
+    variants: {
+        extends: {
+            animation: ["group-hover"],
+        },
+    },
+    plugins: [daisyui, tailwindAnimate],
     daisyui: {
         themes: [
             {
