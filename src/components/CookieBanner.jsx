@@ -23,7 +23,7 @@ export default function CookieBanner() {
     useEffect(() => {
         const acceptCookie = getCookie("accept-cookies");
         if (!acceptCookie) return;
-        // setShowCookieBanner(false);
+        setShowCookieBanner(false);
     }, []);
 
     return (
