@@ -3,15 +3,16 @@ import * as path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePluginRadar } from "vite-plugin-radar";
-// import Terminal from "vite-plugin-terminal";
-// , Terminal({
-//     console: "terminal",
-//     output: ["console", "terminal"]
-// })
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
-// https://vitejs.dev/config/
+// console.log(ViteWebp({ extensions: ["png", "jpg"] }));
+
 export default defineConfig({
-    plugins: [react(), VitePluginRadar({ analytics: { id: "G-JQBCWM4YT4" } })],
+    plugins: [
+        react(),
+        VitePluginRadar({ analytics: { id: "G-JQBCWM4YT4" } }),
+        ViteImageOptimizer(),
+    ],
     resolve: {
         alias: {
             "@projects": path.resolve(__dirname, "src/assets/images/projects"),

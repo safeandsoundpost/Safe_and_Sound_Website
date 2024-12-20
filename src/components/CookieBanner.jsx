@@ -23,7 +23,7 @@ export default function CookieBanner() {
     useEffect(() => {
         const acceptCookie = getCookie("accept-cookies");
         if (!acceptCookie) return;
-        setShowCookieBanner(false);
+        // setShowCookieBanner(false);
     }, []);
 
     return (
@@ -31,7 +31,7 @@ export default function CookieBanner() {
             <div className="animate-in slide-in-from-bottom-40 fixed bottom-0 z-[500] mb-5 w-full bg-transparent duration-1000">
                 <div
                     role="alert"
-                    className="alert m-auto mt-3 w-11/12 origin-top-right border-2 border-white"
+                    className="alert m-auto mt-3 w-9/12 origin-top-right border-2 border-white"
                 >
                     <MdCookie className="size-7" />
                     <span className="text-white">
