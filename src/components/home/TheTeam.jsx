@@ -19,8 +19,6 @@ export default function TheTeam() {
             const img = img_paths.find((x) => x.includes(project.pic));
             project.pic = img;
         });
-
-        console.log(teamData);
     }, []);
 
     return (

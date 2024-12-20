@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
 import serviceDecoration from "../../assets/images/symbols/services.png";
 
-const images = Object.values(
-    import.meta.glob("@services/*.{png,jpg,jpeg,PNG,JPEG}", {
-        eager: true,
-        query: "?url",
-    }),
-).map((x) => x.default);
+const preImgs = import.meta.glob("@services/*.{png,jpg,jpeg,PNG,JPEG}", {
+    eager: true,
+    query: "?url",
+});
+const images = Object.keys(preImgs)
+    .map((k) => ({
+        imgName: k.split("/").slice(-1).pop(),
+        imgSrc: preImgs[k].default,
+    }))
+    .reduce(
+        (obj, item) => Object.assign(obj, { [item.imgName]: item.imgSrc }),
+        {},
+    );
 
-const serviceImages = images.filter((x) => x.includes("service-"));
-const generalImages = images.filter((x) => !x.includes("service-"));
 
 export default function Services() {
     return (
@@ -25,7 +30,7 @@ export default function Services() {
                 <ServiceCard
                     title={"adr /\nv.O rec"}
                     aHref={"#contact"}
-                    imgSrc={serviceImages[0]}
+                    imgSrc={images["service-1.png"]}
                     serviceDescription={
                         "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while capturing honest performances."
                     }
@@ -33,7 +38,7 @@ export default function Services() {
                 <ServiceCard
                     title={"sound\ndesign"}
                     aHref={"#contact"}
-                    imgSrc={serviceImages[1]}
+                    imgSrc={images["service-2.png"]}
                     serviceDescription={
                         "Whether it's creating an otherworldly sound we have never heard before, to making that old door creak just right. We can offer blockbuster level quality with our personality engrained in every sound."
                     }
@@ -41,7 +46,7 @@ export default function Services() {
                 <ServiceCard
                     title={"foley"}
                     aHref={"#contact"}
-                    imgSrc={serviceImages[2]}
+                    imgSrc={images["service-3.png"]}
                     serviceDescription={
                         // eslint-disable-next-line quotes
                         `Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?`
@@ -50,7 +55,7 @@ export default function Services() {
                 <ServiceCard
                     title={"mixing"}
                     aHref={"#contact"}
-                    imgSrc={serviceImages[3]}
+                    imgSrc={images["service-4.png"]}
                     serviceDescription={
                         "Its time to put the puzzle together. A mix is like a dance, and we want to create dynamics while not sacrificing watchability on any format and ensure the audience can be fully immersed in the story."
                     }
@@ -58,7 +63,7 @@ export default function Services() {
                 <ServiceCard
                     title={"music /\nscore"}
                     aHref={"#contact"}
-                    imgSrc={serviceImages[4]}
+                    imgSrc={images["service-5.png"]}
                     serviceDescription={
                         "We think music is integral to the storytelling process. From an eerie synth symphony to a vibrant orchestral epic. We want to use music to evoke the emotional response the story desires and deserves."
                     }
@@ -71,15 +76,13 @@ export default function Services() {
                     </h4>
                     <img
                         className="h-[1.2em] select-none max-md:hidden md:h-[2.5rem] xl:h-[5rem]"
-                        src={generalImages.filter((x) =>
-                            x.includes("code2.png"),
-                        )}
+                        src={images["code2.png"]}
                         alt="Barcode decorator"
                     />
                 </div>
                 <img
                     className="select-none max-md:hidden"
-                    src={images.find((x) => x.includes("black-line"))}
+                    src={images["black-line.png"]}
                     alt="Separator decorator"
                 />
                 <div className="flex h-fit flex-col items-center justify-between gap-6 py-0 align-middle md:py-6 lg:flex-col xl:flex-row xl:gap-7">
@@ -129,7 +132,8 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                     <img
                         className="select-none"
                         draggable="false"
-                        src={images.find((x) => x.includes("white-line"))}
+                        // src={images.find((x) => x.includes("white-line"))}
+                        src={images["white-line.png"]}
                         alt="Separator"
                     />
                 </div>
@@ -159,7 +163,8 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
                     <img
                         className="select-none"
                         draggable="false"
-                        src={generalImages.find((x) => x.includes("code.png"))}
+                        // src={generalImages.find((x) => x.includes("code.png"))}
+                        src={images["code.png"]}
                         alt="Barcode"
                     />
                     <span className="m-0 w-full p-0 text-center text-sm uppercase">

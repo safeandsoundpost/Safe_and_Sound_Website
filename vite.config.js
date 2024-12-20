@@ -5,8 +5,6 @@ import react from "@vitejs/plugin-react";
 import { VitePluginRadar } from "vite-plugin-radar";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
-// console.log(ViteWebp({ extensions: ["png", "jpg"] }));
-
 export default defineConfig({
     plugins: [
         react(),
