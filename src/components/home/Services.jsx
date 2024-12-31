@@ -32,7 +32,7 @@ export default function Services() {
                     aHref={"#contact"}
                     imgSrc={images["service-1.png"]}
                     serviceDescription={
-                        "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they try anything. We strive for high quality studio sound while capturing honest performances."
+                        "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they can try anything. We strive for high quality studio sound while capturing honest performances."
                     }
                 />
                 <ServiceCard
@@ -49,7 +49,7 @@ export default function Services() {
                     imgSrc={images["service-3.png"]}
                     serviceDescription={
                         // eslint-disable-next-line quotes
-                        `Need new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?`
+                        `Need the new couple walking in fresh snow to feel just right? Do you want to feel that bone break on the "end it all" punch? We can offer Foley that will have you ask the question, did we get that on set?`
                     }
                 />
                 <ServiceCard
@@ -89,9 +89,7 @@ export default function Services() {
                     <p className="w-full text-justify text-xs leading-3 tracking-widest text-black md:w-full md:text-base md:leading-5 xl:w-[80%] xl:text-xl">
                         Everything listed above with our heart and soul in every
                         aspect. We work with you from beginning to end to take
-                        your vision and make it a reality. As a team, we
-                        collaborate and will have sound designers work with the
-                        composer or Foley work with the ADR recordist to ensure
+                        your vision and make it a reality. As a team, each department collaborates to ensure
                         we can tell your story in the best possible way. Dive in
                         head first with us and learn what makes us Safe & Sound.
                     </p>
