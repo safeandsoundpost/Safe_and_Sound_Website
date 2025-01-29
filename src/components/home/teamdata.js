@@ -32,11 +32,11 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
     {
         name: "Thom O Neil",
         order: 0,
-        role: "Co-Owner & Re-Recording Mixer",
+        role: "Co-Owner, Sound Supervisor, Re-Recording Mixer",
         pic: "thom",
-        bio: "Thom O'Neil, a seasoned professional in the entertainment industry, hails from the captivating landscapes of Niagara Falls. A graduate of Fanshawe College's esteemed Music Industry and Audio Post programs, Thom has honed his skills over the years, accumulating over half a decade of experience. His journey has seen him contribute to major projects with Disney, Lucasfilm, and Paramount, leaving his mark on blockbuster productions. However, Thom's true passion lies in the realm of indie films, where he channels his creativity and expertise to help bring unique visions to life. In recent years, he has dedicated himself to collaborating on various indie projects, infusing them with his signature flair. Notably, Thom has also ventured into the realm of children's entertainment, lending his talents to a well-known animation studio for the upcoming Earth Rangers Underground podcast, showcasing his versatility across different mediums.",
-        favFilm: "Inception",
-        IMDB: "https://www.imdb.com/name/nm8707755/?ref_=fn_al_nm_5",
+        bio: "Thom O'Neil is a seasoned audio engineer and co-owner of Safe & Sound, bringing over six years of experience in audio post-production. He began his career in voiceover recording for animation, later expanding his skills to dubbing for anime and ADR for film and TV. Thom’s true passion lies in sound design and mixing, where he crafts immersive soundscapes that elevate every project. Thom has contributed to major productions with Disney, Lucasfilm, and Paramount, but finds his greatest fulfillment collaborating on independent films. His inventive approach in the studio allows him to create one-of-a-kind soundtracks that resonate with both storytellers and audiences. “There’s always something to learn from every person you meet, no matter their experience, and I believe we all have the opportunity to share knowledge and positively impact those around us.”",
+        IMDB: "https://www.imdb.com/name/nm8707755/",
+        favFilm: "Good Time",
         actualFavFilm: "Paw Patrol: The Movie",
     },
     {
