@@ -3,6 +3,8 @@ import { createRef, useEffect, useState } from "react";
 import text from "../../assets/images/team/who-we-are-text.png";
 import teamData from "./teamdata";
 import PropTypes from "prop-types";
+import { HiExternalLink } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 
 export default function TheTeam() {
     const modal = createRef(null);
@@ -89,30 +91,20 @@ function TeamModal({ currentTeam }) {
     return (
         <>
             <div className="modal-box max-w-full select-none bg-[#1a1a1a] max-md:p-3 lg:max-w-6xl">
-                <div className="relative gap-3 md:gap-0">
+                <div className="gap-3 px-3 py-3 md:gap-0 md:px-0 md:py-0">
                     <form method="dialog">
                         <button
-                            className="btn btn-circle btn-ghost absolute right-2 top-2"
+                            className="btn btn-circle btn-ghost btn-sm absolute md:btn-md right-2 top-2"
                             name="Close team card"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2.5}
-                                stroke="currentColor"
-                                className="h-3/4 w-3/4"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M6 18 18 6M6 6l12 12"
-                                />
-                            </svg>
+                            <IoClose
+                                className="size-3/4 md:size-3/4"
+                                strokeWidth={20}
+                            />
                         </button>
                     </form>
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-3">
-                        <div className="md:w-4/5">
+                        <div className="w-full md:w-4/5">
                             <h3 className="text-xl font-bold uppercase tracking-widest text-primary md:text-4xl">
                                 {name}
                             </h3>
@@ -134,26 +126,40 @@ function TeamModal({ currentTeam }) {
                             </div>
                             <div className="flex w-full justify-between">
                                 <p className="w-1/4">Favorite film:</p>
-                                <p
-                                    className="w-3/4 text-left text-secondary"
-                                    onDoubleClick={() => {
-                                        if (currentTeam.actualFavFilm) {
-                                            setShowActualFav(!showActualFav);
-                                        }
-                                    }}
-                                >
-                                    {!showActualFav && favFilm}
-                                    {showActualFav && (
-                                        <>
-                                            {currentTeam.actualFavFilm}
-                                            <img
-                                                className="float-start mx-5 aspect-square h-10"
-                                                src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
-                                                alt="actual favorite movie"
-                                            ></img>
-                                        </>
+                                <div className="flex grow justify-between">
+                                    <p
+                                        className="w-3/4 text-left text-secondary"
+                                        onDoubleClick={() => {
+                                            if (currentTeam.actualFavFilm) {
+                                                setShowActualFav(
+                                                    !showActualFav,
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        {!showActualFav && favFilm}
+                                        {showActualFav && (
+                                            <>
+                                                {currentTeam.actualFavFilm}
+                                                <img
+                                                    className="float-start mx-5 aspect-square h-10"
+                                                    src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
+                                                    alt="actual favorite movie"
+                                                ></img>
+                                            </>
+                                        )}
+                                    </p>
+                                    {currentTeam.imdb && (
+                                        <a
+                                            className="link flex items-center justify-center gap-2"
+                                            href={currentTeam.imdb}
+                                            target="_blank"
+                                        >
+                                            IMDB
+                                            <HiExternalLink />
+                                        </a>
                                     )}
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>

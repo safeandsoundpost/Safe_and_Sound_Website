@@ -1,166 +1,19 @@
-import { createRef, useEffect, useState } from "react";
+import { createRef, useState } from "react";
 import PropTypes from "prop-types";
-
-const projectDetails = [
-    {
-        poster: "YouAreHere",
-        title: "You Are Here",
-        released: "TBA",
-        director: "Spencer Lackey",
-        producer: "Ryan Vergara",
-    },
-    {
-        poster: "MTA",
-        title: "Motion To Approve",
-        released: "2024",
-        director: "Janet-Rose Nguyen",
-        producer: "Connie Wang and Janet-Rose Nguyen",
-        imdb: "https://m.imdb.com/title/tt33594182/?ref_=nm_flmg_job_5_unrel_t_1",
-    },
-    {
-        poster: "wykykPosterV2",
-        title: "When You Know You Know",
-        released: "2024",
-        director: "Katie Uhlmann",
-        producer: "Katie Uhlmann, Nick Hendrik",
-        imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
-    },
-    {
-        poster: "facesPoster",
-        title: "Faces",
-        released: "TBA",
-        director: "Paul Persic",
-    },
-    {
-        poster: "diabolikaPosterBlackDone",
-        title: "DIABOLIKA",
-        released: "2024",
-        director: "Dexter Wilson",
-        producer: "Randy Singh, Dexter Wilson",
-        imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
-    },
-    {
-        poster: "figuresAlternatePoster",
-        title: "FIGURES",
-        released: "2022",
-        director: "Jamie Hegland, Jade Yurich",
-        producer: "Jamie Hegland, Jade Yurich",
-        imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
-    },
-    {
-        poster: "taxiAlongTheBridgePoster",
-        title: "Taxi Along the Bridge",
-        released: "2023",
-        director: "Paul Persic",
-        producer: "Antonia Sinn",
-        imdb: "https://www.imdb.com/title/tt25666636/?ref_=nv_sr_srsg_0_tt_2_nm_0_q_taxi%2520along%2520th",
-    },
-    {
-        poster: "imabigfan",
-        title: "I'm A Big Fan",
-        released: "2024",
-        director: "Janet-Rose Nguyen",
-        producer: "Janet-Rose Nguyen",
-        imdb: "https://m.imdb.com/title/tt32656761/?ref_=nm_flmg_job_1_cred_t_1",
-    },
-    {
-        poster: "a-great-big-terrible-dream",
-        title: "A great big terrible dream",
-        released: "2024",
-        director: "Maxine Lemieux",
-        producer: "Maxine Lemieux",
-        ytsrc: "https://www.youtube.com/watch?v=WFYjwC8b6DU",
-    },
-];
+import { ProjectsCarousel } from "../ProjectsCarousel";
+import { IoClose } from "react-icons/io5";
 
 export default function Projects() {
-    const [images, setImages] = useState([]);
-    const [page, setPage] = useState(1);
-    const [quantity, setQuantity] = useState(4);
-
     const modal = createRef(null);
     /**
-     * @type {[{ project: object, image: string } | null, React.Dispatch<React.SetStateAction<{ project: object, image: string }>>]}
+     * @type {[{ project: object, image: object } | null, React.Dispatch<React.SetStateAction<{ project: object, image: object }>>]}
      */
     const [currentProject, setCurrentProject] = useState(null);
 
-    useEffect(() => {
-        const img_paths = Object.values(
-            import.meta.glob("@projects/*.{png,jpg,jpeg,PNG,JPEG}", {
-                eager: true,
-                query: "?url",
-            }),
-        ).map((x) => x.default);
-
-        projectDetails.forEach((project) => {
-            const img = img_paths.find((x) => x.includes(project.poster));
-            if (!img) {
-                console.error(`Image not found for ${project.title}`);
-                return;
-            }
-            project.poster = img;
-            project.posterSrc = img;
-        });
-
-        const img = projectDetails.map((project) => ({
-            poster: project.poster,
-            posterSrc: project.posterSrc,
-        }));
-        setImages(img);
-    }, []);
-
-    useEffect(() => {
-        const handleResize = (event) => {
-            if (event.target.innerWidth >= 640) {
-                setQuantity(1);
-                setPage(1);
-            }
-            if (event.target.innerWidth >= 900) {
-                //1050
-                setQuantity(2);
-                setPage(1);
-            }
-            if (event.target.innerWidth >= 1450) {
-                setQuantity(3);
-                setPage(1);
-            }
-            if (event.target.innerWidth >= 1920) {
-                setQuantity(4);
-                setPage(1);
-            }
-            if (event.target.innerWidth >= 1920) {
-                setQuantity(4);
-                setPage(1);
-            }
-            if (event.target.innerWidth >= 2200) {
-                setQuantity(5);
-                setPage(1);
-            }
-        };
-
-        handleResize({ target: window });
-
-        window.addEventListener("resize", (event) => handleResize(event), true);
-        return window.removeEventListener(
-            "resize",
-            (event) => handleResize(event),
-            true,
-        );
-    }, []);
-
     const openModal = (currentProject) => {
+        console.log(currentProject);
         setCurrentProject(currentProject);
         modal.current.showModal();
-    };
-
-    const pageMove = (_amount) => {
-        setPage((prev) => {
-            const next = prev + _amount;
-            if (next < 1 || next > Math.ceil(images.length / quantity)) {
-                return prev;
-            }
-            return next;
-        });
     };
 
     return (
@@ -171,91 +24,7 @@ export default function Projects() {
             <dialog ref={modal} className="modal">
                 <ProjectModal currentProject={currentProject} />
             </dialog>
-            <div className="carousel gap-5 md:hidden">
-                {images &&
-                    images.map((image, index) => (
-                        <div
-                            className="carousel-item w-3/4 cursor-pointer border-2 border-primary p-3"
-                            onClick={() =>
-                                openModal({
-                                    project: projectDetails[index],
-                                    image,
-                                })
-                            }
-                            key={index}
-                        >
-                            <img
-                                draggable="false"
-                                className="aspect-[12/16] h-full w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                                src={image.posterSrc}
-                                alt={image.poster}
-                            />
-                        </div>
-                    ))}
-            </div>
-            <div className="flex w-fit items-center justify-center gap-5 overflow-auto overflow-x-hidden align-middle max-md:hidden md:w-full md:gap-1 lg:gap-0 xl:gap-5">
-                <button
-                    name="Move page to the left"
-                    className={`z-50 h-20 w-20 md:btn-md xl:btn-lg ${page === 1 ? "pointer-events-none" : "btn btn-square btn-ghost"}`}
-                    onClick={() => pageMove(-1)}
-                >
-                    <svg
-                        className={`mr-2 fill-primary hover:fill-secondary ${page === 1 ? "hidden" : ""}`}
-                        width="80%"
-                        height="80%"
-                        viewBox="0 0 5 10"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M5 0L0 5L5 10V0Z" />
-                    </svg>
-                </button>
-                <div className="clear-both flex w-full max-w-fit items-center justify-center gap-5 align-middle max-md:hidden">
-                    {images &&
-                        images
-                            .slice((page - 1) * quantity, page * quantity)
-                            .map((image, index) => {
-                                const projectIndex =
-                                    (page - 1) * quantity + index;
-                                return (
-                                    <div
-                                        className="z-30 cursor-pointer border-2 border-primary p-3"
-                                        key={index}
-                                        onClick={() =>
-                                            openModal({
-                                                project:
-                                                    projectDetails[
-                                                        projectIndex
-                                                    ],
-                                                image,
-                                            })
-                                        }
-                                    >
-                                        <img
-                                            draggable="false"
-                                            className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
-                                            src={image.posterSrc}
-                                            alt={image.poster}
-                                        />
-                                    </div>
-                                );
-                            })}
-                </div>
-                <button
-                    name="Move page to the right"
-                    className="btn btn-square btn-ghost h-20 w-20 md:btn-md xl:btn-lg"
-                    onClick={() => pageMove(1)}
-                >
-                    <svg
-                        className={`ml-2 fill-primary hover:fill-secondary ${page * quantity >= images.length ? "hidden" : ""}`}
-                        width="80%"
-                        height="80%"
-                        viewBox="0 0 5 10"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M0 10L5 5L0 0V10Z" />
-                    </svg>
-                </button>
-            </div>
+            <ProjectsCarousel onClick={openModal} />
         </section>
     );
 }
@@ -276,21 +45,14 @@ function ProjectModal({ currentProject }) {
         <>
             <div className="modal-box max-w-full bg-[#1a1a1a] max-md:p-3 md:max-w-6xl">
                 <form method="dialog">
-                    <button name="Close project" className="btn btn-circle btn-ghost absolute right-2 top-2">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2.5}
-                            stroke="currentColor"
-                            className="h-3/4 w-3/4"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18 18 6M6 6l12 12"
-                            />
-                        </svg>
+                    <button
+                        name="Close project"
+                        className="btn btn-circle btn-ghost btn-sm absolute md:btn-md right-2 top-2"
+                    >
+                        <IoClose
+                            className="size-3/4 md:size-3/4"
+                            strokeWidth={20}
+                        />
                     </button>
                 </form>
                 <div className="grid grid-cols-2 gap-3 md:gap-5">
@@ -365,6 +127,6 @@ ProjectModal.propTypes = {
             imdb: PropTypes.string,
             ytsrc: PropTypes.string,
         }),
-        image: PropTypes.string,
+        image: PropTypes.object,
     }),
 };
