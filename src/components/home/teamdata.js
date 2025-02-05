@@ -26,7 +26,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         pic: "jesse",
         // eslint-disable-next-line quotes
         bio: 'Jesse Lawrence is a queer Métis audio engineer from Kelowna, British Columbia. Graduating at the top of his class from The Ontario Institute of Audio Recording Technology in 2021, Jesse has built a noteworthy career in the audio industry. He began his professional journey in Toronto, where he gained extensive experience at a leading sound studio, contributing to projects for prestigious clients such as A24, HBO, EOne, and Disney. Since 2022, Jesse has partnered with Thomas and together have been building Safe & Sound project by project. Jesse\'s expertise spans a wide range of audio disciplines, including sound supervision, sound design, foley artistry, and dialogue editing. His deep-seated respect and passion for film and audio production drives his commitment to excellence in every project he undertakes. "With every project, I am on a mission to enhance the story with sound, aiming to immerse the audience completely without distractions." Outside of his professional pursuits, Jesse enjoys traveling, making music, digging for records, and embracing the outdoors.',
-        IMDB: "https://www.imdb.com/name/nm14043486/?ref_=nv_sr_srsg_9_tt_0_nm_8_in_0_q_jesse%2520lawrence",
+        imdb: "https://www.imdb.com/name/nm14043486/?ref_=nv_sr_srsg_9_tt_0_nm_8_in_0_q_jesse%2520lawrence",
         favFilm: "Whiplash",
     },
     {
@@ -35,7 +35,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         role: "Co-Owner, Sound Supervisor, Re-Recording Mixer",
         pic: "thom",
         bio: "Thom O'Neil is a seasoned audio engineer and co-owner of Safe & Sound, bringing over six years of experience in audio post-production. He began his career in voiceover recording for animation, later expanding his skills to dubbing for anime and ADR for film and TV. Thom’s true passion lies in sound design and mixing, where he crafts immersive soundscapes that elevate every project. Thom has contributed to major productions with Disney, Lucasfilm, and Paramount, but finds his greatest fulfillment collaborating on independent films. His inventive approach in the studio allows him to create one-of-a-kind soundtracks that resonate with both storytellers and audiences. “There’s always something to learn from every person you meet, no matter their experience, and I believe we all have the opportunity to share knowledge and positively impact those around us.”",
-        IMDB: "https://www.imdb.com/name/nm8707755/",
+        imdb: "https://www.imdb.com/name/nm8707755/",
         favFilm: "Good Time",
         actualFavFilm: "Paw Patrol: The Movie",
     },
