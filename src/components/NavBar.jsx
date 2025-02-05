@@ -11,7 +11,7 @@ export default function NavBar({ currentSection }) {
         <nav className="relative z-40 m-0 text-base font-bold text-primary max-md:drawer max-md:drawer-end md:drawer-open md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
 
-            <div className="fixed mx-auto flex h-20 w-full flex-row-reverse items-center justify-between bg-black align-middle md:hidden">
+            <div className="fixed mx-auto flex h-20 w-full flex-row-reverse items-center justify-between bg-black pl-3 align-middle md:hidden">
                 <label
                     htmlFor="side-menu"
                     className="btn btn-ghost btn-primary drawer-button my-auto"
@@ -22,10 +22,10 @@ export default function NavBar({ currentSection }) {
                         alt="Burger menu icon"
                     />
                 </label>
-                <div className="max-h-full max-w-full">
+                <div className="max-w-72 basis-8/12">
                     <img
                         src={logoMobile}
-                        className="block h-auto max-h-12 w-full"
+                        className="block h-auto max-h-12 w-full max-w-fit"
                         alt="Safe and Sound logo - Mobile version"
                     />
                 </div>
@@ -56,9 +56,9 @@ export default function NavBar({ currentSection }) {
                             demo reel
                         </Link>
                     </li>
-                    <li className="flex w-3/4 items-center justify-between self-end">
+                    <li className="flex w-3/4 content-center items-center justify-end gap-2 self-end align-middle">
                         <img
-                            className="aspect-square h-[1.2em] md:h-[1.1em] lg:h-[1em]"
+                            className="aspect-square h-[1.2em] md:h-5"
                             src={projectSymbol}
                             alt="Project decorator"
                         />
@@ -88,7 +88,7 @@ export default function NavBar({ currentSection }) {
                             the team
                         </Link>
                     </li>
-                    <li className="ml-10 flex items-center justify-between">
+                    <li className="ml-10 flex items-center justify-start gap-2">
                         <Link
                             className="px-2 py-1 text-sm hover:border-secondary hover:text-secondary md:text-base lg:text-lg xl:text-xl"
                             href="#awards"
@@ -97,7 +97,7 @@ export default function NavBar({ currentSection }) {
                             awards
                         </Link>
                         <img
-                            className="aspect-[2.3/1] h-[60%]"
+                            className="h-6"
                             src={awardsSymbol}
                             alt="Awards decorator"
                         />
