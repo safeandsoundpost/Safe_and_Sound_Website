@@ -9,7 +9,6 @@ on:
     inputs:
       logLevel:
         description: "Build site"
-        required: true
 
 jobs:
   build:
