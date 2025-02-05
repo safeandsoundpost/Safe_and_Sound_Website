@@ -1,9 +1,11 @@
 import { useState } from "react";
-import email from "/icons/email.svg";
-import instagram from "/icons/instagram.svg";
-import vimeo from "/icons/vimeo.svg";
-import banner from "/images/banner.png";
-import topDecorator from "../assets/images/symbols/top.png";
+import { PiPlayCircleLight } from "react-icons/pi";
+import { BsInstagram } from "react-icons/bs";
+import { MdOutlineEmail } from "react-icons/md";
+import { RiVimeoLine } from "react-icons/ri";
+import banner from "/images/banner.webp";
+import topDecorator1 from "../assets/images/symbols/top-1.png";
+import topDecorator2 from "../assets/images/symbols/top-2.png";
 
 export default function Banner() {
     const [showVideoModal, setShowVideoModal] = useState(false);
@@ -13,35 +15,11 @@ export default function Banner() {
     return (
         <section
             id="demo-reel"
-            className="relative mt-20 h-2/5 min-h-48 w-full bg-[#ffffff1f] bg-cover bg-center hover:bg-blend-color-burn md:mt-0 md:max-h-[40%] md:min-h-[470px] md:bg-left-top"
-            style={{ backgroundImage: `url(${banner})` }}
+            className="pointer-events-none relative mt-20 h-2/5 min-h-64 w-full md:mt-0 md:max-h-[40%] md:min-h-[470px] md:bg-left-top"
         >
-            <div className="absolute inset-0 flex items-center justify-center">
-                <svg
-                    onClick={toggleVideoModal}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    className="h-24 w-24 cursor-pointer text-white"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.91 11.672a.375.375 0 000 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
-                    />
-                </svg>
-            </div>
-
             {showVideoModal && (
                 <div
-                    className="absolute inset-0 z-40 flex items-center justify-center bg-black bg-opacity-75"
+                    className="pointer-events-auto absolute inset-0 z-50 flex max-w-full items-center justify-center bg-black bg-opacity-75"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="relative aspect-video w-full md:h-full md:w-fit">
@@ -77,63 +55,66 @@ export default function Banner() {
                                 frameBorder="0"
                                 allowfullscreen
                             ></iframe>
-                            {/* <iframe
-                                src="https://player.vimeo.com/video/920587179?badge=0&autopause=0&player_id=0&app_id=58479"
-                                frameBorder="0"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                                className="absolute left-0 top-0 h-full w-full"
-                                title="Safe & Sound Demo Reel 2024"
-                            /> */}
                         </div>
                     </div>
                 </div>
             )}
 
-            <div className="absolute mt-5 hidden h-12 w-[98%] justify-end gap-5 md:flex">
+            <div className="pointer-events-auto absolute z-40 mt-5 hidden h-12 w-[98%] justify-end gap-5 md:flex">
                 <a
-                    className="h-full w-12 select-none"
+                    className="pointer-events-auto h-full w-12 select-none p-1 text-primary transition-colors hover:text-neutral"
                     href="https://www.instagram.com/safeandsoundpost/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
-                        className="w-full"
-                        src={instagram}
-                        alt="Instagram"
-                        draggable="false"
-                    />
+                    <BsInstagram className="size-full" />
                 </a>
                 <a
-                    className="h-full w-12 select-none"
+                    className="pointer-events-auto h-full w-12 select-none text-primary transition-colors hover:text-neutral"
                     href="mailto:safeandsoundpost@gmail.com"
                 >
-                    <img
-                        className="w-full"
-                        src={email}
-                        alt="Email"
-                        draggable="false"
-                    />
+                    <MdOutlineEmail className="size-full" />
                 </a>
                 <a
-                    className="h-full w-12 select-none"
+                    className="pointer-events-auto h-full w-12 select-none text-primary transition-colors hover:text-neutral"
                     href="https://vimeo.com/user214948086"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
-                        className="w-full"
-                        src={vimeo}
-                        alt="Vimeo"
-                        draggable="false"
-                    />
+                    <RiVimeoLine className="size-full" />
                 </a>
             </div>
 
-            <img
-                className="absolute right-0 top-[91%] max-md:w-2/4 xxxs:top-[88%] xxs:top-[80%] xs:top-[73%] md:-right-[8%] md:top-[87%] lg:right-0"
-                src={topDecorator}
-                alt="Top decorator"
-            />
+            <div className="flex min-h-64 flex-col">
+                <div className="pointer-events-none relative flex max-h-fit flex-col">
+                    <div className="pointer-events-auto transition-all hover:opacity-80">
+                        <img
+                            className="-z-20 clear-left max-h-[450px] min-h-80 w-[100vw] bg-[#ffffff1f] object-cover transition-all"
+                            src={banner}
+                            alt="Background Image"
+                        />
+                    </div>
+                    <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
+                        <PiPlayCircleLight
+                            onClick={toggleVideoModal}
+                            className="h-24 w-24 pointer-events-auto cursor-pointer text-white transition-all hover:scale-125"
+                            strokeWidth={5}
+                        />
+                    </div>
+                    <img
+                        className="absolute bottom-0 right-0 z-10 max-h-fit w-5/12 md:w-4/12 2xl:w-3/12"
+                        src={topDecorator1}
+                        alt="Top decorator"
+                    />
+                </div>
+                <div className="min-h-fit w-full">
+                    <img
+                        className="ml-auto max-h-fit w-5/12 md:w-4/12 2xl:w-3/12"
+                        src={topDecorator2}
+                        alt="Top decorator"
+                    />
+                </div>
+            </div>
         </section>
     );
 }
