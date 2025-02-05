@@ -5,6 +5,11 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Build site"
+        required: true
 
 jobs:
   build:
