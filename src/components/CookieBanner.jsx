@@ -28,7 +28,7 @@ export default function CookieBanner() {
 
     return (
         showCookieBanner && (
-            <div className="animate-in slide-in-from-bottom-40 fixed bottom-0 z-[500] mb-5 w-full bg-transparent duration-1000">
+            <div className="fixed bottom-0 z-[500] mb-5 w-full bg-transparent duration-1000 animate-in slide-in-from-bottom-40">
                 <div
                     role="alert"
                     className="alert m-auto mt-3 w-9/12 origin-top-right border-2 border-white"
@@ -36,7 +36,7 @@ export default function CookieBanner() {
                     <MdCookie className="size-7" />
                     <span className="text-white">
                         We use cookies to ensure and improve the user experience
-                        in out website.
+                        in our website.
                     </span>
                     <div className="flex gap-3">
                         <button
