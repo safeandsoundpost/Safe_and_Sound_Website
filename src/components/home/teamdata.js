@@ -30,7 +30,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         favFilm: "Whiplash",
     },
     {
-        name: "Thom O Neil",
+        name: "Thom O'Neil",
         order: 0,
         role: "Co-Owner, Sound Supervisor, Re-Recording Mixer",
         pic: "thom",
