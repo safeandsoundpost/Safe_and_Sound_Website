@@ -1,4 +1,3 @@
-import daisyui from "daisyui";
 import tailwindAnimate from "tailwindcss-animate";
 
 /* eslint-disable */
@@ -19,7 +18,7 @@ export default {
             animation: ["group-hover"],
         },
     },
-    plugins: [daisyui, tailwindAnimate],
+    plugins: [tailwindAnimate],
     daisyui: {
         themes: [
             {
