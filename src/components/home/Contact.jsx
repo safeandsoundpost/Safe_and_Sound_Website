@@ -100,13 +100,13 @@ export default function Contact() {
                         <div className="flex h-[46%] flex-col gap-0 md:gap-2">
                             <div className="flex w-[94%] gap-0 md:gap-5">
                                 <input
-                                    className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
+                                    className="w-[43%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[50%]"
                                     placeholder="[  N A M E  ]"
                                     value={name}
                                     onInput={(e) => setName(e.target.value)}
                                 />
                                 <input
-                                    className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
+                                    className="w-[43%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[50%]"
                                     type="email"
                                     placeholder="[  E M A I L  ]"
                                     value={email}
@@ -114,7 +114,7 @@ export default function Contact() {
                                 />
                             </div>
                             <input
-                                className="w-[85%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[88%]"
+                                className="w-[85%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[88%]"
                                 type="tel"
                                 placeholder="[  P H O N E   N U M B E R  ]"
                                 value={phone}
@@ -133,10 +133,10 @@ export default function Contact() {
                                     onInput={(e) => setMessage(e.target.value)}
                                 />
                             </div>
-                            <div className="m-auto flex h-full w-[38%] justify-center">
+                            <div className="m-auto flex h-full w-[40%] justify-center p-0 md:px-2 md:py-0.5 lg:px-4 lg:py-1">
                                 {!isSubmitted && (
                                     <button
-                                        className="btn btn-xs z-30 h-[1em] w-[10em] self-end p-0 text-[.55em] uppercase tracking-[.2em] md:btn-xs lg:btn-sm xl:btn-md xxs:text-[.75em] sm:text-xs md:text-xs lg:text-sm xl:text-lg 2xl:text-lg"
+                                        className="btn btn-info btn-xs md:btn-md lg:btn-lg xl:btn-xl z-30 w-full self-end border-0 p-0 text-[.45rem] tracking-[.2em] uppercase"
                                         src={contactForm}
                                         onClick={submitForm}
                                         name="Submit contact form"
@@ -151,78 +151,22 @@ export default function Contact() {
                         </div>
                     </div>
                 </div>
-
-                {/* <div className="m-auto flex h-full w-[78%] grow border-2">
-                    <div className="m-auto h-[75%] w-full"></div>
-                    <div className="m-auto flex h-[75%] w-[40%] justify-center">
-                        {!isSubmitted && (
-                            <button
-                                className="btn btn-xs z-30 h-[1em] w-[10em] self-end text-[.45em] uppercase tracking-[.2em] md:btn-xs lg:btn-sm xl:btn-md xxs:text-[.55em] sm:text-xs md:text-xs lg:text-sm xl:text-lg 2xl:text-lg"
-                                src={contactForm}
-                                onClick={submitForm}
-                            >
-                                {isLoading && (
-                                    <span className="loading loading-spinner loading-md"></span>
-                                )}
-                                submit
-                            </button>
-                        )}
-                    </div>
-                </div> */}
-                {/* <div className="absolute left-[8%] top-[30%] flex flex-col gap-0 sm:left-[7%] md:left-[8%] md:gap-0 lg:left-[8%] lg:gap-1 xl:left-[8%] xl:top-[32%] 2xl:gap-6">
-                    <div className="flex gap-0 md:gap-5">
-                        <input
-                            className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
-                            placeholder="[  N A M E  ]"
-                            value={name}
-                            onInput={(e) => setName(e.target.value)}
-                        />
-                        <input
-                            className="w-[43%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[50%]"
-                            type="email"
-                            placeholder="[  E M A I L  ]"
-                            value={email}
-                            onInput={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <input
-                        className="w-[85%] bg-transparent uppercase tracking-widest placeholder:text-gray-600 md:w-[88%]"
-                        type="tel"
-                        placeholder="[  P H O N E   N U M B E R  ]"
-                        value={phone}
-                        onInput={(e) => setPhone(e.target.value)}
-                    />
-                </div> */}
-                {/* <div
-                    className="absolute left-[12%] top-[50%] flex h-[8em] w-[54%] flex-col gap-6 text-[.45em] 
-                sm:left-[12%] sm:top-[52%] sm:text-xs
-                md:left-[75px] md:top-[50.5%] md:text-xs
-                lg:left-[80px] lg:top-[50.3%] lg:text-base
-                xl:left-[12%] xl:top-[50%] xl:text-lg"
-                >
-                    <textarea
-                        className="h-full resize-none bg-transparent leading-[0.65rem] tracking-widest placeholder:text-gray-600 md:leading-[1.2rem] lg:leading-[2.3rem]"
-                        placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
-                        value={message}
-                        onInput={(e) => setMessage(e.target.value)}
-                    />
-                </div> */}
             </div>
             <img
                 draggable="false"
-                className="absolute left-[-10%] top-[65%] z-10 w-1/2 -rotate-6 opacity-90"
+                className="absolute top-[65%] left-[-10%] z-10 w-1/2 -rotate-6 opacity-90"
                 src={contactForm}
                 alt="Contact form background"
             />
             <img
                 draggable="false"
-                className="absolute left-[62%] top-[8%] z-10 w-1/2 rotate-[23deg] opacity-90"
+                className="absolute top-[8%] left-[62%] z-10 w-1/2 rotate-[23deg] opacity-90"
                 src={contactForm}
                 alt="Contact form background"
             />
             <img
                 draggable="false"
-                className="absolute left-[60%] top-[40%] z-10 w-1/2 rotate-[230deg] opacity-90"
+                className="absolute top-[40%] left-[60%] z-10 w-1/2 rotate-[230deg] opacity-90"
                 src={contactForm}
                 alt="Contact form background"
             />

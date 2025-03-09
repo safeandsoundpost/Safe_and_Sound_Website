@@ -70,10 +70,10 @@ html {
     name: "safe_and_sound";
     default: true;
     prefersdark: true;
-    color-scheme: "light";
+    color-scheme: "dark";
     --color-base-100: #000000;
-    --color-base-200: oklch(98% 0 0);
-    --color-base-300: oklch(95% 0 0);
+    --color-base-200: oklch(12% 0.042 264.695);
+    --color-base-300: oklch(20% 0.042 265.755);
     --color-base-content: oklch(98% 0 0);
     --color-primary: #ffffff;
     --color-primary-content: oklch(21% 0.006 285.885);
@@ -83,8 +83,8 @@ html {
     --color-accent-content: oklch(27% 0.046 192.524);
     --color-neutral: #0c2721;
     --color-neutral-content: oklch(92% 0.004 286.32);
-    --color-info: #00ecff;
-    --color-info-content: oklch(29% 0.066 243.157);
+    --color-info: oklch(12% 0.042 264.695);
+    --color-info-content: oklch(98% 0 0);
     --color-success: #009d00;
     --color-success-content: oklch(26% 0.051 172.552);
     --color-warning: #c13200;
