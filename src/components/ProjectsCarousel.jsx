@@ -137,7 +137,7 @@ export function ProjectsCarousel(props) {
                                 <div className="z-30 cursor-pointer border-2 border-primary p-3">
                                     <img
                                         draggable="false"
-                                        className="aspect-[12/16] h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
+                                        className="aspect-12/16 h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
                                         src={x.posterSrc}
                                         alt={x.poster}
                                     />

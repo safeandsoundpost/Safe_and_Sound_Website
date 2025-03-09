@@ -119,7 +119,7 @@ export default function Services() {
 
 function ServiceCard({ title, imgSrc, aHref, serviceDescription }) {
     return (
-        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:flex-grow">
+        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow">
             <div className="flex w-1/2 flex-auto flex-col gap-5 self-stretch md:w-full">
                 <div className="flex h-[2em] items-center align-middle text-5xl md:text-4xl xl:text-5xl">
                     <h3 className="h-fit w-full whitespace-pre text-left font-bold uppercase italic">

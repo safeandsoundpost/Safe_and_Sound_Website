@@ -54,7 +54,7 @@ export default function Awards() {
 
 function AwardCard({ title, category }) {
     return (
-        <div className="flex w-full flex-col items-center justify-center space-y-2 rounded border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:min-h-[10rem] md:w-1/3 lg:w-1/4 xl:w-1/5">
+        <div className="flex w-full flex-col items-center justify-center space-y-2 rounded-sm border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:min-h-[10rem] md:w-1/3 lg:w-1/4 xl:w-1/5">
             <h3 className="text-center text-sm font-semibold md:text-xl">
                 {title}
             </h3>

@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+
+@config '../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
 
 @layer base {
     @font-face {
@@ -45,4 +64,39 @@ html {
 
 ::-webkit-scrollbar-thumb:window-inactive {
     background: rgb(255, 255, 255);
+}
+
+@plugin "daisyui/theme" {
+    name: "safe_and_sound";
+    default: true;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: #000000;
+    --color-base-200: oklch(12% 0.042 264.695);
+    --color-base-300: oklch(20% 0.042 265.755);
+    --color-base-content: oklch(98% 0 0);
+    --color-primary: #ffffff;
+    --color-primary-content: oklch(21% 0.006 285.885);
+    --color-secondary: #a9c2e0;
+    --color-secondary-content: oklch(21% 0.034 264.665);
+    --color-accent: #5b8cc6;
+    --color-accent-content: oklch(27% 0.046 192.524);
+    --color-neutral: #0c2721;
+    --color-neutral-content: oklch(92% 0.004 286.32);
+    --color-info: oklch(12% 0.042 264.695);
+    --color-info-content: oklch(98% 0 0);
+    --color-success: #009d00;
+    --color-success-content: oklch(26% 0.051 172.552);
+    --color-warning: #c13200;
+    --color-warning-content: oklch(96% 0.059 95.617);
+    --color-error: #ff6a7c;
+    --color-error-content: oklch(27% 0.105 12.094);
+    --radius-selector: 0.5rem;
+    --radius-field: 0.5rem;
+    --radius-box: 1rem;
+    --size-selector: 0.28125rem;
+    --size-field: 0.1875rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
 }

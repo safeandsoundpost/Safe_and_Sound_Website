@@ -102,7 +102,7 @@ function ReviewCard({ review }) {
                 setOnHover(false);
             }}
         >
-            <div className="h-6 w-6 flex-shrink-0 rounded-full bg-black"></div>
+            <div className="h-6 w-6 shrink-0 rounded-full bg-black"></div>
             {(() => {
                 if (onHover)
                     return (
@@ -117,7 +117,7 @@ function ReviewCard({ review }) {
                     );
 
                 return (
-                    <div className="ml-4 flex-grow text-left">
+                    <div className="ml-4 grow text-left">
                         <p
                             review-card-type="title"
                             className="text-sm font-bold md:text-base lg:text-xl"
@@ -144,7 +144,7 @@ ReviewCard.propTypes = {
 function ReviewModal({ review, onClose }) {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="mx-auto max-w-lg rounded bg-white p-6">
+            <div className="mx-auto max-w-lg rounded-sm bg-white p-6">
                 <h4 className="mb-4 text-2xl font-bold">{review.name}</h4>
                 <p className="mb-4">
                     <i>{review.credentials}</i>
@@ -152,7 +152,7 @@ function ReviewModal({ review, onClose }) {
                 <p className="mb-6 whitespace-pre-wrap">{review.content}</p>
                 <button
                     name="Close Review"
-                    className="rounded border px-4 py-2 text-lg"
+                    className="rounded-sm border px-4 py-2 text-lg"
                     onClick={onClose}
                 >
                     Close
