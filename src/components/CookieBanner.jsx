@@ -28,7 +28,7 @@ export default function CookieBanner() {
 
     return (
         showCookieBanner && (
-            <div className="fixed bottom-0 z-[500] mb-5 w-full bg-transparent duration-1000 animate-in slide-in-from-bottom-40">
+            <div className="fixed bottom-0 z-500 mb-5 w-full bg-transparent duration-1000 animate-in slide-in-from-bottom-40">
                 <div
                     role="alert"
                     className="alert m-auto mt-3 w-9/12 origin-top-right border-2 border-white"

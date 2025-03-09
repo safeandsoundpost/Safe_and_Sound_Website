@@ -124,7 +124,7 @@ export default function Contact() {
                     </div>
                     <div className="flex h-full w-[90%] self-center">
                         <div className=""></div>
-                        <div className="m-auto flex h-full w-[78%] flex-grow">
+                        <div className="m-auto flex h-full w-[78%] grow">
                             <div className="m-auto h-full w-full">
                                 <textarea
                                     className="h-full w-full resize-none bg-transparent text-[.45em] leading-[0.65rem] tracking-widest placeholder:text-gray-600 sm:text-xs md:text-xs md:leading-[1.2rem] lg:text-base lg:leading-[2.3rem] xl:text-lg"
@@ -152,7 +152,7 @@ export default function Contact() {
                     </div>
                 </div>
 
-                {/* <div className="m-auto flex h-full w-[78%] flex-grow border-2">
+                {/* <div className="m-auto flex h-full w-[78%] grow border-2">
                     <div className="m-auto h-[75%] w-full"></div>
                     <div className="m-auto flex h-[75%] w-[40%] justify-center">
                         {!isSubmitted && (
