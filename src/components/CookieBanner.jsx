@@ -28,27 +28,29 @@ export default function CookieBanner() {
 
     return (
         showCookieBanner && (
-            <div className="fixed bottom-0 z-500 mb-5 w-full bg-transparent duration-1000 animate-in slide-in-from-bottom-40">
+            <div className="animate-in slide-in-from-bottom-40 fixed bottom-0 z-500 mb-5 w-full bg-transparent duration-1000">
                 <div
                     role="alert"
-                    className="alert m-auto mt-3 w-9/12 origin-top-right border-2 border-white"
+                    className="alert m-auto mt-3 flex w-9/12 origin-top-right flex-col justify-between gap-5 border-2 border-white md:flex-row"
                 >
-                    <MdCookie className="size-7" />
-                    <span className="text-white">
-                        We use cookies to ensure and improve the user experience
-                        in our website.
-                    </span>
+                    <div className="inline-flex flex-col items-center justify-center gap-5 md:flex-row">
+                        <MdCookie className="size-10" />
+                        <span className="text-center text-white md:text-left">
+                            We use cookies to ensure and improve the user
+                            experience in our website.
+                        </span>
+                    </div>
                     <div className="flex gap-3">
                         <button
                             name="Deny cookies"
-                            className="btn btn-outline btn-sm text-white"
+                            className="btn btn-outline btn-sm h-8 px-8 text-white md:h-10"
                             onClick={() => setShowCookieBanner(false)}
                         >
                             Deny
                         </button>
                         <button
                             name="Accept cookies"
-                            className="btn btn-primary btn-sm"
+                            className="btn btn-primary btn-sm h-8 px-8 md:h-10"
                             onClick={() => {
                                 document.cookie = "accept-cookies=true;path=/";
                                 setShowCookieBanner(false);
