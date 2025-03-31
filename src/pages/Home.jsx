@@ -38,7 +38,7 @@ export default function Home() {
                 <CookieBanner />
                 <NavBar currentSection={currentSection} />
                 <Banner />
-                <section className="m-auto w-[85%] md:ml-auto md:mr-[8%] md:w-[70%] lg:m-auto lg:w-[65%]">
+                <section className="m-auto w-11/12 md:ml-auto md:mr-[8%] md:w-[70%] lg:m-auto lg:w-[65%]">
                     <Projects />
                     <Services />
                     <TheTeam />
