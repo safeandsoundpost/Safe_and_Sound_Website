@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { BsInstagram } from "react-icons/bs";
 import noise from "../../assets/icons/noise.svg";
@@ -28,7 +26,7 @@ const reviews = [
     },
     {
         name: "Katie Uhlmann",
-        credentials: "Director of When You Know You Know (2024)",
+        credentials: "Director of Cows Come Home & When You Know You Know",
         content:
             "The team at Safe and Sound are energetic, creative, and technically proficient. They ask good questions and get into the lives of the characters and the world of the story. They are always dedicated to bringing the director’s vision to fruition while developing the ideas at the centre of the film into singular, engaging clarity.",
         ig_url: "https://www.instagram.com/katieuhlmann/",
@@ -42,13 +40,13 @@ const reviews = [
     },
     {
         name: "Erik Berg",
-        credentials: "Director of First Born, and Local Water, Mother Daughter",
+        credentials: "Director of First Born, Local Water, Mother Daughter",
         content:
             "Working with Safe and Sound is an absolute joy. They are kind, collaborative, and so talented. The team elevated the film through their brilliant sound design and I can’t wait to work with them again.",
     },
     {
         name: "Jade Yurich",
-        credentials: "Co-Director and Producer of FIGURES (2022)",
+        credentials: "Director of After You & Figures",
         content:
             "Working with the team at Safe & Sound felt like we were working with our best friends and family. They made the workdays very easy on us creatively and helped get our vision across every step of the way.",
         ig_url: "https://www.instagram.com/jadeyurich/",
@@ -83,8 +81,6 @@ const reviews = [
 ];
 
 export default function Reviews() {
-    const [selectedReview, setSelectedReview] = useState(null);
-
     return (
         <section
             id="reviews"
@@ -111,84 +107,11 @@ export default function Reviews() {
                         </div>
                     ))}
             </div>
-            {/* <div className="grid w-full grid-cols-1 justify-items-center gap-5 border-2 md:gap-8 xl:grid-cols-2">
-                {reviews.map((review, index) => (
-                    <ReviewCard key={index} review={review} />
-                ))}
-            </div> */}
-            {selectedReview && (
-                <ReviewModal
-                    review={selectedReview}
-                    onClose={() => setSelectedReview(null)}
-                />
-            )}
         </section>
     );
 }
 
 function ReviewCard({ review }) {
-    // const [onHover, setOnHover] = useState(false);
-    // const [isMobile, setIsMobile] = useState(false); // just a workaround for touch events. Not the best solution.
-
-    // return (
-    //     <div
-    //         id="review-card"
-    //         className="xs:h-[120px] xs:pl-5 flex h-[130px] w-full items-center justify-start overflow-hidden rounded-l-[2em] border-2 border-red-500 bg-white pl-10 text-black md:h-[120px] md:pl-5 lg:h-[130px] xl:w-[380px] xl:pl-10 2xl:pl-10"
-    //         onTouchStart={(e) => {
-    //             setIsMobile(true);
-
-    //             /** @type {HTMLElement} */
-    //             const target = e.target;
-    //             if (target.getAttribute("review-card-type") === "content")
-    //                 return;
-    //             setOnHover(!onHover);
-    //         }}
-    //         onMouseEnter={() => {
-    //             if (isMobile) return;
-    //             setOnHover(true);
-    //         }}
-    //         onMouseLeave={() => {
-    //             if (isMobile) return;
-    //             setOnHover(false);
-    //         }}
-    //         onBlur={() => {
-    //             setOnHover(false);
-    //         }}
-    //     >
-    //         <div className="h-6 w-6 self-start mt-5 shrink-0 rounded-full bg-black"></div>
-    //         {(() => {
-    //             if (onHover)
-    //                 return (
-    //                     <div className="ml-4 flex h-full items-center text-left">
-    //                         <p
-    //                             review-card-type="content"
-    //                             className="h-[80%] w-[95%] overflow-y-auto text-sm leading-tight md:text-xs xl:text-sm 2xl:text-base"
-    //                         >
-    //                             {review.content}
-    //                         </p>
-    //                     </div>
-    //                 );
-
-    //             return (
-    //                 <div className="ml-4 grow text-left">
-    //                     <p
-    //                         review-card-type="title"
-    //                         className="text-sm font-bold md:text-base lg:text-xl"
-    //                     >
-    //                         {review.name}
-    //                     </p>
-    //                     <p
-    //                         review-card-type="title"
-    //                         className="w-11/12 text-sm md:text-sm xl:text-base"
-    //                     >
-    //                         {review.credentials}
-    //                     </p>
-    //                 </div>
-    //             );
-    //         })()}
-    //     </div>
-    // );
-    // https://grainy-gradients.vercel.app/noise.svg
     return (
         <div
             className="card text-primary-content my-auto min-h-56 w-full max-w-[30rem] min-w-[30rem] rounded-l-4xl rounded-r-sm pl-4 bg-blend-soft-light"
@@ -197,7 +120,7 @@ function ReviewCard({ review }) {
             }}
         >
             <div className="absolute mt-4 h-6 w-6 shrink-0 self-start rounded-full bg-black"></div>
-            <div className="card-body ml-2 justify-center py-0">
+            <div className="card-body my-auto ml-2 h-10/12 max-h-10/12 min-h-10/12 justify-start py-0">
                 <div className="inline-flex items-center justify-between">
                     <h2 className="card-title flex flex-col items-start justify-start gap-0 text-left text-xl">
                         {review.name}
@@ -205,7 +128,7 @@ function ReviewCard({ review }) {
                     </h2>
                     {review.ig_url && (
                         <a
-                            className="btn btn-lg btn-square p-1"
+                            className="btn btn-lg btn-primary btn-square p-1 self-start"
                             href={review.ig_url}
                             target="_blank"
                         >
@@ -223,30 +146,4 @@ function ReviewCard({ review }) {
 
 ReviewCard.propTypes = {
     review: PropTypes.object,
-};
-
-function ReviewModal({ review, onClose }) {
-    return (
-        <div className="bg-opacity-50 fixed inset-0 flex items-center justify-center bg-black">
-            <div className="mx-auto max-w-lg rounded-sm bg-white p-6">
-                <h4 className="mb-4 text-2xl font-bold">{review.name}</h4>
-                <p className="mb-4">
-                    <i>{review.credentials}</i>
-                </p>
-                <p className="mb-6 whitespace-pre-wrap">{review.content}</p>
-                <button
-                    name="Close Review"
-                    className="rounded-sm border px-4 py-2 text-lg"
-                    onClick={onClose}
-                >
-                    Close
-                </button>
-            </div>
-        </div>
-    );
-}
-
-ReviewModal.propTypes = {
-    review: PropTypes.object.isRequired,
-    onClose: PropTypes.func.isRequired,
 };
