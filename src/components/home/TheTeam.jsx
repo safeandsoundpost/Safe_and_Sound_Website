@@ -153,7 +153,7 @@ function TeamModal({ currentTeam }) {
                                 <p className="h-fit w-1/4">Bio:</p>
                                 <p className="h-fit w-3/4 text-justify whitespace-pre-line md:text-lg">
                                     <img
-                                        className="float-right mb-1 ml-4 aspect-square h-1/5 w-1/2 rounded-3xl md:mb-4 md:ml-8 md:h-fit md:w-fit"
+                                        className="float-right mb-1 ml-4 aspect-[500/543] h-1/5 w-1/2 rounded-3xl md:mb-4 md:ml-8 md:h-fit md:w-fit"
                                         src={pic}
                                         alt={currentTeam.name}
                                     />
