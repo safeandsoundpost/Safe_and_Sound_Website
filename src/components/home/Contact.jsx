@@ -1,49 +1,29 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import contactForm from "../../assets/images/contact/contact-form.png";
+import oldContactForm from "../../assets/images/contact/contact-form.png";
+import contactForm from "../../assets/images/contact/new-contact-form.png";
 
 export default function Contact() {
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+    const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const submitForm = () => {
-        if (!name) {
-            alert("Please enter your name");
-            return;
-        }
-
-        if (/^[a-zA-Z\s]*$/.test(name) === false) {
-            alert("Please enter a valid name");
-            return;
-        }
-
         if (!email) {
             alert("Please enter your email");
             return;
         }
 
+        if (!subject) {
+            alert("Please enter a subject");
+            return;
+        }
+
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) === false) {
             alert("Please enter a valid email");
-            return;
-        }
-
-        if (!phone) {
-            alert("Please enter your phone number");
-            return;
-        }
-
-        if (
-            // eslint-disable-next-line no-useless-escape
-            /^(?:\(\d{3}\) \d{3}\-\d{4}|\d{1}(?:(?:\d{2}\.\d{3}\.\d{4}|\d{2}\-\d{3}\-\d{4})|\d{9}))$/.test(
-                phone,
-            ) === false
-        ) {
-            alert("Please enter a valid phone number");
             return;
         }
 
@@ -59,9 +39,8 @@ export default function Contact() {
                     import.meta.env.VITE_EMAILJS_SERVICE_ID,
                     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                     {
-                        from_name: name,
+                        from_name: subject,
                         from_email: email,
-                        from_phone: phone,
                         message: message,
                     },
                     {
@@ -71,9 +50,8 @@ export default function Contact() {
                 .then(() => {
                     setIsLoading(false);
                     alert("Your message has been sent successfully!");
-                    setName("");
+                    setSubject("");
                     setEmail("");
-                    setPhone("");
                     setMessage("");
                     setIsSubmitted(true);
                 })
@@ -89,85 +67,94 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="relative my-16 flex w-full flex-col items-center justify-center gap-10 py-28 pb-28 align-middle"
+            className="relative my-16 flex w-full flex-col items-center justify-center gap-10 pb-28 align-middle"
         >
             <div
-                className="relative z-20 flex aspect-video h-fit w-full bg-contain bg-center bg-no-repeat align-middle text-xs font-semibold text-black sm:text-lg md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl"
+                className="relative z-20 flex aspect-[1.5/1] h-full w-full bg-contain bg-center bg-no-repeat align-middle text-xs font-semibold text-black sm:text-lg md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl"
                 style={{ backgroundImage: `url(${contactForm})` }}
             >
-                <div className="m-auto flex h-3/4 w-[87%] flex-col">
-                    <div className="flex h-full flex-col justify-end gap-2 pb-3">
-                        <div className="flex h-[46%] flex-col gap-0 md:gap-2">
-                            <div className="flex w-[94%] gap-0 md:gap-5">
-                                <input
-                                    className="w-[43%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[50%]"
-                                    placeholder="[  N A M E  ]"
-                                    value={name}
-                                    onInput={(e) => setName(e.target.value)}
-                                />
-                                <input
-                                    className="w-[43%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[50%]"
-                                    type="email"
-                                    placeholder="[  E M A I L  ]"
-                                    value={email}
-                                    onInput={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
+                <div className="m-auto flex h-full w-9/12 flex-col pb-2 md:w-6/12">
+                    <div className="my-auto flex h-10/12 flex-col items-center justify-center gap-2">
+                        <label
+                            htmlFor="email"
+                            className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase"
+                        >
+                            email
+                            <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
                             <input
-                                className="w-[85%] bg-transparent tracking-widest uppercase placeholder:text-gray-600 md:w-[88%]"
-                                type="tel"
-                                placeholder="[  P H O N E   N U M B E R  ]"
-                                value={phone}
-                                onInput={(e) => setPhone(e.target.value)}
+                                id="email"
+                                name="email"
+                                className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
+                                type="email"
+                                value={email}
+                                onInput={(e) => setEmail(e.target.value)}
                             />
-                        </div>
-                    </div>
-                    <div className="flex h-full w-[90%] self-center">
-                        <div className=""></div>
-                        <div className="m-auto flex h-full w-[78%] grow">
-                            <div className="m-auto h-full w-full">
-                                <textarea
-                                    className="h-full w-full resize-none bg-transparent text-[.45em] leading-[0.65rem] tracking-widest placeholder:text-gray-600 sm:text-xs md:text-xs md:leading-[1.2rem] lg:text-base lg:leading-[2.3rem] xl:text-lg"
-                                    placeholder="[ WHAT CAN WE HELP YOU WITH? ]"
-                                    value={message}
-                                    onInput={(e) => setMessage(e.target.value)}
-                                />
-                            </div>
-                            <div className="m-auto flex h-full w-[40%] justify-center p-0 md:px-2 md:py-0.5 lg:px-4 lg:py-1">
-                                {!isSubmitted && (
-                                    <button
-                                        className="btn btn-info btn-xs md:btn-md lg:btn-lg xl:btn-xl z-30 w-full self-end border-0 p-0 text-[.45rem] tracking-[.2em] uppercase"
-                                        src={contactForm}
-                                        onClick={submitForm}
-                                        name="Submit contact form"
-                                    >
-                                        {isLoading && (
-                                            <span className="loading loading-spinner loading-md"></span>
-                                        )}
-                                        submit
-                                    </button>
-                                )}
-                            </div>
+                        </label>
+                        <label
+                            htmlFor="subject"
+                            className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase"
+                        >
+                            subject line
+                            <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
+                            <input
+                                id="subject"
+                                name="subject"
+                                className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
+                                type="email"
+                                value={email}
+                                onInput={(e) => setEmail(e.target.value)}
+                            />
+                        </label>
+
+                        <label
+                            htmlFor="message"
+                            className="flex h-full w-full grow flex-col items-center text-center tracking-[.2rem] uppercase"
+                        >
+                            what can we help you with?
+                            <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
+                            <textarea
+                                id="message"
+                                name="message"
+                                className="bg-primary mt-2 box-border h-full w-full grow resize-none rounded-xl py-1 text-xs tracking-widest placeholder:text-gray-600 sm:text-xs md:mt-3 md:text-xs md:leading-[1.2rem] lg:text-base lg:leading-[2.3rem] xl:text-lg"
+                                value={message}
+                                onInput={(e) => setMessage(e.target.value)}
+                            />
+                        </label>
+
+                        <div className="m-auto flex h-fit w-2/4 justify-center p-0 md:px-2 md:py-0.5 lg:px-4 lg:py-1">
+                            {!isSubmitted && (
+                                <button
+                                    className="btn btn-info btn-xs md:btn-sm lg:btn-lg z-30 h-full w-full self-end border-0 p-0 tracking-[.2em] uppercase md:h-10"
+                                    src={contactForm}
+                                    onClick={submitForm}
+                                    name="Submit contact form"
+                                >
+                                    {isLoading && (
+                                        <span className="loading loading-spinner loading-md"></span>
+                                    )}
+                                    submit
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
             <img
                 draggable="false"
-                className="absolute top-[65%] left-[-10%] z-10 w-1/2 -rotate-6 opacity-90"
-                src={contactForm}
+                className="absolute top-[50%] left-[-10%] z-10 w-1/2 -rotate-6 opacity-90"
+                src={oldContactForm}
                 alt="Contact form background"
             />
             <img
                 draggable="false"
-                className="absolute top-[8%] left-[62%] z-10 w-1/2 rotate-[23deg] opacity-90"
-                src={contactForm}
+                className="absolute top-0 left-[62%] z-10 w-1/2 rotate-[23deg] opacity-90"
+                src={oldContactForm}
                 alt="Contact form background"
             />
             <img
                 draggable="false"
                 className="absolute top-[40%] left-[60%] z-10 w-1/2 rotate-[230deg] opacity-90"
-                src={contactForm}
+                src={oldContactForm}
                 alt="Contact form background"
             />
         </section>
