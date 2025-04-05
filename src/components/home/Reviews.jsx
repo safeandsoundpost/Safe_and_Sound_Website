@@ -128,7 +128,7 @@ function ReviewCard({ review }) {
                     </h2>
                     {review.ig_url && (
                         <a
-                            className="btn btn-lg btn-primary btn-square p-1 self-start"
+                            className="btn btn-lg btn-primary btn-circle btn-ghost self-start p-1"
                             href={review.ig_url}
                             target="_blank"
                         >
