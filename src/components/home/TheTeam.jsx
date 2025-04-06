@@ -99,7 +99,7 @@ export default function TheTeam() {
 function TeamHeadshot({ pic, onClick, alt }) {
     return (
         <img
-            className="aspect-[500/543] w-fit grayscale select-none hover:cursor-pointer hover:grayscale-0 md:m-0 lg:m-0 lg:mr-0 lg:ml-auto lg:p-0"
+            className="aspect-[500/543] w-fit grayscale transition-all select-none hover:cursor-pointer hover:grayscale-0 md:m-0 lg:m-0 lg:mr-0 lg:ml-auto lg:p-0"
             onClick={onClick}
             draggable="false"
             src={pic}
@@ -123,6 +123,11 @@ function TeamModal({ currentTeam }) {
     if (!currentTeam) return <></>;
 
     const { bio, favFilm, name, pic, role } = currentTeam;
+
+    const onFilmDoubleClick = () => {
+        if (currentTeam.actualFavFilm) setShowActualFav(!showActualFav);
+        if (currentTeam.filmLink) open(currentTeam.filmLink);
+    };
 
     return (
         <>
@@ -153,7 +158,7 @@ function TeamModal({ currentTeam }) {
                                 <p className="h-fit w-1/4">Bio:</p>
                                 <p className="h-fit w-3/4 text-justify whitespace-pre-line md:text-lg">
                                     <img
-                                        className="float-right mb-1 ml-4 aspect-[500/543] h-1/5 w-1/2 rounded-3xl md:mb-4 md:ml-8 md:h-fit md:w-fit"
+                                        className="float-right mb-1 ml-4 aspect-[500/543] h-4/12 w-2/5 rounded-3xl md:mb-4 md:ml-8 md:h-fit"
                                         src={pic}
                                         alt={currentTeam.name}
                                     />
@@ -163,28 +168,25 @@ function TeamModal({ currentTeam }) {
                             <div className="flex w-full justify-between">
                                 <p className="w-1/4">Favorite film:</p>
                                 <div className="flex grow justify-between">
-                                    <p
-                                        className="text-secondary w-3/4 text-left"
-                                        onDoubleClick={() => {
-                                            if (currentTeam.actualFavFilm) {
-                                                setShowActualFav(
-                                                    !showActualFav,
-                                                );
-                                            }
-                                        }}
+                                    <span
+                                        className={`text-secondary w-fit text-left ${currentTeam.filmLabel ? "tooltip tooltip-top" : ""}`}
+                                        data-tip={currentTeam.filmLabel}
+                                        onDoubleClick={onFilmDoubleClick}
                                     >
-                                        {!showActualFav && favFilm}
+                                        {!showActualFav && <p>{favFilm}</p>}
                                         {showActualFav && (
-                                            <>
-                                                {currentTeam.actualFavFilm}
+                                            <div className="inline-flex w-full">
+                                                <p>
+                                                    {currentTeam.actualFavFilm}
+                                                </p>
                                                 <img
-                                                    className="float-start mx-5 aspect-square h-10"
+                                                    className="float-start mx-5 aspect-square h-10 animate-bounce"
                                                     src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
                                                     alt="actual favorite movie"
                                                 ></img>
-                                            </>
+                                            </div>
                                         )}
-                                    </p>
+                                    </span>
                                     {currentTeam.imdb && (
                                         <a
                                             className="link flex items-center justify-center gap-2"
