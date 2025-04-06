@@ -35,7 +35,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         filmLabel: "Not quite my tempo 🙅🏻‍♀️🥁",
     },
     {
-        name: "Thom O Neil",
+        name: "Thom O'Neil",
         column: 1,
         order: 0,
         role: "Co-Owner / Re-Recording Mixer / Sound Supervisor",
