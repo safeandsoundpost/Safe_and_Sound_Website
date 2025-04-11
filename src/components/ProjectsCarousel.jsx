@@ -85,6 +85,8 @@ export function ProjectsCarousel(props) {
         autoScroll({
             playOnInit: true,
             speed: 1,
+            startDelay: 1000,
+            stopOnInteraction: false,
         }),
     ]);
 
@@ -96,7 +98,7 @@ export function ProjectsCarousel(props) {
             }),
         ).map((x) => x.default);
 
-        console.log(img_paths);
+        // console.log(img_paths);
 
         projectDetails.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.poster));
@@ -116,10 +118,7 @@ export function ProjectsCarousel(props) {
     }, []);
 
     return (
-        <div
-            className="w-full overflow-hidden md:ml-auto md:w-11/12 xl:ml-0 xl:w-full"
-            ref={emblaRef}
-        >
+        <div className="w-full overflow-hidden md:ml-auto md:w-11/12 xl:ml-0 xl:w-full" ref={emblaRef}>
             <div className="flex">
                 {images &&
                     images.map((x, i) => {
@@ -134,10 +133,10 @@ export function ProjectsCarousel(props) {
                                     });
                                 }}
                             >
-                                <div className="z-30 cursor-pointer border-2 border-primary p-3">
+                                <div className="border-primary z-30 cursor-pointer border-2 p-3">
                                     <img
                                         draggable="false"
-                                        className="aspect-12/16 h-[22rem] w-fit select-none object-cover transition-transform duration-300 ease-in-out hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
+                                        className="aspect-12/16 h-[22rem] w-fit object-cover transition-transform duration-300 ease-in-out select-none hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
                                         src={x.posterSrc}
                                         alt={x.poster}
                                     />
