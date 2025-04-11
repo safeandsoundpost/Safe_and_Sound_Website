@@ -24,16 +24,8 @@ export default function TheTeam() {
             const img = img_paths.find((x) => x.includes(project.pic));
             project.pic = img;
         });
-        setLeftColumn(
-            teamData
-                .filter((x) => x.column === 1)
-                .sort((a, b) => a.order - b.order),
-        );
-        setRightColumn(
-            teamData
-                .filter((x) => x.column === 2)
-                .sort((a, b) => a.order - b.order),
-        );
+        setLeftColumn(teamData.filter((x) => x.column === 1).sort((a, b) => a.order - b.order));
+        setRightColumn(teamData.filter((x) => x.column === 2).sort((a, b) => a.order - b.order));
     }, []);
 
     const onHeadshotClick = (_val) => {
@@ -42,27 +34,17 @@ export default function TheTeam() {
     };
 
     return (
-        <section
-            id="the-team"
-            className="flex w-full flex-col items-center justify-center gap-10 px-5 pt-10 pb-15 align-middle md:px-16 xl:px-5"
-        >
-            <h2 className="text-secondary w-full py-0 text-center text-4xl font-bold tracking-widest uppercase md:py-10">
-                who we are
-            </h2>
+        <section id="the-team" className="flex w-full flex-col items-center justify-center gap-10 px-5 pt-10 pb-15 align-middle md:px-16 xl:px-5">
+            <h2 className="text-secondary w-full py-0 text-center text-4xl font-bold tracking-widest uppercase md:py-10">who we are</h2>
 
             <dialog ref={modal} className="modal">
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex w-full flex-col justify-center gap-5 lg:flex-row">
-                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:h-fit lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
+            <div className="flex h-fit w-full flex-col justify-center gap-5 lg:flex-row">
+                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
                     {leftColumn.map((val, index) => (
-                        <TeamHeadshot
-                            key={index}
-                            pic={val.pic}
-                            onClick={() => onHeadshotClick(val)}
-                            alt={val.name}
-                        />
+                        <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
                 </div>
                 <div className="hidden h-fit w-full lg:block">
@@ -73,14 +55,9 @@ export default function TheTeam() {
                         alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. AS passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
                     />
                 </div>
-                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:h-fit lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
+                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
                     {rightColumn.map((val, index) => (
-                        <TeamHeadshot
-                            key={index}
-                            pic={val.pic}
-                            onClick={() => onHeadshotClick(val)}
-                            alt={val.name}
-                        />
+                        <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
                 </div>
                 <div className="h-fit w-full shrink lg:hidden">
@@ -134,24 +111,14 @@ function TeamModal({ currentTeam }) {
             <div className="modal-box max-w-full bg-[#1a1a1a] select-none max-md:p-3 lg:max-w-6xl">
                 <div className="gap-3 px-3 py-3 md:gap-0 md:px-0 md:py-0">
                     <form method="dialog">
-                        <button
-                            className="btn btn-circle btn-ghost btn-sm md:btn-md absolute top-2 right-2"
-                            name="Close team card"
-                        >
-                            <IoClose
-                                className="size-3/4 md:size-3/4"
-                                strokeWidth={20}
-                            />
+                        <button className="btn btn-circle btn-ghost btn-sm md:btn-md absolute top-2 right-2" name="Close team card">
+                            <IoClose className="size-3/4 md:size-3/4" strokeWidth={20} />
                         </button>
                     </form>
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-3">
                         <div className="w-full md:w-4/5">
-                            <h3 className="text-primary text-xl font-bold tracking-widest uppercase md:text-4xl">
-                                {name}
-                            </h3>
-                            <p className="text-secondary text-sm font-semibold tracking-widest uppercase md:text-xl">
-                                {role}
-                            </p>
+                            <h3 className="text-primary text-xl font-bold tracking-widest uppercase md:text-4xl">{name}</h3>
+                            <p className="text-secondary text-sm font-semibold tracking-widest uppercase md:text-xl">{role}</p>
                         </div>
                         <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-4/5 md:text-2xl">
                             <div className="flex w-full justify-between">
@@ -176,9 +143,7 @@ function TeamModal({ currentTeam }) {
                                         {!showActualFav && <p>{favFilm}</p>}
                                         {showActualFav && (
                                             <div className="inline-flex w-full">
-                                                <p>
-                                                    {currentTeam.actualFavFilm}
-                                                </p>
+                                                <p>{currentTeam.actualFavFilm}</p>
                                                 <img
                                                     className="float-start mx-5 aspect-square h-10 animate-bounce"
                                                     src="https://seeklogo.com/images/P/paw-patrol-logo-A0229DE2A9-seeklogo.com.png"
@@ -188,11 +153,7 @@ function TeamModal({ currentTeam }) {
                                         )}
                                     </span>
                                     {currentTeam.imdb && (
-                                        <a
-                                            className="link flex items-center justify-center gap-2"
-                                            href={currentTeam.imdb}
-                                            target="_blank"
-                                        >
+                                        <a className="link flex items-center justify-center gap-2" href={currentTeam.imdb} target="_blank">
                                             IMDB
                                             <HiExternalLink />
                                         </a>
