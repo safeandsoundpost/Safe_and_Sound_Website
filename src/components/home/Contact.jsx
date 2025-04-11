@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import oldContactForm from "../../assets/images/contact/contact-form.png";
 import contactForm from "../../assets/images/contact/new-contact-form.png";
+import { useSearchParams } from "react-router-dom";
 
 export default function Contact() {
+    const [urlParams] = useSearchParams();
+
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
@@ -57,28 +60,22 @@ export default function Contact() {
                 })
                 .catch((ex) => {
                     console.error(ex);
-                    alert(
-                        "An error occurred while sending the email, please try again later.",
-                    );
+                    alert("An error occurred while sending the email, please try again later.");
                 });
         }, 3000);
     };
 
+    useEffect(() => setSubject(urlParams.get("subject") ?? ""), [urlParams]);
+
     return (
-        <section
-            id="contact"
-            className="relative my-16 flex w-full flex-col items-center justify-center gap-10 pb-28 align-middle"
-        >
+        <section id="contact" className="relative my-16 flex w-full flex-col items-center justify-center gap-10 pb-28 align-middle">
             <div
                 className="relative z-20 flex aspect-[1.5/1] h-full w-full bg-contain bg-center bg-no-repeat align-middle text-xs font-semibold text-black sm:text-lg md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl"
                 style={{ backgroundImage: `url(${contactForm})` }}
             >
                 <div className="m-auto flex h-full w-9/12 flex-col pb-2 md:w-6/12">
                     <div className="my-auto flex h-10/12 flex-col items-center justify-center gap-2">
-                        <label
-                            htmlFor="email"
-                            className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase"
-                        >
+                        <label htmlFor="email" className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase">
                             email
                             <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
                             <input
@@ -86,30 +83,26 @@ export default function Contact() {
                                 name="email"
                                 className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
                                 type="email"
+                                autoComplete="on"
                                 value={email}
                                 onInput={(e) => setEmail(e.target.value)}
                             />
                         </label>
-                        <label
-                            htmlFor="subject"
-                            className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase"
-                        >
+                        <label htmlFor="subject" className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase">
                             subject line
                             <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
                             <input
                                 id="subject"
                                 name="subject"
                                 className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
-                                type="email"
-                                value={email}
-                                onInput={(e) => setEmail(e.target.value)}
+                                type="text"
+                                autoComplete="on"
+                                value={subject}
+                                onInput={(e) => setSubject(e.target.value)}
                             />
                         </label>
 
-                        <label
-                            htmlFor="message"
-                            className="flex h-full w-full grow flex-col items-center text-center tracking-[.2rem] uppercase"
-                        >
+                        <label htmlFor="message" className="flex h-full w-full grow flex-col items-center text-center tracking-[.2rem] uppercase">
                             what can we help you with?
                             <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
                             <textarea
@@ -129,9 +122,7 @@ export default function Contact() {
                                     onClick={submitForm}
                                     name="Submit contact form"
                                 >
-                                    {isLoading && (
-                                        <span className="loading loading-spinner loading-md"></span>
-                                    )}
+                                    {isLoading && <span className="loading loading-spinner loading-md"></span>}
                                     submit
                                 </button>
                             )}
