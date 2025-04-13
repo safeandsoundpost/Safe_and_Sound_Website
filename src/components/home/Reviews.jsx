@@ -82,14 +82,9 @@ const reviews = [
 
 export default function Reviews() {
     return (
-        <section
-            id="reviews"
-            className="m-auto flex w-full flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-9/12 lg:w-10/12 xl:w-full"
-        >
-            <h2 className="text-secondary my-10 text-center text-4xl font-bold tracking-widest uppercase">
-                Reviews
-            </h2>
-            <div className="carousel carousel-center rounded-box max-w-full snap-none space-x-8 overflow-x-scroll scroll-smooth p-4">
+        <section id="reviews" className="m-auto flex w-full flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-9/12 lg:w-10/12 xl:w-full">
+            <h2 className="text-secondary my-10 text-center text-4xl font-bold tracking-widest uppercase">Reviews</h2>
+            <div className="rounded-box inline-flex max-w-full space-x-8 overflow-x-scroll scroll-smooth p-4">
                 {reviews
                     .reduce((prev, curr, i) => {
                         if (i % 3 === 0) prev.push([curr]);
@@ -97,10 +92,7 @@ export default function Reviews() {
                         return prev;
                     }, [])
                     .map((rl, i) => (
-                        <div
-                            key={i}
-                            className="carousel-item flex max-w-[30rem] min-w-[30rem] flex-col items-center justify-center gap-8"
-                        >
+                        <div key={i} className="flex max-w-full min-w-full flex-col items-center justify-center gap-8 md:max-w-[30rem] md:min-w-[30rem]">
                             {rl.map((x, j) => (
                                 <ReviewCard key={j} review={x} />
                             ))}
@@ -114,7 +106,7 @@ export default function Reviews() {
 function ReviewCard({ review }) {
     return (
         <div
-            className="card text-primary-content my-auto min-h-56 w-full max-w-[30rem] min-w-[30rem] rounded-l-4xl rounded-r-sm pl-4 bg-blend-soft-light"
+            className="card text-primary-content my-auto min-h-56 w-full min-w-[15rem] rounded-l-4xl rounded-r-sm pl-4 bg-blend-soft-light md:max-w-[30rem] md:min-w-[30rem]"
             style={{
                 background: `linear-gradient(to right, var(--color-primary), var(--color-primary)), url("${noise}")`,
             }}
@@ -127,18 +119,12 @@ function ReviewCard({ review }) {
                         <span className="text-sm">{review.credentials}</span>
                     </h2>
                     {review.ig_url && (
-                        <a
-                            className="btn btn-lg btn-primary btn-circle btn-ghost self-start p-1"
-                            href={review.ig_url}
-                            target="_blank"
-                        >
+                        <a className="btn btn-lg btn-primary btn-circle btn-ghost self-start p-1" href={review.ig_url} target="_blank">
                             <BsInstagram className="size-7" />
                         </a>
                     )}
                 </div>
-                <span className="h-fit max-h-32 overflow-y-auto whitespace-pre-wrap">
-                    {review.content}
-                </span>
+                <span className="h-fit max-h-32 overflow-y-auto whitespace-pre-wrap">{review.content}</span>
             </div>
         </div>
     );
