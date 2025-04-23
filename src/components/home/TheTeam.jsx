@@ -42,7 +42,7 @@ export default function TheTeam() {
             </dialog>
 
             <div className="flex h-fit w-full flex-col justify-center gap-5 lg:flex-row">
-                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
+                <div className="hidden w-auto grow grid-flow-col gap-3 md:gap-2 lg:grid lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
                     {leftColumn.map((val, index) => (
                         <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
@@ -52,20 +52,39 @@ export default function TheTeam() {
                         className="pointer-events-none w-full select-none"
                         draggable="false"
                         src={text}
-                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. AS passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
+                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. As passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
                     />
                 </div>
-                <div className="grid w-auto grow grid-flow-col gap-3 md:gap-2 lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
+                <div className="hidden w-auto grow grid-flow-col gap-3 md:gap-2 lg:grid lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
                     {rightColumn.map((val, index) => (
                         <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
+                </div>
+
+                <div className="grid w-auto grow grid-flow-col gap-3 lg:hidden">
+                    {leftColumn
+                        .concat(rightColumn)
+                        .filter((x) => x.mobileRow === 1)
+                        .sort((a, b) => a.mobileColumn - b.mobileColumn)
+                        .map((val, index) => (
+                            <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
+                        ))}
+                </div>
+                <div className="grid w-auto grow grid-flow-col gap-3 lg:hidden">
+                    {leftColumn
+                        .concat(rightColumn)
+                        .filter((x) => x.mobileRow === 2)
+                        .sort((a, b) => a.mobileColumn - b.mobileColumn)
+                        .map((val, index) => (
+                            <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
+                        ))}
                 </div>
                 <div className="h-fit w-full shrink lg:hidden">
                     <img
                         className="pointer-events-none mx-auto select-none"
                         draggable="false"
                         src={text}
-                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. AS passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
+                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. As passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
                     />
                 </div>
             </div>
@@ -121,20 +140,20 @@ function TeamModal({ currentTeam }) {
                             <p className="text-secondary text-sm font-semibold tracking-widest uppercase md:text-xl">{role}</p>
                         </div>
                         <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-4/5 md:text-2xl">
-                            <div className="flex w-full justify-between">
-                                <p className="h-fit w-1/4">Bio:</p>
-                                <p className="h-fit w-3/4 text-justify whitespace-pre-line md:text-lg">
+                            <div className="flex w-full justify-between gap-3">
+                                <p className="h-fit w-fit">Bio:</p>
+                                <p className="h-fit w-full text-left whitespace-pre-line md:text-lg">
                                     <img
-                                        className="float-right mb-1 ml-4 aspect-[500/543] h-4/12 w-2/5 rounded-3xl md:mb-4 md:ml-8 md:h-fit"
+                                        className="float-right mb-1 ml-4 aspect-[500/543] h-4/12 w-6/12 rounded-3xl md:mb-4 md:ml-8 md:h-fit"
                                         src={pic}
                                         alt={currentTeam.name}
                                     />
                                     {bio}
                                 </p>
                             </div>
-                            <div className="flex w-full justify-between">
-                                <p className="w-1/4">Favorite film:</p>
-                                <div className="flex grow justify-between">
+                            <div className="flex w-full justify-between gap-4">
+                                <p className="w-fit text-nowrap">Favorite film:</p>
+                                <div className="flex w-full grow justify-between">
                                     <span
                                         className={`text-secondary w-fit text-left ${currentTeam.filmLabel ? "tooltip tooltip-top" : ""}`}
                                         data-tip={currentTeam.filmLabel}
