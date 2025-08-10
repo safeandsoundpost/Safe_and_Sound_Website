@@ -78,6 +78,13 @@ const reviews = [
             "I had a great time working with Safe & Sound on my thesis project. They made me feel welcomed and comfortable in a studio setting. They were willing to experiment and bring my film to a higher level. Because of them, it was awarded best sound design for a festival.",
         ig_url: "https://www.instagram.com/maxine_lemieux/",
     },
+    {
+        name: "Bryn Macaully",
+        credentials: "",
+        content:
+            "Choose Safe & Sound and you'll be glad you did!! Thom and Jesse are attentive, collaborative and a dream to work with. These two are major supporters of creators at every level, from indie to network to major studios. They are great communicators, true lovers of storytelling, and also really fun to be around. I will come back to them for everything I do!",
+        ig_url: "",
+    },
 ];
 
 export default function Reviews() {

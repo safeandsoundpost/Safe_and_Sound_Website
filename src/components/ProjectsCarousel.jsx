@@ -73,6 +73,45 @@ const projectDetails = [
         producer: "Maxine Lemieux",
         ytsrc: "https://www.youtube.com/watch?v=WFYjwC8b6DU",
     },
+    {
+        poster: "after-you",
+        title: "After You",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt27483726/",
+    },
+    {
+        poster: "cowscomehome",
+        title: "Cows Come Home",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt34625419/?ref_=fn_all_ttl_1",
+    },
+    {
+        poster: "Dontberude",
+        title: "Don’t Be Rude",
+        released: "2025",
+        director: "Jessica Hof",
+        producer: "Enrique Baniqued",
+        imdb: "https://www.imdb.com/title/tt37091078/?ref_=ext_shr_lnk",
+    },
+    {
+        poster: "EyesWideOpen",
+        title: "Eyes Wide Open",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt36847174/?ref_=fn_all_ttl_7",
+    },
+    {
+        poster: "tgs_poster_portrait",
+        title: "The Tough, The Gentle, and The Strong",
+        released: "2025",
+        director: "Richard Dang",
+        producer: "Connie Wang",
+    },
 ];
 
 export function ProjectsCarousel(props) {

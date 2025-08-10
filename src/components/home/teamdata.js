@@ -101,8 +101,9 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         mobileRow: 2,
         role: "Sound Designer",
         pic: "fardin",
-        bio: "Fardin Mullan is a Sound Specialist dedicated to crafting powerful, high-fidelity audio experiences—whether through headphones, home theatres, or sound quality (SQ) car systems. With a passion for immersive sound and a deep technical foundation, he ensures that every project reaches its full sonic potential. His expertise spans the entire spectrum of audio production, from location sound and ambience recording to audio post-production and DSP tuning. Whether capturing authentic on-set dialogue, designing rich soundscapes, or fine-tuning car audio systems for precise staging, Fardin brings a meticulous approach to every project. Fardin’s journey into sound was fueled by a deep love for movies and music. Experiencing Fanshawe College’s 7.1.4 Dolby Atmos system expanded his fascination with spatial audio, sparking the question: Could Atmos exist in a car? This curiosity led him deeper into DSP tuning and immersive sound design, bridging the gap between cinema-quality audio and precision car audio engineering. His work can be heard in feature films, short films, TV series, and PSAs, collaborating with both independent filmmakers and established production teams. Fardin sees sound as more than just an element of production—it’s a powerful storytelling tool that shapes emotion, atmosphere, and immersion.",
+        bio: "Fardin Mullan is a Sound Specialist dedicated to crafting high-fidelity audio experiences—whether through headphones, home theatres, or sound quality (SQ) car systems. With a passion for immersive sound and a deep technical foundation, he ensures every project reaches its full sonic potential. His expertise spans every facet of audio production, from location sound and ambience recording to post-production and DSP tuning. Whether capturing authentic dialogue, designing soundscapes, or fine-tuning car audio for precise staging, Fardin brings a meticulous approach to every project. His journey into sound was sparked by a deep love for movies and music. Fardin’s work can be heard in feature films, shorts, TV series, and PSAs. He sees sound as more than just an element of production—it’s a storytelling tool that shapes emotion, atmosphere, and immersion.",
         favFilm: "The Lion King (1994)",
+        imdb: "https://www.imdb.com/name/nm16290721/",
         filmLabel: "The king has returned 🦁",
     },
     {
@@ -115,7 +116,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         pic: "vanessa",
         bio: "Graduating from the Broadcast Television/Videography program at Humber College in 2016, at 19 years old, Vanessa acquired a full time position at a post production facility where she worked for 6 and a half years as a mastering/QC technician. She worked 2 and a half years at a different facility as a mastering/QC technician and is now using her skill set in the world of audio engineering, bringing creative flair into the projects she works on, something she was missing in the world of mastering. She has a passion for sound design and editing aiming for an immersive and moving experience for audiences. Known for her attention to detail, she takes the time and effort to meet the highest of standards and quality every project deserves.",
         favFilm: "Shaun Of The Dead",
-        filmLabel: "🏏🍺🧟‍♂️"
+        filmLabel: "🏏🍺🧟‍♂️",
     },
     {
         name: "Jonah Gillespie",
@@ -129,6 +130,20 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         bio: `Jonah Gillespie is a Dialog Editor and Foley Artist with a keen ear for the unseen rhythms of film. Over 3+ years in the industry, he’s shaped the sonic landscapes of projects like the offbeat comedy "Operation Taco Gary", "Racewalkers", and the road-trip thriller "Drive Back Home".  A Burlington native, Jonah originally studied music—a background that informs his meticulous approach to sound. Whether cleaning up dialogue for clarity or crafting Foley that feels alive, he treats every film like a composition, balancing technical precision with instinctive storytelling.  When he’s not syncing footsteps or chasing the perfect room tone, you’ll find him Rock Climbing or Opening Pokémon Packs on his phone.`,
         favFilm: "Scott Pilgrim vs The World",
         filmLabel: "👦👊🎸",
+    },
+    {
+        name: "Adlyn Gilbert",
+        column: 2,
+        order: 4,
+        mobileColumn: 5,
+        mobileRow: 2,
+        role: "Foley Artist / Dialogue Editor",
+        pic: "adlyn",
+        // eslint-disable-next-line quotes
+        bio: `Adlyn Gilbert (she/her) is an emerging creative currently studying Film Production in Thunder Bay, Ontario. Originally from Toronto, she has directed and produced commissioned work for TIFF Next Wave and won Best-in-Show at the Femme Fatale Film Festival. She enjoys telling stories that blend comedy and expressionism utilizing mixed mediums. This summer, Adlyn is working for various brands as a promotional content editor while attempting to ignore her upcoming thesis film. When she’s not buried in premiere timelines, she can be found on her bike or sharpening her (already deadly) Catan skills.`,
+        favFilm: "2001: A Space Odyssey",
+        filmLabel: "👨🏻‍🚀🚀🌌",
+        imdb: "https://www.imdb.com/name/nm17142244/bio/?ref_=ext_shr_lnk",
     },
 ];
 
