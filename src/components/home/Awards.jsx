@@ -31,7 +31,7 @@ export default function Awards() {
     ];
 
     return (
-        <section id="awards" className="relative py-10">
+        <section id="awards" className="relative pt-10">
             <h2 className="text-secondary my-10 text-center text-4xl font-bold tracking-widest uppercase">Awards</h2>
             <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-center md:gap-8">
                 {awardsList.map((award, index) => (

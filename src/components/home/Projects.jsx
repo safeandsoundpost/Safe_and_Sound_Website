@@ -17,7 +17,7 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="relative w-full py-10">
+        <section id="projects" className="relative w-full">
             <h2 className="w-full py-10 text-center text-4xl font-bold uppercase tracking-widest text-secondary">
                 Projects
             </h2>

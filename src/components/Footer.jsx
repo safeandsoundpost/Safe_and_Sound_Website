@@ -3,7 +3,7 @@ import footerCheckers from "../assets/images/footer/checkersGraphic.png";
 
 export default function Footer() {
     return (
-        <footer className="relative z-50 flex max-w-full items-center justify-between align-middle select-none">
+        <footer className="relative z-50 flex max-w-full items-center justify-between align-middle select-none pb-3">
             <div className="w-full px-2 md:w-[15%] md:px-7">
                 <ul className="text-[.5em] md:text-base">
                     <li className="my-0 md:my-2">

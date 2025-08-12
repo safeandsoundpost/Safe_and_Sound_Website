@@ -118,19 +118,19 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         favFilm: "Shaun Of The Dead",
         filmLabel: "🏏🍺🧟‍♂️",
     },
-    {
-        name: "Jonah Gillespie",
-        column: 2,
-        order: 4,
-        mobileColumn: 5,
-        mobileRow: 2,
-        role: "Foley Artist / Dialogue Editor",
-        pic: "jonah",
-        // eslint-disable-next-line quotes
-        bio: `Jonah Gillespie is a Dialog Editor and Foley Artist with a keen ear for the unseen rhythms of film. Over 3+ years in the industry, he’s shaped the sonic landscapes of projects like the offbeat comedy "Operation Taco Gary", "Racewalkers", and the road-trip thriller "Drive Back Home".  A Burlington native, Jonah originally studied music—a background that informs his meticulous approach to sound. Whether cleaning up dialogue for clarity or crafting Foley that feels alive, he treats every film like a composition, balancing technical precision with instinctive storytelling.  When he’s not syncing footsteps or chasing the perfect room tone, you’ll find him Rock Climbing or Opening Pokémon Packs on his phone.`,
-        favFilm: "Scott Pilgrim vs The World",
-        filmLabel: "👦👊🎸",
-    },
+    // {
+    //     name: "Jonah Gillespie",
+    //     column: 2,
+    //     order: 4,
+    //     mobileColumn: 5,
+    //     mobileRow: 2,
+    //     role: "Foley Artist / Dialogue Editor",
+    //     pic: "jonah",
+    //     // eslint-disable-next-line quotes
+    //     bio: `Jonah Gillespie is a Dialog Editor and Foley Artist with a keen ear for the unseen rhythms of film. Over 3+ years in the industry, he’s shaped the sonic landscapes of projects like the offbeat comedy "Operation Taco Gary", "Racewalkers", and the road-trip thriller "Drive Back Home".  A Burlington native, Jonah originally studied music—a background that informs his meticulous approach to sound. Whether cleaning up dialogue for clarity or crafting Foley that feels alive, he treats every film like a composition, balancing technical precision with instinctive storytelling.  When he’s not syncing footsteps or chasing the perfect room tone, you’ll find him Rock Climbing or Opening Pokémon Packs on his phone.`,
+    //     favFilm: "Scott Pilgrim vs The World",
+    //     filmLabel: "👦👊🎸",
+    // },
     {
         name: "Adlyn Gilbert",
         column: 2,

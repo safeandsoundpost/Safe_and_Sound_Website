@@ -39,10 +39,11 @@ const reviews = [
         ig_url: "https://www.instagram.com/lalalindseym/",
     },
     {
-        name: "Erik Berg",
-        credentials: "Director of First Born, Local Water, Mother Daughter",
+        name: "Bryn McAuley",
+        credentials: "",
         content:
-            "Working with Safe and Sound is an absolute joy. They are kind, collaborative, and so talented. The team elevated the film through their brilliant sound design and I can’t wait to work with them again.",
+            "Choose Safe & Sound and you'll be glad you did!! Thom and Jesse are attentive, collaborative and a dream to work with. These two are major supporters of creators at every level, from indie to network to major studios. They are great communicators, true lovers of storytelling, and also really fun to be around. I will come back to them for everything I do!",
+        ig_url: "",
     },
     {
         name: "Jade Yurich",
@@ -79,19 +80,18 @@ const reviews = [
         ig_url: "https://www.instagram.com/maxine_lemieux/",
     },
     {
-        name: "Bryn Macaully",
-        credentials: "",
+        name: "Erik Berg",
+        credentials: "Director of First Born, Local Water, Mother Daughter",
         content:
-            "Choose Safe & Sound and you'll be glad you did!! Thom and Jesse are attentive, collaborative and a dream to work with. These two are major supporters of creators at every level, from indie to network to major studios. They are great communicators, true lovers of storytelling, and also really fun to be around. I will come back to them for everything I do!",
-        ig_url: "",
+            "Working with Safe and Sound is an absolute joy. They are kind, collaborative, and so talented. The team elevated the film through their brilliant sound design and I can’t wait to work with them again.",
     },
 ];
 
 export default function Reviews() {
     return (
-        <section id="reviews" className="m-auto flex w-full flex-col items-center justify-center gap-10 py-10 md:m-auto md:w-9/12 lg:w-10/12 xl:w-full">
-            <h2 className="text-secondary my-10 text-center text-4xl font-bold tracking-widest uppercase">Reviews</h2>
-            <div className="rounded-box inline-flex max-w-full space-x-8 overflow-x-scroll scroll-smooth p-4">
+        <section id="reviews" className="m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 md:m-auto md:w-9/12 lg:w-10/12 xl:w-full">
+            <h2 className="text-secondary pt-10 text-center text-4xl font-bold tracking-widest uppercase">Reviews</h2>
+            <div className="rounded-box inline-flex max-w-full space-x-8 overflow-x-scroll scroll-smooth px-4">
                 {reviews
                     .reduce((prev, curr, i) => {
                         if (i % 3 === 0) prev.push([curr]);
