@@ -25,22 +25,19 @@ export default function Clients() {
     const imgRefs = useRef([]);
 
     useEffect(() => {
-        if (document.width < 768) return;
-
         const handleMouseMove = (e) => {
             imgRefs.current.forEach((img) => {
                 if (!img) return;
+                if (document.width < 768) return;
 
                 const rect = img.getBoundingClientRect();
                 const imgCenterX = rect.left + rect.width / 2;
                 const imgCenterY = rect.top + rect.height / 2;
 
-                // Get offset from center (-1 to 1 range)
                 const offsetX = (e.clientX - imgCenterX) / (rect.width / 2);
                 const offsetY = (e.clientY - imgCenterY) / (rect.height / 2);
 
-                // Limit the tilt
-                const rotateX = offsetY * -10; // Invert so moving down tilts back
+                const rotateX = offsetY * -10;
                 const rotateY = offsetX * 10;
 
                 img.style.transform = `rotateX(${rotateX * 0.2}deg) rotateY(${rotateY * 0.2}deg)`;

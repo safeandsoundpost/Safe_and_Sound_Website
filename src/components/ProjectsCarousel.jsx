@@ -129,6 +129,14 @@ export function ProjectsCarousel(props) {
         }),
     ]);
 
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
     useEffect(() => {
         const img_paths = Object.values(
             import.meta.glob("@projects/*.webp", {
@@ -137,9 +145,8 @@ export function ProjectsCarousel(props) {
             }),
         ).map((x) => x.default);
 
-        // console.log(img_paths);
-
-        projectDetails.forEach((project) => {
+        const projects = shuffleArray(projectDetails);
+        projects.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.poster));
             if (!img) {
                 console.error(`Image not found for ${project.title}`);
@@ -149,7 +156,7 @@ export function ProjectsCarousel(props) {
             project.posterSrc = img;
         });
 
-        const img = projectDetails.map((project) => ({
+        const img = projects.map((project) => ({
             poster: project.poster,
             posterSrc: project.posterSrc,
         }));
