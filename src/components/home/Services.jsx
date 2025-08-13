@@ -17,7 +17,7 @@ export default function Services() {
     const [, setUrlParams] = useSearchParams();
 
     return (
-        <section id="services" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 align-middle pt-5">
+        <section id="services" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 align-middle">
             <h2 className="text-secondary w-full pt-10 text-center text-4xl font-bold tracking-widest uppercase">services</h2>
             {/* <div className="text-primary flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle max-md:mb-16 md:flex-row md:gap-5 lg:w-10/12 xl:w-full"></div> */}
             {/* <div className="text-primary mb-16 grid w-full grid-flow-col-dense items-center justify-center gap-12 align-middle md:mb-0 md:gap-5"> */}
@@ -144,7 +144,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription, message }) {
             </div>
 
             {/* <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow"> */}
-            <div className="hidden h-full min-w-[15%] grid-rows-1 content-stretch gap-5 text-[#f3f3f4] md:grid md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow">
+            <div className="hidden h-full min-w-[15%] grid-rows-1 content-stretch gap-5 text-[#f3f3f4] md:grid md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] xl:w-[18%] 2xl:w-[17%] 2xl:grow">
                 <div className="hidden h-full w-1/2 flex-col gap-5 self-stretch md:flex md:w-full">
                     <div className="flex h-auto items-end align-middle text-3xl md:min-h-40 md:text-4xl">
                         <h3 className="h-fit w-full text-left font-bold whitespace-pre uppercase italic">{title}</h3>
@@ -152,7 +152,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription, message }) {
                     <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">
                         <img className="select-none" draggable="false" src={images["white-line.png"]} alt="Separator" />
                     </div>
-                    <p className="h-auto min-h-56 text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:min-h-44 xl:text-base">
+                    <p className="mr-3 h-auto min-h-64 py-1 text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:min-h-80 xl:text-base 2xl:min-h-44">
                         {serviceDescription}
                     </p>
                 </div>
