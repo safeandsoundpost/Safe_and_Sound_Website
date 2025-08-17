@@ -6,6 +6,8 @@ export default {
     theme: {
         extend: {
             screens: {
+                // "3xl": "1900px",
+                "2xl": "1536px",
                 xxxs: "375px",
                 xxs: "425px",
                 xs: "550px",

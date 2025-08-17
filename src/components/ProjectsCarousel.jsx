@@ -73,6 +73,45 @@ const projectDetails = [
         producer: "Maxine Lemieux",
         ytsrc: "https://www.youtube.com/watch?v=WFYjwC8b6DU",
     },
+    {
+        poster: "after-you",
+        title: "After You",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt27483726/",
+    },
+    {
+        poster: "cowscomehome",
+        title: "Cows Come Home",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt34625419/?ref_=fn_all_ttl_1",
+    },
+    {
+        poster: "Dontberude",
+        title: "Don’t Be Rude",
+        released: "2025",
+        director: "Jessica Hof",
+        producer: "Enrique Baniqued",
+        imdb: "https://www.imdb.com/title/tt37091078/?ref_=ext_shr_lnk",
+    },
+    {
+        poster: "EyesWideOpen",
+        title: "Eyes Wide Open",
+        released: "2025",
+        director: "Jade Yurich",
+        producer: "Jade Yurich",
+        imdb: "https://www.imdb.com/title/tt36847174/?ref_=fn_all_ttl_7",
+    },
+    {
+        poster: "tgs_poster_portrait",
+        title: "The Tough, The Gentle, and The Strong",
+        released: "2025",
+        director: "Richard Dang",
+        producer: "Connie Wang",
+    },
 ];
 
 export function ProjectsCarousel(props) {
@@ -90,6 +129,14 @@ export function ProjectsCarousel(props) {
         }),
     ]);
 
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
     useEffect(() => {
         const img_paths = Object.values(
             import.meta.glob("@projects/*.webp", {
@@ -98,9 +145,8 @@ export function ProjectsCarousel(props) {
             }),
         ).map((x) => x.default);
 
-        // console.log(img_paths);
-
-        projectDetails.forEach((project) => {
+        const projects = shuffleArray(projectDetails);
+        projects.forEach((project) => {
             const img = img_paths.find((x) => x.includes(project.poster));
             if (!img) {
                 console.error(`Image not found for ${project.title}`);
@@ -110,7 +156,7 @@ export function ProjectsCarousel(props) {
             project.posterSrc = img;
         });
 
-        const img = projectDetails.map((project) => ({
+        const img = projects.map((project) => ({
             poster: project.poster,
             posterSrc: project.posterSrc,
         }));

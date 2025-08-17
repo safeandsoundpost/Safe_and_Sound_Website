@@ -34,8 +34,8 @@ export default function TheTeam() {
     };
 
     return (
-        <section id="the-team" className="flex w-full flex-col items-center justify-center gap-10 px-5 pt-10 pb-15 align-middle md:px-16 xl:px-5">
-            <h2 className="text-secondary w-full py-0 text-center text-4xl font-bold tracking-widest uppercase md:py-10">who we are</h2>
+        <section id="the-team" className="flex w-full flex-col items-center justify-center gap-10 px-5 pt-5 align-middle md:px-16 xl:px-5">
+            <h2 className="text-secondary w-full py-0 text-center text-4xl font-bold tracking-widest uppercase md:pt-10">who we are</h2>
 
             <dialog ref={modal} className="modal">
                 <TeamModal currentTeam={currentTeam} />

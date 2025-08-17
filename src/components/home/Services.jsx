@@ -17,16 +17,18 @@ export default function Services() {
     const [, setUrlParams] = useSearchParams();
 
     return (
-        <section id="services" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 py-10 align-middle">
-            <h2 className="text-secondary w-full py-10 text-center text-4xl font-bold tracking-widest uppercase">services</h2>
-            <div className="text-primary flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle max-md:mb-16 md:flex-row md:gap-5 lg:w-10/12 xl:w-full">
-                {/* <div className="mb-16 grid w-full grid-flow-col-dense items-center justify-center gap-12 align-middle text-primary md:gap-5 md:mb-0"> */}
+        <section id="services" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 align-middle">
+            <h2 className="text-secondary w-full pt-10 text-center text-4xl font-bold tracking-widest uppercase">services</h2>
+            {/* <div className="text-primary flex w-full flex-col flex-wrap items-center justify-center gap-12 align-middle max-md:mb-16 md:flex-row md:gap-5 lg:w-10/12 xl:w-full"></div> */}
+            {/* <div className="text-primary mb-16 grid w-full grid-flow-col-dense items-center justify-center gap-12 align-middle md:mb-0 md:gap-5"> */}
+            {/* <div className="text-primary mb-16 flex w-full auto-cols-fr  grid-flow-col flex-col items-center justify-center gap-12 align-middle md:mb-0 md:grid md:gap-5 lg:w-10/12 xl:w-full"> */}
+            <div className="text-primary flex w-full flex-col flex-wrap items-center justify-center gap-12 max-md:mb-16 md:flex-row md:gap-5">
                 <ServiceCard
-                    title={"adr /\nv.O rec"}
+                    title={"adr/v.O \nrec & \ndialogue\nediting"}
                     aHref={"#contact"}
                     imgSrc={images["service-1.png"]}
                     serviceDescription={
-                        "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they can try anything. We strive for high quality studio sound while capturing honest performances."
+                        "Subtle breaths, blood curtling screams, and everything in between. We create a safe space for the talent to feel they can try anything. We strive for high quality studio sound while capturing honest performances. Smooth, crisp, and clean dialogue that will enhance any performance."
                     }
                     message={"Booking Inquiry – ADR/VO Recording or Dialogue Editing Services - PROJECT TITLE"}
                 />
@@ -105,48 +107,76 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription, message }) {
     const [, setUrlParams] = useSearchParams();
 
     return (
-        <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow">
-            <div className="flex w-1/2 flex-auto flex-col gap-5 self-stretch md:w-full">
-                <div className="flex h-[2em] items-center align-middle text-5xl md:text-4xl xl:text-5xl">
-                    <h3 className="h-fit w-full text-left font-bold whitespace-pre uppercase italic">{title}</h3>
+        <>
+            <div className="flex flex-col gap-4 md:hidden">
+                <div className="flex h-auto w-full items-center align-middle text-3xl md:min-h-30 md:text-4xl">
+                    <h3 className="h-fit w-full pr-10 text-left font-bold uppercase italic">{title}</h3>
                 </div>
-                <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">
-                    <img
-                        className="select-none"
-                        draggable="false"
-                        // src={images.find((x) => x.includes("white-line"))}
-                        src={images["white-line.png"]}
-                        alt="Separator"
-                    />
+                <div className="flex gap-5">
+                    <div className="flex w-1/2 flex-auto flex-col gap-5 self-stretch md:w-full">
+                        <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">
+                            <img className="select-none" draggable="false" src={images["white-line.png"]} alt="Separator" />
+                        </div>
+                        <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:text-base">{serviceDescription}</p>
+                    </div>
+                    <div className="flex w-1/2 flex-col gap-5 self-end md:w-full">
+                        <img draggable="false" src={imgSrc} className="select-none" alt={title} />
+                        <div className="flex flex-col md:hidden">
+                            <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
+                        </div>
+                    </div>
                 </div>
-                <p className="text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:text-base">{serviceDescription}</p>
-            </div>
-            <div className="flex w-1/2 flex-col gap-5 self-end md:w-full">
-                <img draggable="false" src={imgSrc} className="select-none" alt={title} />
-                <div className="flex flex-col md:hidden">
-                    <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
-                </div>
-                <a
-                    href={aHref}
-                    onClick={() => {
-                        setUrlParams({ subject: message ?? "" });
-                    }}
-                    className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold tracking-widest text-black uppercase hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-2xl"
-                >
-                    book now
-                </a>
-                <div className="flex flex-col max-md:hidden">
-                    <img
-                        className="select-none"
-                        draggable="false"
-                        // src={generalImages.find((x) => x.includes("code.png"))}
-                        src={images["code.png"]}
-                        alt="Barcode"
-                    />
-                    <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
+                <div className="flex w-full">
+                    <a
+                        href={aHref}
+                        onClick={() => {
+                            setUrlParams({ subject: message ?? "" });
+                        }}
+                        className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold tracking-widest text-black uppercase hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-2xl"
+                    >
+                        book now
+                    </a>
+                    <div className="flex flex-col max-md:hidden">
+                        <img className="select-none" draggable="false" src={images["code.png"]} alt="Barcode" />
+                        <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {/* <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow"> */}
+            <div className="hidden h-full min-w-[15%] grid-rows-1 content-stretch gap-5 text-[#f3f3f4] md:grid md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] xl:w-[18%] 2xl:w-[17%] 2xl:grow">
+                <div className="hidden h-full w-1/2 flex-col gap-5 self-stretch md:flex md:w-full">
+                    <div className="flex h-auto items-end align-middle text-3xl md:min-h-40 md:text-4xl">
+                        <h3 className="h-fit w-full text-left font-bold whitespace-pre uppercase italic">{title}</h3>
+                    </div>
+                    <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">
+                        <img className="select-none" draggable="false" src={images["white-line.png"]} alt="Separator" />
+                    </div>
+                    <p className="mr-3 h-auto min-h-64 py-1 text-justify text-xs leading-[1.2em] tracking-wider md:text-sm md:leading-5 xl:min-h-80 xl:text-base 2xl:min-h-44">
+                        {serviceDescription}
+                    </p>
+                </div>
+                <div className="hidden w-1/2 flex-col gap-5 self-end md:flex md:w-full">
+                    <img draggable="false" src={imgSrc} className="select-none" alt={title} />
+                    <div className="flex flex-col md:hidden">
+                        <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
+                    </div>
+                    <a
+                        href={aHref}
+                        onClick={() => {
+                            setUrlParams({ subject: message ?? "" });
+                        }}
+                        className="h-fit w-full rounded-full bg-[#f3f3f4] py-1 text-center text-lg font-bold tracking-widest text-black uppercase hover:bg-black hover:text-[#f3f3f4] md:h-full md:py-2 md:text-base xl:text-2xl"
+                    >
+                        book now
+                    </a>
+                    <div className="flex flex-col max-md:hidden">
+                        <img className="select-none" draggable="false" src={images["code.png"]} alt="Barcode" />
+                        <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&sØundpost</span>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
 
