@@ -77,7 +77,7 @@ export default function Banner() {
                             <iframe
                                 className="absolute top-0 left-0 h-full w-full"
                                 title="Safe & Sound Demo Reel 2024"
-                                src="https://player.vimeo.com/video/1108930922?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1"
+                                src="https://player.vimeo.com/video/1108930922?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp"
                                 width="640"
                                 height="360"
                                 frameBorder="0"
