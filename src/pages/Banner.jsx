@@ -80,8 +80,6 @@ export default function Banner() {
                                 src="https://player.vimeo.com/video/1108930922?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp"
                                 width="640"
                                 height="360"
-                                frameBorder="0"
-                                allowfullscreen
                             ></iframe>
                         </div>
                     </div>

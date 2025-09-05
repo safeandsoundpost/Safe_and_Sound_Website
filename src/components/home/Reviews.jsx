@@ -43,7 +43,7 @@ const reviews = [
         credentials: "",
         content:
             "Choose Safe & Sound and you'll be glad you did!! Thom and Jesse are attentive, collaborative and a dream to work with. These two are major supporters of creators at every level, from indie to network to major studios. They are great communicators, true lovers of storytelling, and also really fun to be around. I will come back to them for everything I do!",
-        ig_url: "",
+        ig_url: "https://www.instagram.com/brynmcauley/",
     },
     {
         name: "Jade Yurich",
