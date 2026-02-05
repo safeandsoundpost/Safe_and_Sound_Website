@@ -21,7 +21,7 @@ export default function NavBar({ currentSection }) {
                 </div>
             </div>
 
-            <div className="drawer-side md:h-[100vh] md:overflow-hidden!">
+            <div className="drawer-side md:h-[100vh] md:overflow-hidden! lg:pb-2 lg:h-fit lg:max-h-fit">
                 <label htmlFor="side-menu" aria-label="close sidebar" className="drawer-overlay md:hidden"></label>
                 <ul className="flex flex-col gap-5 tracking-widest max-md:h-full max-md:bg-black max-md:p-5 md:gap-5">
                     <li className="h-fit py-1.5 select-none">
