@@ -3,6 +3,7 @@ import logoMobile from "/images/logo-mobile.png";
 import Link from "./Link";
 import PropTypes from "prop-types";
 import awardsSymbol from "../assets/images/symbols/awards-symbol.png";
+import awardsSymbolGold from "../assets/images/symbols/awards-symbol-gold.png";
 import projectSymbol from "../assets/images/symbols/projects-star.png";
 import { RiStarFill } from "react-icons/ri";
 import burgerMenu from "../assets/icons/burger.svg";
@@ -83,7 +84,11 @@ export default function NavBar({ currentSection }) {
                             currentSection={currentSection}
                         >
                             awards
-                            <img className="h-5 md:h-6" src={awardsSymbol} alt="Awards decorator" />
+                            <img
+                                className="h-5 md:h-6 transition-all duration-300"
+                                src={currentSection === 'awards' ? awardsSymbolGold : awardsSymbol}
+                                alt="Awards decorator"
+                            />
                         </Link>
                     </li>
                     <li className="mr-4 flex max-h-8 min-h-8 items-center">

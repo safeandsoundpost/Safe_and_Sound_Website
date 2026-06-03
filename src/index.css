@@ -2,6 +2,7 @@
 @import "tailwindcss-animated";
 @plugin "daisyui";
 
+
 @config '../tailwind.config.js';
 
 /*

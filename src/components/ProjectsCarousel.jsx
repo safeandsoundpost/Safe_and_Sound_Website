@@ -7,9 +7,11 @@ const projectDetails = [
     {
         poster: "YouAreHere",
         title: "You Are Here",
-        released: "TBA",
+        released: "2025",
         director: "Spencer Lackey",
         producer: "Ryan Vergara",
+        ytsrc: "https://www.youtube.com/watch?v=yZwAbJZTie4",
+        imdb: "https://www.imdb.com/title/tt35303589/",
     },
     {
         poster: "MTA",
@@ -18,6 +20,7 @@ const projectDetails = [
         director: "Janet-Rose Nguyen",
         producer: "Connie Wang and Janet-Rose Nguyen",
         imdb: "https://m.imdb.com/title/tt33594182/?ref_=nm_flmg_job_5_unrel_t_1",
+        ytsrc: "https://www.youtube.com/watch?v=Q9CZ9K29hoE",
     },
     {
         poster: "wykykPosterV2",
@@ -26,12 +29,15 @@ const projectDetails = [
         director: "Katie Uhlmann",
         producer: "Katie Uhlmann, Nick Hendrik",
         imdb: "https://www.imdb.com/title/tt28481154/?ref_=nm_flmg_unrel_1_prd",
+        trailer: "https://www.youtube.com/watch?v=qgPQLg9M9hE",
     },
     {
         poster: "facesPoster",
         title: "Faces",
         released: "TBA",
         director: "Paul Persic",
+        producer: "Eric Tomj",
+        ytsrc: "https://vimeo.com/858918084/984e5e1dea",
     },
     {
         poster: "diabolikaPosterBlackDone",
@@ -40,6 +46,7 @@ const projectDetails = [
         director: "Dexter Wilson",
         producer: "Randy Singh, Dexter Wilson",
         imdb: "https://www.imdb.com/title/tt22899096/?ref_=fn_al_tt_1",
+        ytsrc: "https://www.youtube.com/watch?v=RxxxMKE_o9k&t=64s",
     },
     {
         poster: "figuresAlternatePoster",
@@ -48,6 +55,7 @@ const projectDetails = [
         director: "Jamie Hegland, Jade Yurich",
         producer: "Jamie Hegland, Jade Yurich",
         imdb: "https://www.imdb.com/title/tt14796714/?ref_=nm_knf_c_1",
+        ytsrc: "https://www.youtube.com/watch?v=lcStRnhHeAo",
     },
     {
         poster: "taxiAlongTheBridgePoster",
@@ -78,16 +86,19 @@ const projectDetails = [
         title: "After You",
         released: "2025",
         director: "Jade Yurich",
-        producer: "Jade Yurich",
+        producer: "Angelica Falco (Executive Producer), Jade Leo Yurich (Line Producer)",
         imdb: "https://www.imdb.com/title/tt27483726/",
+        ytsrc: "https://www.youtube.com/watch?v=4wNN-vewgpI",
     },
     {
         poster: "cowscomehome",
         title: "Cows Come Home",
         released: "2025",
         director: "Katie Uhlmann",
-        producer: "Katie Uhlmann, Lindsay Middleton",
+        producer: "David Carruthers (Executive Producer), Keri Ferencz (Executive Producer), Lindsey Middleton (Executive Producer), Katie Uhlmann (Executive Producer)",
         imdb: "https://www.imdb.com/title/tt34625419/?ref_=fn_all_ttl_1",
+        ytsrc: "https://tv1.bell.ca/fibetv1/shows/cows-come-home",
+        website: "https://cowscomehome.ca/",
     },
     {
         poster: "Dontberude",
@@ -102,7 +113,7 @@ const projectDetails = [
         title: "Eyes Wide Open",
         released: "2025",
         director: "Jade Yurich",
-        producer: "Jade Yurich",
+        producer: "Joseph Claude Dubois (Executive Producer), Ruban Singh (Associate Producer), Jade Leo Yurich (Producer)",
         imdb: "https://www.imdb.com/title/tt36847174/?ref_=fn_all_ttl_7",
     },
     {
@@ -111,55 +122,113 @@ const projectDetails = [
         released: "2025",
         director: "Richard Dang",
         producer: "Connie Wang",
+        ytsrc: "https://www.youtube.com/watch?v=ofyil4Fa33o&t=1s",
     },
     {
         poster: "burdened",
         title: "Burdened",
         released: "2025",
-        director: "",
-        producer: "",
+        director: "Conor Forrest",
+        producer: "Ryan Bannon (Executive Producer), Meaghan Brown (Associate Producer), Devon Codrington (Producer), Christopher Forrest (Executive Producer), Conor Forrest (Executive Producer), Käroli Grenman (Associate Producer), Arteen Khalatbari (Executive Producer), Sandra Landolt (Executive Producer), Stacey McInnes (Associate Producer), Alex Melichar (Executive Producer), Paul Persic (Producer), Kelly Smith (Associate Producer)",
+        imdb: "https://www.imdb.com/title/tt36374220/",
     },
     {
         poster: "dimes",
         title: "Dimes",
         released: "2025",
-        director: "",
+        director: "Paul Persic",
         producer: "",
     },
     {
         poster: "lichun",
         title: "Lichun",
         released: "2025",
-        director: "",
-        producer: "",
+        director: "Paul Persic",
+        producer: "Devon Codrington",
+        imdb: "https://www.imdb.com/title/tt37835589/",
     },
     {
         poster: "noodles",
         title: "Noodles",
         released: "2025",
-        director: "",
-        producer: "",
+        director: "Paul Persic",
+        producer: "Devon Codrington, Tristen Huang, Paul Persic",
+        imdb: "https://www.imdb.com/title/tt37381235/",
     },
     {
         poster: "these-triggas",
         title: "These Triggas",
         released: "2025",
-        director: "",
-        producer: "",
+        director: "Cory Bowles",
+        producer: "Matthew Chenuz, Devon Codrington, Lex Emanuel, Anthony Q. Farrell, Moné Flowers",
+        imdb: "https://www.imdb.com/title/tt36104189/",
+        ytsrc: "https://www.youtube.com/@TheseTriggas",
     },
     {
         poster: "trapped",
         title: "Trapped",
         released: "2025",
-        director: "",
-        producer: "",
+        director: "Paul Persic",
+        producer: "Devon Codrington, Lex Emanuel, Paul Persic",
+        imdb: "https://www.imdb.com/title/tt37364469/",
     },
 ];
 
+function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function useResolvedImages() {
+    const [images, setImages] = useState([]);
+    useEffect(() => {
+        const img_paths = Object.values(
+            import.meta.glob("@projects/*.webp", { eager: true, query: "?url" }),
+        ).map((x) => x.default);
+
+        const resolved = projectDetails.flatMap((project) => {
+            const src = img_paths.find((x) => x.includes(project.poster));
+            if (!src) return [];
+            return [{ ...project, posterSrc: src }];
+        });
+
+        setImages(shuffleArray(resolved));
+    }, []);
+    return images;
+}
+
+export function ProjectsCollage({ onClick }) {
+    const images = useResolvedImages();
+
+    return (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 w-full md:ml-auto md:w-11/12 xl:ml-0 xl:w-full">
+            {images.map((img, i) => (
+                <div
+                    key={i}
+                    className="cursor-pointer border-2 border-primary p-2 overflow-hidden"
+                    onClick={() => onClick({ project: img, image: { posterSrc: img.posterSrc, poster: img.posterSrc } })}
+                >
+                    <img
+                        draggable="false"
+                        className="aspect-[12/16] w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105 select-none"
+                        src={img.posterSrc}
+                        alt={img.title}
+                    />
+                </div>
+            ))}
+        </div>
+    );
+}
+
+ProjectsCollage.propTypes = {
+    onClick: PropTypes.func,
+};
+
 export function ProjectsCarousel(props) {
-    /**
-     * @type {[{ poster: string, posterSrc: string } | null, React.Dispatch<React.SetStateAction<{ poster: string, posterSrc: string }>>]}
-     */
     const [images, setImages] = useState([]);
 
     const [emblaRef] = useEmblaCarousel({ loop: true }, [
@@ -171,14 +240,6 @@ export function ProjectsCarousel(props) {
         }),
     ]);
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
     useEffect(() => {
         const img_paths = Object.values(
             import.meta.glob("@projects/*.webp", {
@@ -187,22 +248,16 @@ export function ProjectsCarousel(props) {
             }),
         ).map((x) => x.default);
 
-        const projects = shuffleArray(projectDetails);
-        projects.forEach((project) => {
-            const img = img_paths.find((x) => x.includes(project.poster));
-            if (!img) {
+        const resolved = projectDetails.flatMap((project) => {
+            const src = img_paths.find((x) => x.includes(project.poster));
+            if (!src) {
                 console.error(`Image not found for ${project.title}`);
-                return;
+                return [];
             }
-            project.poster = img;
-            project.posterSrc = img;
+            return [{ ...project, posterSrc: src }];
         });
 
-        const img = projects.map((project) => ({
-            poster: project.poster,
-            posterSrc: project.posterSrc,
-        }));
-        setImages(img);
+        setImages(shuffleArray(resolved));
     }, []);
 
     return (
@@ -216,7 +271,7 @@ export function ProjectsCarousel(props) {
                                 key={i}
                                 onClick={() => {
                                     props.onClick({
-                                        project: projectDetails[i],
+                                        project: x,
                                         image: x,
                                     });
                                 }}

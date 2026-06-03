@@ -3,6 +3,7 @@ import awardsDecoration from "../../assets/images/symbols/awards.png";
 
 export default function Awards() {
     const awardsList = [
+        { event: "These Triggas", category: "CSA Nomination for Best Web Program or Series" },
         {
             event: "San Francisco Arthouse Short Festival",
             category: "Best Sound Design",
@@ -27,15 +28,27 @@ export default function Awards() {
         { event: "Independent Shorts Awards", category: "Best Sound Design" },
         { event: "Independent Shorts Awards", category: "Best Original Score" },
         { event: "Cannes Shorts", category: "Best Sound Design" },
-        { event: "These Triggas", category: "CSA Nomination for Best Web Program or Series" },
     ];
+
+    const csaWin = {
+        event: "Cows Come Home",
+        category: "CSA Winner for Best Web Program or Series, Fiction",
+        gold: true,
+    };
 
     return (
         <section id="awards" className="relative pt-10">
             <h2 className="text-secondary my-10 text-center text-4xl font-bold tracking-widest uppercase">Awards</h2>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-center md:gap-8">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="col-span-2 flex items-center justify-center gap-4 rounded-sm border border-gray-200 p-4 shadow-lg md:min-h-[10rem]">
+                    <img src="/images/csa-logo.png" alt="2026 Canadian Screen Awards" className="w-1/2 object-contain" />
+                    <div className="flex w-1/2 flex-col items-center justify-center space-y-2">
+                        <h3 className="text-center text-sm font-semibold md:text-xl">{csaWin.event}</h3>
+                        <p className="text-center text-xs italic text-yellow-400 md:text-base">{csaWin.category}</p>
+                    </div>
+                </div>
                 {awardsList.map((award, index) => (
-                    <AwardCard key={index} title={award.event} category={award.category} />
+                    <AwardCard key={index} title={award.event} category={award.category} winner={award.winner} gold={award.gold} />
                 ))}
             </div>
             <img
@@ -47,11 +60,12 @@ export default function Awards() {
     );
 }
 
-function AwardCard({ title, category }) {
+function AwardCard({ title, category, winner, gold }) {
     return (
-        <div className="flex w-full flex-col items-center justify-center space-y-2 rounded-sm border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:min-h-[10rem] md:w-1/3 lg:w-1/4 xl:w-1/5">
+        <div className="flex w-full flex-col items-center justify-center space-y-2 rounded-sm border border-gray-200 p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl md:min-h-[10rem]">
             <h3 className="text-center text-sm font-semibold md:text-xl">{title}</h3>
-            <p className="text-secondary text-center text-xs italic md:text-base">{category}</p>
+            <p className={`text-center text-xs italic md:text-base ${gold ? "text-yellow-400" : "text-secondary"}`}>{category}</p>
+            {winner && <p className="text-center text-xs text-gray-400 md:text-sm">{winner}</p>}
         </div>
     );
 }
@@ -59,4 +73,6 @@ function AwardCard({ title, category }) {
 AwardCard.propTypes = {
     title: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
+    winner: PropTypes.string,
+    gold: PropTypes.bool,
 };

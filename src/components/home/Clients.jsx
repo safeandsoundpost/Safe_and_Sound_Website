@@ -47,6 +47,23 @@ const client_list = [
         tooltip: "WYF",
         url: "https://www.jadeyurichfilms.com/",
     },
+    {
+        name: "QUIP",
+        logo: "quip-logo-3x.webp",
+        caption: "QUIP Logo.",
+        tooltip: "QUIP",
+        size: "xl",
+        url: "https://www.queerinpost.ca/",
+        raw: true,
+    },
+    {
+        name: "Canadian Film Centre",
+        logo: "cfc-logo.png",
+        caption: "Canadian Film Centre Logo.",
+        tooltip: "CFC",
+        size: "xl",
+        url: "https://www.cfccreates.com/",
+    },
 ];
 
 export default function Clients() {
@@ -97,7 +114,7 @@ export default function Clients() {
                         <figure className="perspective-near before:text-xl! before:font-bold" data-tip={x.tooltip}>
                             <img
                                 ref={(el) => (imgRefs.current[i] = el)}
-                                className={`aspect-square object-contain object-center mix-blend-color-burn brightness-0 invert transition-transform duration-150 ease-out perspective-midrange transform-3d hover:scale-125 ${x.size && x.size == "xl" ? "w-40 md:w-72" : "mx-auto w-28 md:w-52"}`}
+                                className={`aspect-square object-contain object-center transition-transform duration-150 ease-out perspective-midrange transform-3d hover:scale-125 ${x.raw ? "" : "mix-blend-color-burn brightness-0 invert"} ${x.size && x.size == "xl" ? "w-40 md:w-72" : "mx-auto w-28 md:w-52"}`}
                                 src={`/images/clients/${x.logo}`}
                             />
                             <figcaption className="invisible">{x.caption}</figcaption>

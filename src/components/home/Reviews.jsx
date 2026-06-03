@@ -127,7 +127,7 @@ function ReviewCard({ review }) {
                     </h2>
                     {review.ig_url && (
                         <a className="btn btn-lg btn-primary btn-circle btn-ghost self-start p-1" href={review.ig_url} target="_blank">
-                            <BsInstagram className="size-7" />
+                            <BsInstagram className="size-7 text-black" />
                         </a>
                     )}
                 </div>

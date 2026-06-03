@@ -4,8 +4,7 @@ import { BsInstagram } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiVimeoLine } from "react-icons/ri";
 import banner from "/images/banner.webp";
-import topDecorator1 from "../assets/images/symbols/top-1.png";
-import topDecorator2 from "../assets/images/symbols/top-2.png";
+import topDecorator from "../assets/images/symbols/top.png";
 
 export default function Banner() {
     const [showVideoModal, setShowVideoModal] = useState(false);
@@ -55,7 +54,7 @@ export default function Banner() {
                             strokeWidth={5}
                         />
                     </div>
-                    <img className="absolute right-0 bottom-0 z-10 max-h-fit w-5/12 md:w-4/12 2xl:w-3/12" src={topDecorator1} alt="Top decorator" />
+                    <img className="absolute right-0 bottom-0 z-10 w-5/12 translate-y-[calc(66.48%+0.5px)] md:w-4/12 2xl:w-3/12" src={topDecorator} alt="Top decorator" />
                 </div>
                 <div
                     className={`bg-opacity-75 pointer-events-auto absolute inset-0 top-0 right-0 bottom-0 left-0 z-50 flex max-w-full items-center justify-center bg-black ${showVideoModal ? "animate-fade animate-once animate-duration-[2000ms] animate-ease-in" : "hidden"}`}
@@ -84,9 +83,6 @@ export default function Banner() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="min-h-fit w-full">
-                <img className="ml-auto max-h-fit w-5/12 md:w-4/12 2xl:w-3/12" src={topDecorator2} alt="Top decorator" />
             </div>
         </section>
     );
