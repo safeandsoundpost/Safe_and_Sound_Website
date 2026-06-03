@@ -48,15 +48,6 @@ const client_list = [
         url: "https://www.jadeyurichfilms.com/",
     },
     {
-        name: "QUIP",
-        logo: "quip-logo-3x.webp",
-        caption: "QUIP Logo.",
-        tooltip: "QUIP",
-        size: "xl",
-        url: "https://www.queerinpost.ca/",
-        raw: true,
-    },
-    {
         name: "Canadian Film Centre",
         logo: "cfc-logo.png",
         caption: "Canadian Film Centre Logo.",
