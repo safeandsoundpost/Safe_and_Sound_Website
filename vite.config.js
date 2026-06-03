@@ -7,6 +7,8 @@ import { VitePluginRadar } from "vite-plugin-radar";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import Sitemap from "vite-plugin-sitemap";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
     plugins: [
         react(),
@@ -14,6 +16,7 @@ export default defineConfig({
         VitePluginRadar({ analytics: { id: "G-JQBCWM4YT4" } }),
         ViteImageOptimizer(),
         Sitemap({ hostname: "https://safeandsoundpost.com/" }),
+        cloudflare()
     ],
     resolve: {
         alias: {
