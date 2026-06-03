@@ -115,17 +115,14 @@ export default function Contact() {
                         </label>
 
                         <div className="m-auto flex h-fit w-2/4 justify-center p-0 md:px-2 md:py-0.5 lg:px-4 lg:py-1">
-                            {!isSubmitted && (
-                                <button
-                                    className="btn btn-info btn-xs md:btn-sm lg:btn-lg z-30 h-full w-full self-end border-0 p-0 tracking-[.2em] uppercase md:h-10"
-                                    src={contactForm}
-                                    onClick={submitForm}
-                                    name="Submit contact form"
-                                >
-                                    {isLoading && <span className="loading loading-spinner loading-md"></span>}
-                                    submit
-                                </button>
-                            )}
+                            <button
+                                className="btn btn-info btn-xs md:btn-sm lg:btn-lg z-30 h-full w-full self-end border-0 p-0 tracking-[.2em] uppercase md:h-10"
+                                onClick={submitForm}
+                                name="Submit contact form"
+                            >
+                                {isLoading && <span className="loading loading-spinner loading-md"></span>}
+                                submit
+                            </button>
                         </div>
                     </div>
                 </div>
