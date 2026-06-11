@@ -46,6 +46,14 @@ export default function Projects() {
                     className={`stroke-2 size-7 transition-all duration-300 ${isCollage ? "fill-secondary stroke-secondary rotate-12" : "fill-transparent stroke-white group-hover:fill-secondary group-hover:stroke-secondary group-hover:rotate-12"}`}
                 />
             </button>
+            {!isCollage && (
+                <div className="pointer-events-none flex flex-col items-center gap-1 -mt-7 mb-4">
+                    <svg className="animate-bounce" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10 L10 2 L18 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span className="text-[10px] tracking-[0.2em] text-white uppercase">click to see more</span>
+                </div>
+            )}
             <dialog ref={modal} className="modal" onKeyDown={(e) => onModalChangeRequest(e.key)}>
                 <ProjectModal currentProject={currentProject} />
             </dialog>
@@ -86,6 +94,12 @@ function ProjectModal({ currentProject }) {
                                 <p className="w-1/2">Released:</p>
                                 <p className="w-1/2 text-left">{project.released}</p>
                             </div>
+                            {project.writer && (
+                                <div className="flex w-full justify-between">
+                                    <p className="w-1/2">{project.writer.includes(",") ? "Writers/Creators:" : "Writer/Creator:"}</p>
+                                    <p className="w-1/2 text-left">{project.writer}</p>
+                                </div>
+                            )}
                             {project.director && (
                                 <div className="flex w-full justify-between">
                                     <p className="w-1/2">{project.director.includes(",") ? "Directors:" : "Director:"}</p>
@@ -177,8 +191,8 @@ ProjectModal.propTypes = {
         project: PropTypes.shape({
             title: PropTypes.string.isRequired,
             released: PropTypes.string.isRequired,
+            writer: PropTypes.string,
             director: PropTypes.string,
-            // directors: PropTypes.arrayOf(PropTypes.string),
             producer: PropTypes.string,
             // producers: PropTypes.arrayOf(PropTypes.string),
             imdb: PropTypes.string,

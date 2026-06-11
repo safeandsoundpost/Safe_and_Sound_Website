@@ -81,7 +81,7 @@ export default function Contact() {
                             <input
                                 id="email"
                                 name="email"
-                                className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
+                                className="bg-primary mt-2 w-full rounded-xl text-center tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
                                 type="email"
                                 autoComplete="on"
                                 value={email}
@@ -91,14 +91,19 @@ export default function Contact() {
                         <label htmlFor="subject" className="flex w-full flex-col items-center text-center tracking-[.2rem] uppercase">
                             subject line
                             <span className="w-4/12 border-b-2 border-black text-center md:border-b-4" />
-                            <input
+                            <textarea
                                 id="subject"
                                 name="subject"
-                                className="bg-primary mt-2 w-full rounded-xl tracking-widest uppercase placeholder:text-gray-600 md:mt-3"
-                                type="text"
-                                autoComplete="on"
+                                rows={2}
+                                className="bg-primary mt-2 w-full resize-none rounded-xl py-2 text-center text-xs tracking-widest text-info uppercase placeholder:text-gray-600 md:mt-3 md:text-sm"
                                 value={subject}
                                 onInput={(e) => setSubject(e.target.value)}
+                                onFocus={(e) => {
+                                    const idx = e.target.value.indexOf("PROJECT TITLE");
+                                    if (idx !== -1) {
+                                        e.target.setSelectionRange(idx, idx + "PROJECT TITLE".length);
+                                    }
+                                }}
                             />
                         </label>
 
@@ -108,7 +113,7 @@ export default function Contact() {
                             <textarea
                                 id="message"
                                 name="message"
-                                className="bg-primary mt-2 box-border h-full w-full grow resize-none rounded-xl py-1 text-xs tracking-widest placeholder:text-gray-600 sm:text-xs md:mt-3 md:text-xs md:leading-[1.2rem] lg:text-base lg:leading-[2.3rem] xl:text-lg"
+                                className="bg-primary mt-2 box-border h-full w-full grow resize-none rounded-xl py-1 text-center text-xs tracking-widest placeholder:text-gray-600 sm:text-xs md:mt-3 md:text-xs md:leading-[1.2rem] lg:text-base lg:leading-[2.3rem] xl:text-lg"
                                 value={message}
                                 onInput={(e) => setMessage(e.target.value)}
                             />

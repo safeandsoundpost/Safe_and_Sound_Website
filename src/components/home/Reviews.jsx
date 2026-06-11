@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { BsInstagram } from "react-icons/bs";
 import noise from "../../assets/icons/noise.svg";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const reviews = [
     {
@@ -40,7 +41,9 @@ const reviews = [
     },
     {
         name: "Bryn McAuley",
-        credentials: "",
+        credentials: "Director/Creator of Bibi's Dog is Dead",
+        credentialsUrl: "https://www.youtube.com/watch?v=VOyYuo0sUYo",
+        credentialsLinkText: "Bibi's Dog is Dead",
         content:
             "Choose Safe & Sound and you'll be glad you did!! Thom and Jesse are attentive, collaborative and a dream to work with. These two are major supporters of creators at every level, from indie to network to major studios. They are great communicators, true lovers of storytelling, and also really fun to be around. I will come back to them for everything I do!",
         ig_url: "https://www.instagram.com/brynmcauley/",
@@ -88,23 +91,93 @@ const reviews = [
 ];
 
 export default function Reviews() {
+    const scrollRef = useRef(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [thumbLeft, setThumbLeft] = useState(0);
+    const [thumbWidth, setThumbWidth] = useState(0);
+    const isDragging = useRef(false);
+    const dragStartX = useRef(0);
+    const dragStartScroll = useRef(0);
+
+    const columns = reviews.reduce((prev, curr, i) => {
+        if (i % 3 === 0) prev.push([curr]);
+        else prev.at(-1).push(curr);
+        return prev;
+    }, []);
+
+    const update = useCallback(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        setCurrentPage(Math.round(el.scrollLeft / el.clientWidth));
+        setThumbWidth((el.clientWidth / el.scrollWidth) * 100);
+        setThumbLeft((el.scrollLeft / el.scrollWidth) * 100);
+    }, []);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        update();
+        el.addEventListener("scroll", update);
+        window.addEventListener("resize", update);
+        return () => {
+            el.removeEventListener("scroll", update);
+            window.removeEventListener("resize", update);
+        };
+    }, [update]);
+
+    const goToPage = (page) => {
+        scrollRef.current?.scrollTo({ left: page * scrollRef.current.clientWidth, behavior: "smooth" });
+    };
+
+    const onThumbMouseDown = (e) => {
+        e.stopPropagation();
+        isDragging.current = true;
+        dragStartX.current = e.clientX;
+        dragStartScroll.current = scrollRef.current?.scrollLeft ?? 0;
+        const onMouseMove = (e) => {
+            if (!isDragging.current || !scrollRef.current) return;
+            const track = scrollRef.current.parentElement.querySelector(".reviews-track");
+            const dx = e.clientX - dragStartX.current;
+            scrollRef.current.scrollLeft = dragStartScroll.current + (dx / track.clientWidth) * scrollRef.current.scrollWidth;
+        };
+        const onMouseUp = () => { isDragging.current = false; };
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("mouseup", onMouseUp, { once: true });
+    };
+
     return (
         <section id="reviews" className="m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 md:m-auto md:w-9/12 lg:w-10/12 xl:w-full">
             <h2 className="text-secondary pt-10 text-center text-4xl font-bold tracking-widest uppercase">Reviews</h2>
-            <div className="rounded-box inline-flex max-w-full space-x-8 overflow-x-scroll scroll-smooth px-4">
-                {reviews
-                    .reduce((prev, curr, i) => {
-                        if (i % 3 === 0) prev.push([curr]);
-                        else prev.at(-1).push(curr);
-                        return prev;
-                    }, [])
-                    .map((rl, i) => (
-                        <div key={i} className="flex max-w-full min-w-full flex-col items-center justify-center gap-8 md:max-w-[30rem] md:min-w-[30rem]">
-                            {rl.map((x, j) => (
-                                <ReviewCard key={j} review={x} />
-                            ))}
-                        </div>
-                    ))}
+            <div ref={scrollRef} className="inline-flex max-w-full gap-8 overflow-x-scroll px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory md:snap-none">
+                {columns.map((col, i) => (
+                    <div key={i} className="flex min-w-[calc(100vw-2rem)] flex-col items-center justify-center gap-8 snap-start md:min-w-[30rem] md:snap-align-none">
+                        {col.map((x, j) => (
+                            <ReviewCard key={j} review={x} />
+                        ))}
+                    </div>
+                ))}
+            </div>
+            {/* Mobile dots */}
+            <div className="flex gap-2 md:hidden">
+                {columns.map((_, page) => (
+                    <button
+                        key={page}
+                        onClick={() => goToPage(page)}
+                        className={`h-2 rounded-full transition-all duration-300 ${currentPage === page ? "w-6 bg-[#a9c2e0]" : "w-2 bg-white/40"}`}
+                    />
+                ))}
+            </div>
+            {/* Desktop custom scrollbar */}
+            <div className="reviews-track relative hidden h-3.5 w-full cursor-pointer rounded-full bg-black md:block" onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const ratio = (e.clientX - rect.left) / rect.width;
+                if (scrollRef.current) scrollRef.current.scrollLeft = ratio * scrollRef.current.scrollWidth;
+            }}>
+                <div
+                    className="absolute top-0 h-full cursor-grab rounded-full bg-[#a9c2e0] active:cursor-grabbing"
+                    style={{ left: `${thumbLeft}%`, width: `${thumbWidth}%` }}
+                    onMouseDown={onThumbMouseDown}
+                />
             </div>
         </section>
     );
@@ -123,7 +196,14 @@ function ReviewCard({ review }) {
                 <div className="inline-flex items-center justify-between">
                     <h2 className="card-title flex flex-col items-start justify-start gap-0 text-left text-xl">
                         {review.name}
-                        <span className="text-sm">{review.credentials}</span>
+                        {review.credentialsUrl && review.credentialsLinkText ? (
+                            <span className="text-sm">
+                                {review.credentials.replace(review.credentialsLinkText, "")}
+                                <a className="hover:underline" href={review.credentialsUrl} target="_blank" rel="noopener noreferrer">{review.credentialsLinkText}</a>
+                            </span>
+                        ) : (
+                            <span className="text-sm">{review.credentials}</span>
+                        )}
                     </h2>
                     {review.ig_url && (
                         <a className="btn btn-lg btn-primary btn-circle btn-ghost self-start p-1" href={review.ig_url} target="_blank">
@@ -131,7 +211,7 @@ function ReviewCard({ review }) {
                         </a>
                     )}
                 </div>
-                <span className="h-fit max-h-32 overflow-y-auto whitespace-pre-wrap">{review.content}</span>
+                <span className="review-content h-fit max-h-32 overflow-y-auto whitespace-pre-wrap">{review.content}</span>
             </div>
         </div>
     );

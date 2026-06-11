@@ -1,41 +1,42 @@
 import { useEffect, useRef } from "react";
 
-const client_list = [
+const nonprofit_list = [
     {
-        name: "Fibe",
-        logo: "tv1-logo.svg",
-        caption: "Fibe Logo.",
-        tooltip: "Fibe",
-        w: "w-24 md:w-44",
-        url: "https://tv1.bell.ca/fibetv1",
+        name: "Webseries Canada",
+        logo: "webseries-canada-logo.webp",
+        caption: "Webseries Canada Logo",
+        tooltip: "WSC",
+        w: "w-36 md:w-64",
+        url: "https://webseriescanada.org/",
     },
     {
-        name: "L50",
-        logo: "l50-logo.webp",
-        caption: "L50 Logo",
-        tooltip: "L50",
+        name: "TFP",
+        logo: "tfp-logo.webp",
+        caption: "TFP Logo.",
+        tooltip: "TFP",
         w: "w-36 md:w-64",
-        url: "https://www.letter50films.com/",
+        url: "https://www.instagram.com/torontofilmplug?igsh=NXRkOGs2N2t6OXY2",
     },
     {
-        name: "Canfro",
-        logo: "canfro-white-logo.webp",
-        caption: "Canfro Logo.",
-        tooltip: "Canfro",
+        name: "Canadian Film Centre",
+        logo: "cfc-logo.png",
+        caption: "Canadian Film Centre Logo.",
+        tooltip: "CFC",
         w: "w-36 md:w-64",
-        url: "https://canfroproductions.com/",
+        url: "https://www.cfccreates.com/",
     },
     {
-        name: "AYF",
-        logo: "ayf-white-logo.webp",
-        caption: "WYF Logo, white version.",
-        tooltip: "WYF",
+        name: "QUIP",
+        logo: "quip-logo.png",
+        caption: "QUIP Logo.",
+        tooltip: "QUIP",
         w: "w-36 md:w-64",
-        url: "https://www.jadeyurichfilms.com/",
+        raw: true,
+        url: "https://www.queerinpost.ca/",
     },
 ];
 
-export default function Clients() {
+export default function NonProfit() {
     const imgRefs = useRef([]);
 
     useEffect(() => {
@@ -75,10 +76,10 @@ export default function Clients() {
     }, []);
 
     return (
-        <section id="clients" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 align-middle">
-            <h2 className="text-secondary w-full pt-10 text-center text-4xl font-bold tracking-widest uppercase">Clients / Partnerships</h2>
-            <div className="flex flex-col flex-wrap items-center justify-center align-middle md:flex-row md:gap-24 md:py-10">
-                {client_list.map((x, i) => (
+        <section id="nonprofit" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 align-middle">
+            <h2 className="text-secondary w-full pt-10 text-center text-4xl font-bold tracking-widest uppercase">Non-Profit Work</h2>
+            <div className="flex flex-col items-center justify-center gap-12 align-middle md:grid md:grid-cols-4 md:gap-10 md:py-10">
+                {nonprofit_list.map((x, i) => (
                     <a key={i} className="scale-100 transition-transform active:scale-75" href={x.url} target="_blank">
                         <figure className="perspective-near before:text-xl! before:font-bold" data-tip={x.tooltip}>
                             <img

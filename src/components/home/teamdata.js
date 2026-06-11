@@ -11,6 +11,7 @@ const teamData = [
 Graduating with honours from the Ontario Institute of Audio Record Technology in 2021 at only 19 years old, Michael got his start in animation at one of Toronto’s top studios. He has done editing and sound design for shows such as Total Drama Island, Open season, Dylan and worked with almost every major company in the industry including Disney, Netflix, Audible, EOne.
 When it comes to live action film, Mike has worked on a number of projects, elevating the production to the next level of quality, and always ensuring the film will make an impact in the theatre, and at home.`,
         favFilm: "Hot Fuzz",
+        filmLabel: "The greater good... 🦢👮",
         imdb: "https://www.imdb.com/name/nm14043487/?ref_=nv_sr_srsg_2_tt_0_nm_8_in_0_q_Michael%2520Grainger",
     },
     {
@@ -25,6 +26,7 @@ When it comes to live action film, Mike has worked on a number of projects, elev
 He gained a particular interest in the foley aspect of production. This was due to his time at Fanshawe college where he took Music Industry Arts and Audio Post Production. There he was exposed to each facet of the post production industry.  
 Now, Chris works effortlessly to provide his clients with excellent foley work. Some films he has worked on are, When You Know You Know, Diabolika and more.`,
         favFilm: "Spirited Away",
+        filmLabel: "Don't eat the food 🐷✨",
     },
     {
         name: "Jesse Lawrence",
@@ -51,14 +53,15 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         bio: "Thom O'Neil is a seasoned audio engineer and co-owner of Safe & Sound, bringing over six years of experience in audio post-production. He began his career in voiceover recording for animation, later expanding his skills to dubbing for anime and ADR for film and TV. Thom’s true passion lies in sound design and mixing, where he crafts immersive soundscapes that elevate every project. Thom has contributed to major productions with Disney, Lucasfilm, and Paramount, but finds his greatest fulfillment collaborating on independent films. His inventive approach in the studio allows him to create one-of-a-kind soundtracks that resonate with both storytellers and audiences. “There’s always something to learn from every person you meet, no matter their experience, and I believe we all have the opportunity to share knowledge and positively impact those around us.”",
         imdb: "https://www.imdb.com/name/nm8707755/",
         favFilm: "Good Time",
+        filmLabel: "We're gonna be okay 🌃",
         actualFavFilm: "Paw Patrol: The Movie",
     },
     {
         name: "Kyle Blaseg",
         column: 1,
         order: 2,
-        mobileColumn: 5,
-        mobileRow: 1,
+        mobileColumn: 3,
+        mobileRow: 2,
         role: "Co-Founder & Composer",
         pic: "kyle",
         bio: `Born and raised in Northern Ontario, Kyle has been playing and composing music his whole life. He studied music composition at Western University and graduated top of his class at the Ontario Institute of Audio Recording Technology. Kyle has had a passion for film composition since he was young. Being inspired by the industry’s greats, such as John Williams and Hans Zimmer, Kyle has learned to hone his skills to bring films alive with his music!
@@ -77,6 +80,7 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         pic: "kanchan",
         bio: "Kanchan brings a strong background in film and television production, specializing in business affairs, contract negotiations, and production financing. At Safe and Sound Post, she manages legal agreements and partnerships, ensuring seamless operations that support the studio’s growth. A recent graduate of Centennial College’s Business, Film &amp; TV program, Kanchan combines industry knowledge with a keen understanding of funding models and media law—expertise that helps Safe and Sound Post navigate the evolving entertainment landscape. Passionate about storytelling, resilience, and innovation, she is also developing her debut documentary while actively supporting creative projects. With a commitment to fostering a thriving sound production community, she aims to position Safe and Sound Post as a trusted and reliable leading hub for sound production in Canada.",
         favFilm: "Before Sunrise",
+        filmLabel: "Same time, same place 🚂🌅",
         imdb: "https://www.imdb.com/name/nm12073225/",
     },
     {
@@ -92,19 +96,6 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
         imdb: "https://m.imdb.com/name/nm16290725/?ref_=ext_shr_lnk",
         filmLabel: "🐲❌🦷",
         filmLink: "https://www.youtube.com/shorts/f-uIfc0hAnU?feature=share",
-    },
-    {
-        name: "Fardin Mullan",
-        column: 1,
-        order: 4,
-        mobileColumn: 3,
-        mobileRow: 2,
-        role: "Sound Designer",
-        pic: "fardin",
-        bio: "Fardin Mullan is a Sound Specialist dedicated to crafting high-fidelity audio experiences—whether through headphones, home theatres, or sound quality (SQ) car systems. With a passion for immersive sound and a deep technical foundation, he ensures every project reaches its full sonic potential. His expertise spans every facet of audio production, from location sound and ambience recording to post-production and DSP tuning. Whether capturing authentic dialogue, designing soundscapes, or fine-tuning car audio for precise staging, Fardin brings a meticulous approach to every project. His journey into sound was sparked by a deep love for movies and music. Fardin’s work can be heard in feature films, shorts, TV series, and PSAs. He sees sound as more than just an element of production—it’s a storytelling tool that shapes emotion, atmosphere, and immersion.",
-        favFilm: "The Lion King (1994)",
-        imdb: "https://www.imdb.com/name/nm16290721/",
-        filmLabel: "The king has returned 🦁",
     },
     {
         name: "Vanessa Hannah",
@@ -131,20 +122,6 @@ Now, Chris works effortlessly to provide his clients with excellent foley work. 
     //     favFilm: "Scott Pilgrim vs The World",
     //     filmLabel: "👦👊🎸",
     // },
-    {
-        name: "Adlyn Gilbert",
-        column: 2,
-        order: 4,
-        mobileColumn: 5,
-        mobileRow: 2,
-        role: "Foley Artist / Dialogue Editor",
-        pic: "adlyn",
-        // eslint-disable-next-line quotes
-        bio: `Adlyn Gilbert (she/her) is an emerging creative currently studying Film Production in Thunder Bay, Ontario. Originally from Toronto, she has directed and produced commissioned work for TIFF Next Wave and won Best-in-Show at the Femme Fatale Film Festival. She enjoys telling stories that blend comedy and expressionism utilizing mixed mediums. This summer, Adlyn is working for various brands as a promotional content editor while attempting to ignore her upcoming thesis film. When she’s not buried in premiere timelines, she can be found on her bike or sharpening her (already deadly) Catan skills.`,
-        favFilm: "2001: A Space Odyssey",
-        filmLabel: "👨🏻‍🚀🚀🌌",
-        imdb: "https://www.imdb.com/name/nm17142244/bio/?ref_=ext_shr_lnk",
-    },
 ];
 
 export default teamData;

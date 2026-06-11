@@ -3,7 +3,6 @@ import { PiPlayCircleLight } from "react-icons/pi";
 import { BsInstagram } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiVimeoLine } from "react-icons/ri";
-import banner from "/images/banner.webp";
 import topDecorator from "../assets/images/symbols/top.png";
 
 export default function Banner() {
@@ -13,6 +12,7 @@ export default function Banner() {
 
     return (
         <section id="demo-reel" className="pointer-events-none relative mt-20 h-2/5 min-h-64 w-full md:mt-0 md:max-h-[40%] md:min-h-[470px] md:bg-left-top">
+
             <div className="pointer-events-auto absolute z-40 mt-5 hidden h-12 w-[98%] justify-end gap-5 md:flex">
                 <a
                     className="text-primary hover:text-neutral pointer-events-auto h-full w-12 p-1 transition-colors select-none"
@@ -38,12 +38,13 @@ export default function Banner() {
                 </a>
             </div>
 
-            <div className="relative flex min-h-64 flex-col">
-                <div className="pointer-events-none relative flex max-h-fit flex-col">
-                    <div className="pointer-events-auto transition-all hover:opacity-80">
+            <div className="relative flex h-full min-h-64 flex-col">
+                <div className="pointer-events-none relative flex h-full max-h-fit flex-col">
+                    <div className="pointer-events-auto h-full transition-all hover:opacity-80">
                         <img
-                            className="-z-20 clear-left max-h-[450px] min-h-80 w-[100vw] bg-[#ffffff1f] object-cover transition-all"
-                            src={banner}
+                            className="-z-20 clear-left h-full max-h-[450px] min-h-64 w-[100vw] bg-[#ffffff1f] object-cover transition-all"
+                            style={{ filter: "url(#film-grain)" }}
+                            src="/images/banner-loveme.jpg"
                             alt="Background Image"
                         />
                     </div>

@@ -10,6 +10,7 @@ import Banner from "./Banner";
 import Contact from "../components/home/Contact";
 import CookieBanner from "../components/CookieBanner";
 import Clients from "../components/home/Clients";
+import NonProfit from "../components/home/NonProfit";
 
 export default function Home() {
     const [currentSection, setCurrentSection] = useState("");
@@ -41,6 +42,7 @@ export default function Home() {
                     <Services />
                     <TheTeam />
                     <Clients />
+                    <NonProfit />
                     <Awards />
                     <Reviews />
                     <Contact />

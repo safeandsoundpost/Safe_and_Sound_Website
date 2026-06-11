@@ -1,5 +1,6 @@
 import useEmblaCarousel from "embla-carousel-react";
 import autoScroll from "embla-carousel-auto-scroll";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -141,7 +142,7 @@ const projectDetails = [
     },
     {
         poster: "lichun",
-        title: "Lichun",
+        title: "Li Chun",
         released: "2025",
         director: "Paul Persic",
         producer: "Devon Codrington",
@@ -172,6 +173,123 @@ const projectDetails = [
         producer: "Devon Codrington, Lex Emanuel, Paul Persic",
         imdb: "https://www.imdb.com/title/tt37364469/",
     },
+    {
+        poster: "AiA_Poster_Final",
+        title: "Alice is Asian",
+        released: "2026",
+        director: "Andrew Hamilton",
+        writer: "Isabella Shibuta",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        ytsrc: "https://www.youtube.com/watch?v=4S0mFzOjHC8",
+    },
+    {
+        poster: "Fluid_RedSpatter",
+        title: "Fluid",
+        released: "2025",
+        director: "Brianna Russell",
+        writer: "Brianna Russell",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        imdb: "https://www.imdb.com/title/tt42947591/?ref_=nm_flmg_job_1_accord_2_cdt_c_4",
+        ytsrc: "https://www.youtube.com/watch?v=Ktsp4P1JOc0",
+    },
+    {
+        poster: "HNIC",
+        title: "Hockey Night in Canada",
+        released: "2025",
+        director: "Duane Crichton",
+        writer: "Berend McKenzie",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        imdb: "https://www.imdb.com/title/tt42980928/?ref_=ttfc_ov_bk",
+        ytsrc: "https://www.youtube.com/watch?v=d5zcgMQx2qs&t=105s",
+    },
+    {
+        poster: "LOVE_ME_Poster",
+        title: "Love Me",
+        released: "2025",
+        director: "Meeshelle Neal",
+        writer: "Laura Stubbs",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        imdb: "https://www.imdb.com/title/tt42901042/?ref_=ttfc_ov_bk",
+        ytsrc: "https://www.youtube.com/watch?v=R3PDXgIxO9Y",
+    },
+    {
+        poster: "MoHK_Art_Cover",
+        title: "Milk of Human Kindness",
+        released: "2025",
+        director: "Anita Doron",
+        writer: "Beatriz Yuste",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        imdb: "https://www.imdb.com/title/tt42903699/?ref_=fn_t_1",
+        ytsrc: "https://www.youtube.com/watch?v=33IWPBDeorE",
+    },
+    // Hidden pending client approval — restore when ready
+    // {
+    //     poster: "Sacred_Space_Poster",
+    //     title: "Sacred Space",
+    //     released: "2026",
+    //     director: "Aisha Evelyna",
+    //     writer: "Yemie Sonuga",
+    //     producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+    //     ytsrc: "https://www.youtube.com/watch?v=o7QlFVR3c_A",
+    // },
+    {
+        poster: "Second_Coming_Poster",
+        title: "Second Coming",
+        released: "2026",
+        director: "Vanessa Sandre",
+        writer: "Jezabel Bamberg",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        ytsrc: "https://www.youtube.com/watch?v=1Z1-KOE8qb0",
+    },
+    {
+        poster: "Threadbare_Poster",
+        title: "Threadbare",
+        released: "2026",
+        writer: "Sandi Rankaduwa",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer), Nelu Handa (Executive Producer)",
+        ytsrc: "https://www.youtube.com/watch?v=f-NGEISnbRo",
+    },
+    {
+        poster: "TomatoFrog_COVER_TAGLINE",
+        title: "Tomato Frog",
+        released: "2025",
+        director: "Andrew Apelle",
+        writer: "Walker MacDonald",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        ytsrc: "https://www.youtube.com/watch?v=F9CBJAEWLGI",
+    },
+];
+
+const collageOrder = [
+    "You Are Here",
+    "Cows Come Home",
+    "Burdened",
+    "Li Chun",
+    "These Triggas",
+    "Threadbare",
+    "Love Me",
+    "Hockey Night in Canada",
+    "Fluid",
+    "Alice is Asian",
+    // "Sacred Space", // hidden pending client approval
+    "Second Coming",
+    "Milk of Human Kindness",
+    "Tomato Frog",
+    "Trapped",
+    "Noodles",
+    "Dimes",
+    "When You Know You Know",
+    "A great big terrible dream",
+    "After You",
+    "Don't Be Rude",
+    "Eyes Wide Open",
+    "I'm A Big Fan",
+    "Motion To Approve",
+    "Faces",
+    "DIABOLIKA",
+    "FIGURES",
+    "Taxi Along the Bridge",
+    "The Tough, The Gentle, and The Strong",
 ];
 
 function shuffleArray(array) {
@@ -183,26 +301,42 @@ function shuffleArray(array) {
     return arr;
 }
 
+function resolveImages() {
+    const img_paths = Object.values(
+        import.meta.glob("@projects/*.webp", { eager: true, query: "?url" }),
+    ).map((x) => x.default);
+
+    return projectDetails.flatMap((project) => {
+        const src = img_paths.find((x) => x.includes(project.poster));
+        if (!src) return [];
+        return [{ ...project, posterSrc: src }];
+    });
+}
+
 function useResolvedImages() {
     const [images, setImages] = useState([]);
     useEffect(() => {
-        const img_paths = Object.values(
-            import.meta.glob("@projects/*.webp", { eager: true, query: "?url" }),
-        ).map((x) => x.default);
+        setImages(shuffleArray(resolveImages()));
+    }, []);
+    return images;
+}
 
-        const resolved = projectDetails.flatMap((project) => {
-            const src = img_paths.find((x) => x.includes(project.poster));
-            if (!src) return [];
-            return [{ ...project, posterSrc: src }];
+function useOrderedImages() {
+    const [images, setImages] = useState([]);
+    useEffect(() => {
+        const resolved = resolveImages();
+        const ordered = collageOrder.flatMap((title) => {
+            const match = resolved.find((p) => p.title === title);
+            return match ? [match] : [];
         });
-
-        setImages(shuffleArray(resolved));
+        const remaining = resolved.filter((p) => !collageOrder.includes(p.title));
+        setImages([...ordered, ...remaining]);
     }, []);
     return images;
 }
 
 export function ProjectsCollage({ onClick }) {
-    const images = useResolvedImages();
+    const images = useOrderedImages();
 
     return (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 w-full md:ml-auto md:w-11/12 xl:ml-0 xl:w-full">
@@ -231,13 +365,15 @@ ProjectsCollage.propTypes = {
 export function ProjectsCarousel(props) {
     const [images, setImages] = useState([]);
 
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [
+    const [emblaRef] = useEmblaCarousel({ loop: true, dragFree: true }, [
         autoScroll({
             playOnInit: true,
             speed: 1,
-            startDelay: 1000,
+            startDelay: 500,
             stopOnInteraction: false,
+            stopOnMouseEnter: true,
         }),
+        WheelGesturesPlugin(),
     ]);
 
     useEffect(() => {

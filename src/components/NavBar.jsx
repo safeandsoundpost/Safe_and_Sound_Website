@@ -7,8 +7,12 @@ import awardsSymbolGold from "../assets/images/symbols/awards-symbol-gold.png";
 import projectSymbol from "../assets/images/symbols/projects-star.png";
 import { RiStarFill } from "react-icons/ri";
 import burgerMenu from "../assets/icons/burger.svg";
+import { useLocation } from "react-router-dom";
 
 export default function NavBar({ currentSection }) {
+    const location = useLocation();
+    const onBlog = location.pathname.startsWith('/blog');
+
     return (
         <nav className="text-primary max-md:drawer max-md:drawer-end md:drawer-open relative z-[60] m-0 text-base font-bold md:fixed md:m-3 md:mt-8">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
@@ -22,7 +26,7 @@ export default function NavBar({ currentSection }) {
                 </div>
             </div>
 
-            <div className="drawer-side md:h-[100vh] md:overflow-hidden! lg:pb-2 lg:h-fit lg:max-h-fit">
+            <div className="drawer-side md:h-[100vh] md:overflow-y-auto md:overflow-x-hidden lg:pb-2 lg:h-fit lg:max-h-fit lg:overflow-visible">
                 <label htmlFor="side-menu" aria-label="close sidebar" className="drawer-overlay md:hidden"></label>
                 <ul className="flex flex-col gap-5 tracking-widest max-md:h-full max-md:bg-black max-md:p-5 md:gap-5">
                     <li className="h-fit py-1.5 select-none">
