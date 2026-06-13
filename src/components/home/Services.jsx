@@ -95,7 +95,7 @@ export default function Services() {
             </div>
 
             <img
-                className="absolute -right-[75%] bottom-48 -z-20 max-md:scale-75 md:-right-[85%] md:bottom-0 md:-z-20 xl:-right-[70%] 2xl:-right-[65%]"
+                className="absolute -right-[75%] bottom-48 -z-20 max-md:scale-75 md:-right-[47%] md:bottom-0 md:w-[33vw] lg:-right-[65%]"
                 src={serviceDecoration}
                 alt="Services page decorator"
             />
@@ -146,7 +146,7 @@ function ServiceCard({ title, imgSrc, aHref, serviceDescription, message }) {
             {/* <div className="flex max-h-full min-h-full w-full flex-row items-stretch justify-between gap-5 text-[#f3f3f4] md:min-h-[640px] md:w-[37%] md:flex-col lg:w-[30%] xl:min-h-[740px] 2xl:w-[17%] 2xl:grow"> */}
             <div className="hidden h-full w-full grid-rows-1 content-stretch gap-5 text-[#f3f3f4] md:grid md:min-h-[640px] md:flex-col xl:min-h-[740px]">
                 <div className="hidden h-full w-1/2 flex-col gap-5 self-stretch md:flex md:w-full">
-                    <div className="flex h-auto items-end align-middle text-3xl md:min-h-40 md:text-4xl">
+                    <div className="flex h-auto items-end align-middle text-3xl md:min-h-40 md:text-4xl xl:text-[clamp(1.25rem,1.85vw,2.25rem)]">
                         <h3 className="h-fit w-full text-left font-bold whitespace-pre uppercase italic">{title}</h3>
                     </div>
                     <div className="grid h-8 w-full grid-cols-1 grid-rows-1 max-md:hidden">

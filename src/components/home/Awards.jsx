@@ -52,7 +52,7 @@ export default function Awards() {
                 ))}
             </div>
             <img
-                className="absolute -top-6 -left-[70%] max-md:scale-75 md:-top-[20%] md:-left-[95%] lg:-left-[90%] xl:-left-[82%] 2xl:-left-[75%]"
+                className="absolute -top-6 -left-[70%] -z-10 max-md:scale-75 md:-top-[20%] md:-left-[75%] md:w-[38vw]"
                 src={awardsDecoration}
                 alt="Awards decorator"
             />

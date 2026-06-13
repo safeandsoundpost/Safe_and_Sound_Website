@@ -30,11 +30,11 @@ export default function NavBar({ currentSection }) {
                 <label htmlFor="side-menu" aria-label="close sidebar" className="drawer-overlay md:hidden"></label>
                 <ul className="flex flex-col gap-5 tracking-widest max-md:h-full max-md:bg-black max-md:p-5 md:gap-5">
                     <li className="h-fit py-1.5 select-none">
-                        <img className="h-48 md:h-36 lg:h-52" src={logo} alt="safe & sound logo" draggable="false" />
+                        <img className="h-48 md:h-[clamp(6.5rem,13.5vw,13rem)]" src={logo} alt="safe & sound logo" draggable="false" />
                     </li>
                     <li>
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#demo-reel"
                             defActive={true}
                             currentSection={currentSection}
@@ -44,7 +44,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="flex max-h-8 min-h-8 w-3/4 content-center items-center justify-end gap-2 self-end align-middle">
                         <Link
-                            className="hover:border-secondary hover:text-secondary hover:stroke-secondary flex items-center justify-center gap-2 px-2 py-2 align-middle text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary hover:stroke-secondary flex items-center justify-center gap-2 px-2 py-2 align-middle text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#projects"
                             currentSection={currentSection}
                         >
@@ -54,9 +54,9 @@ export default function NavBar({ currentSection }) {
                             projects
                         </Link>
                     </li>
-                    <li className="ml-5 flex max-h-8 min-h-8 items-center">
+                    <li className="ml-5 flex max-h-8 min-h-8 items-center md:ml-[1vw]">
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#services"
                             currentSection={currentSection}
                         >
@@ -65,7 +65,7 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-2 flex max-h-8 min-h-8 items-center self-end">
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#the-team"
                             currentSection={currentSection}
                         >
@@ -74,22 +74,22 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-2 flex max-h-8 min-h-8 items-center">
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#clients"
                             currentSection={currentSection}
                         >
                             Clients
                         </Link>
                     </li>
-                    <li className="ml-10 flex max-h-8 min-h-8 items-center justify-start gap-2">
+                    <li className="ml-10 flex max-h-8 min-h-8 items-center justify-start gap-2 md:ml-[2vw]">
                         <Link
-                            className="hover:border-secondary hover:text-secondary flex items-center justify-center gap-3 px-2 py-2 align-middle text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary flex items-center justify-center gap-3 px-2 py-2 align-middle text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#awards"
                             currentSection={currentSection}
                         >
                             awards
                             <img
-                                className="h-5 md:h-6 transition-all duration-300"
+                                className="h-5 md:h-[clamp(1rem,1.25vw,1.5rem)] transition-all duration-300"
                                 src={currentSection === 'awards' ? awardsSymbolGold : awardsSymbol}
                                 alt="Awards decorator"
                             />
@@ -97,16 +97,16 @@ export default function NavBar({ currentSection }) {
                     </li>
                     <li className="mr-4 flex max-h-8 min-h-8 items-center">
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#reviews"
                             currentSection={currentSection}
                         >
                             reviews
                         </Link>
                     </li>
-                    <li className="ml-6 flex max-h-8 min-h-8 items-center">
+                    <li className="ml-6 flex max-h-8 min-h-8 items-center md:ml-[1.25vw]">
                         <Link
-                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+                            className="hover:border-secondary hover:text-secondary px-2 py-2 text-sm md:text-[clamp(0.75rem,1.05vw,1.25rem)]"
                             href="#contact"
                             currentSection={currentSection}
                         >

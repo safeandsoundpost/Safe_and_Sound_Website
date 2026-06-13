@@ -134,7 +134,7 @@ export default function Contact() {
             </div>
             <img
                 draggable="false"
-                className="absolute top-[50%] left-[-10%] z-10 w-1/2 -rotate-6 opacity-90"
+                className="absolute top-[50%] left-[-3%] z-10 w-1/2 -rotate-6 opacity-90"
                 src={oldContactForm}
                 alt="Contact form background"
             />

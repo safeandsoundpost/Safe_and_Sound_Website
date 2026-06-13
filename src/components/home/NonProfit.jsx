@@ -34,6 +34,15 @@ const nonprofit_list = [
         raw: true,
         url: "https://www.queerinpost.ca/",
     },
+    {
+        name: "Women in Post",
+        logo: "wip-logo.webp",
+        caption: "Women in Post Logo.",
+        tooltip: "WIP",
+        w: "w-36 md:w-64",
+        raw: true,
+        url: "https://www.academy.ca/programs/womeninpost/",
+    },
 ];
 
 export default function NonProfit() {
@@ -78,7 +87,7 @@ export default function NonProfit() {
     return (
         <section id="nonprofit" className="relative m-auto flex w-full flex-col items-center justify-center gap-10 pt-5 align-middle">
             <h2 className="text-secondary w-full pt-10 text-center text-4xl font-bold tracking-widest uppercase">Non-Profit Work</h2>
-            <div className="flex flex-col items-center justify-center gap-12 align-middle md:grid md:grid-cols-4 md:gap-10 md:py-10">
+            <div className="flex flex-col flex-wrap items-center justify-center gap-12 align-middle md:flex-row md:gap-10 md:py-10">
                 {nonprofit_list.map((x, i) => (
                     <a key={i} className="scale-100 transition-transform active:scale-75" href={x.url} target="_blank">
                         <figure className="perspective-near before:text-xl! before:font-bold" data-tip={x.tooltip}>

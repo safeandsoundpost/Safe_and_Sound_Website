@@ -31,6 +31,9 @@ const client_list = [
         caption: "WYF Logo, white version.",
         tooltip: "WYF",
         w: "w-36 md:w-64",
+        // Optically center the lockup on mobile: the film-strip flourish biases the
+        // bounding box right, so the text mass reads left. Nudge right on small screens only.
+        nudge: "translate-x-[15%] md:translate-x-0",
         url: "https://www.jadeyurichfilms.com/",
     },
 ];
@@ -40,9 +43,10 @@ export default function Clients() {
 
     useEffect(() => {
         const handleMouseMove = (e) => {
+            if (window.innerWidth < 768) return;
+
             imgRefs.current.forEach((img) => {
                 if (!img) return;
-                if (document.width < 768) return;
 
                 const rect = img.getBoundingClientRect();
                 const imgCenterX = rect.left + rect.width / 2;
@@ -83,7 +87,7 @@ export default function Clients() {
                         <figure className="perspective-near before:text-xl! before:font-bold" data-tip={x.tooltip}>
                             <img
                                 ref={(el) => (imgRefs.current[i] = el)}
-                                className={`aspect-square object-contain object-center transition-transform duration-150 ease-out perspective-midrange transform-3d hover:scale-125 ${x.raw ? "" : "mix-blend-color-burn brightness-0 invert"} ${x.w ?? "w-36 md:w-64"}`}
+                                className={`aspect-square object-contain object-center transition-transform duration-150 ease-out perspective-midrange transform-3d hover:scale-125 ${x.raw ? "" : "mix-blend-color-burn brightness-0 invert"} ${x.w ?? "w-36 md:w-64"} ${x.nudge ?? ""}`}
                                 src={`/images/clients/${x.logo}`}
                             />
                             <figcaption className="invisible">{x.caption}</figcaption>
