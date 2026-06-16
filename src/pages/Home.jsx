@@ -37,7 +37,10 @@ export default function Home() {
                 <CookieBanner />
                 <NavBar currentSection={currentSection} />
                 <Banner />
-                <section className="m-auto w-11/12 md:mr-[8%] md:ml-auto md:w-[70%] lg:m-auto lg:w-[65%]">
+                {/* data-nosnippet: keeps this copy visible to visitors but stops Google
+                    from pulling it into search-result snippets, so it falls back to the
+                    meta description in index.html. */}
+                <section data-nosnippet className="m-auto w-11/12 md:mr-[8%] md:ml-auto md:w-[70%] lg:m-auto lg:w-[65%]">
                     <Projects />
                     <Services />
                     <TheTeam />
