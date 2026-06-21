@@ -10,8 +10,8 @@ const teamData = [
         bio: `Born on a British Military base in the remote tundra of Canada, and growing up all over the world Michael settled down in Waterdown Ontario, Michael is passionate, attentive and one of the chillest guys you’ll meet.
 Graduating with honours from the Ontario Institute of Audio Record Technology in 2021 at only 19 years old, Michael got his start in animation at one of Toronto’s top studios. He has done editing and sound design for shows such as Total Drama Island, Open season, Dylan and worked with almost every major company in the industry including Disney, Netflix, Audible, EOne.
 When it comes to live action film, Mike has worked on a number of projects, elevating the production to the next level of quality, and always ensuring the film will make an impact in the theatre, and at home.`,
-        favFilm: "Hot Fuzz",
-        filmLabel: "The greater good... 🦢👮",
+        favFilm: "The Shawshank Redemption",
+        filmLabel: "Get busy living, or get busy dying 🪨🔨",
         imdb: "https://www.imdb.com/name/nm14043487/?ref_=nv_sr_srsg_2_tt_0_nm_8_in_0_q_Michael%2520Grainger",
     },
     {
