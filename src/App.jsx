@@ -1,7 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import SectionPage from "./components/SectionPage";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Projects from "./components/home/Projects";
+import Services from "./components/home/Services";
+import TheTeam from "./components/home/TheTeam";
+import Clients from "./components/home/Clients";
+import Reviews from "./components/home/Reviews";
+import Contact from "./components/home/Contact";
 
 function App() {
     return (
@@ -23,10 +31,60 @@ function App() {
             </svg>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
-                    <Route path="*" element={<Home />} />
+                    <Route element={<Layout />}>
+                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="/projects"
+                            element={
+                                <SectionPage>
+                                    <Projects />
+                                </SectionPage>
+                            }
+                        />
+                        <Route
+                            path="/services"
+                            element={
+                                <SectionPage>
+                                    <Services />
+                                </SectionPage>
+                            }
+                        />
+                        <Route
+                            path="/team"
+                            element={
+                                <SectionPage>
+                                    <TheTeam />
+                                </SectionPage>
+                            }
+                        />
+                        <Route
+                            path="/clients"
+                            element={
+                                <SectionPage>
+                                    <Clients />
+                                </SectionPage>
+                            }
+                        />
+                        <Route
+                            path="/reviews"
+                            element={
+                                <SectionPage>
+                                    <Reviews />
+                                </SectionPage>
+                            }
+                        />
+                        <Route
+                            path="/contact"
+                            element={
+                                <SectionPage>
+                                    <Contact />
+                                </SectionPage>
+                            }
+                        />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/:slug" element={<BlogPost />} />
+                        <Route path="*" element={<Home />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </>

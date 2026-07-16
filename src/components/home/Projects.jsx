@@ -1,13 +1,10 @@
 import { createRef, useState } from "react";
 import PropTypes from "prop-types";
-import { ProjectsCarousel, ProjectsCollage } from "../ProjectsCarousel";
+import { ProjectsCollage } from "../ProjectsCarousel";
 import { IoClose, IoPlayCircleOutline, IoGlobeOutline } from "react-icons/io5";
-import { RiStarFill } from "react-icons/ri";
 
 export default function Projects() {
     const modal = createRef(null);
-    const [direction, setDirection] = useState(null);
-    const [isCollage, setIsCollage] = useState(false);
 
     /**
      * @type {[{ project: object, image: object } | null, React.Dispatch<React.SetStateAction<{ project: object, image: object }>>]}
@@ -19,48 +16,12 @@ export default function Projects() {
         modal.current.showModal();
     };
 
-    const onModalChangeRequest = (direction) => {
-        switch (direction) {
-            case "ArrowRight":
-                setDirection("right");
-                console.log("right");
-                return;
-            case "ArrowLeft":
-                setDirection("left");
-                console.log("left");
-                return;
-            default:
-                return;
-        }
-    };
-
     return (
         <section id="projects" className="relative w-full">
-            <button
-                className="flex w-full cursor-pointer items-center justify-center gap-3 py-10 group"
-                onClick={() => setIsCollage((v) => !v)}
-                aria-label="Toggle project view"
-            >
-                <h2 className="text-secondary text-center text-4xl font-bold tracking-widest uppercase">Projects</h2>
-                <RiStarFill
-                    className={`stroke-2 size-7 transition-all duration-300 ${isCollage ? "fill-secondary stroke-secondary rotate-12" : "fill-transparent stroke-white group-hover:fill-secondary group-hover:stroke-secondary group-hover:rotate-12"}`}
-                />
-            </button>
-            {!isCollage && (
-                <div className="pointer-events-none flex flex-col items-center gap-1 -mt-7 mb-4">
-                    <svg className="animate-bounce" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 10 L10 2 L18 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span className="text-[10px] tracking-[0.2em] text-white uppercase">click to see more</span>
-                </div>
-            )}
-            <dialog ref={modal} className="modal" onKeyDown={(e) => onModalChangeRequest(e.key)}>
+            <dialog ref={modal} className="modal">
                 <ProjectModal currentProject={currentProject} />
             </dialog>
-            {isCollage
-                ? <ProjectsCollage onClick={openModal} />
-                : <ProjectsCarousel onClick={openModal} />
-            }
+            <ProjectsCollage onClick={openModal} />
         </section>
     );
 }
@@ -70,7 +31,7 @@ export default function Projects() {
  * @param {{ project: object, image: object }} params.currentProject
  * @returns
  */
-function ProjectModal({ currentProject }) {
+export function ProjectModal({ currentProject }) {
     if (!currentProject) return <></>;
 
     const { project, image } = currentProject;
@@ -89,42 +50,58 @@ function ProjectModal({ currentProject }) {
                     <img className="aspect-auto rounded-3xl" src={image.posterSrc} alt={image.poster} />
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-12">
                         <h3 className="text-primary text-xl font-bold tracking-widest uppercase md:text-4xl">{project.title}</h3>
-                        <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-2/3 md:text-2xl">
-                            <div className="flex w-full justify-between">
-                                <p className="w-1/2">Released:</p>
-                                <p className="w-1/2 text-left">{project.released}</p>
+                        <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-5/6 md:text-xl">
+                            <div className="flex w-full justify-between gap-3">
+                                <p className="w-2/5 shrink-0">Released:</p>
+                                <p className="w-3/5 text-left">{project.released}</p>
                             </div>
                             {project.writer && (
-                                <div className="flex w-full justify-between">
-                                    <p className="w-1/2">{project.writer.includes(",") ? "Writers/Creators:" : "Writer/Creator:"}</p>
-                                    <p className="w-1/2 text-left">{project.writer}</p>
+                                <div className="flex w-full justify-between gap-3">
+                                    <p className="w-2/5 shrink-0">{project.writer.includes(",") ? "Writers/Creators:" : "Writer/Creator:"}</p>
+                                    {project.writer.includes(",") ? (
+                                        <ul className="w-3/5 space-y-1 text-left">
+                                            {project.writer.split(",").map((name, i) => (
+                                                <li key={i} className="whitespace-nowrap">{name.trim()}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="w-3/5 text-left whitespace-nowrap">{project.writer}</p>
+                                    )}
                                 </div>
                             )}
                             {project.director && (
-                                <div className="flex w-full justify-between">
-                                    <p className="w-1/2">{project.director.includes(",") ? "Directors:" : "Director:"}</p>
-                                    <p className="w-1/2 text-left">{project.director}</p>
+                                <div className="flex w-full justify-between gap-3">
+                                    <p className="w-2/5 shrink-0">{project.director.includes(",") ? "Directors:" : "Director:"}</p>
+                                    {project.director.includes(",") ? (
+                                        <ul className="w-3/5 space-y-1 text-left">
+                                            {project.director.split(",").map((name, i) => (
+                                                <li key={i} className="whitespace-nowrap">{name.trim()}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="w-3/5 text-left whitespace-nowrap">{project.director}</p>
+                                    )}
                                 </div>
                             )}
                             {project.producer && (
-                                <div className="flex w-full justify-between">
-                                    <p className="w-1/2 shrink-0">{project.producer.includes(",") ? "Producers:" : "Producer:"}</p>
+                                <div className="flex w-full justify-between gap-3">
+                                    <p className="w-2/5 shrink-0">{project.producer.includes(",") ? "Producers:" : "Producer:"}</p>
                                     {project.producer.includes(",") ? (
-                                        <ul className="w-1/2 max-h-40 overflow-y-auto text-left space-y-1">
+                                        <ul className="w-3/5 max-h-40 overflow-y-auto text-left space-y-1">
                                             {project.producer.split(",").map((p, i) => {
                                                 const match = p.trim().match(/^(.*?)\s*\(([^)]+)\)$/);
                                                 return match ? (
                                                     <li key={i}>
-                                                        <span>{match[1]}</span>
+                                                        <span className="whitespace-nowrap">{match[1]}</span>
                                                         <span className="block text-[0.6em] font-normal text-gray-400">{match[2]}</span>
                                                     </li>
                                                 ) : (
-                                                    <li key={i}>{p.trim()}</li>
+                                                    <li key={i} className="whitespace-nowrap">{p.trim()}</li>
                                                 );
                                             })}
                                         </ul>
                                     ) : (
-                                        <p className="w-1/2 text-left">{project.producer}</p>
+                                        <p className="w-3/5 text-left whitespace-nowrap">{project.producer}</p>
                                     )}
                                 </div>
                             )}
@@ -197,6 +174,8 @@ ProjectModal.propTypes = {
             // producers: PropTypes.arrayOf(PropTypes.string),
             imdb: PropTypes.string,
             ytsrc: PropTypes.string,
+            trailer: PropTypes.string,
+            website: PropTypes.string,
         }),
         image: PropTypes.object,
     }),

@@ -22,5 +22,9 @@ export default defineConfig({
             "@team": path.resolve(__dirname, "src/assets/images/team"),
         },
     },
+    server: {
+        // Allow temporary Cloudflare tunnels for private previews.
+        allowedHosts: [".trycloudflare.com"],
+    },
     base: "./",
 });

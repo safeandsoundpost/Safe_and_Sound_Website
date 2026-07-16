@@ -15,6 +15,14 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt35303589/",
     },
     {
+        poster: "TheFireThatYouAre_Poster",
+        title: "The Fire That You Are",
+        released: "2025",
+        director: "Paul Persic",
+        writer: "Christina Zdravevski",
+        producer: "Devon C. Codrington",
+    },
+    {
         poster: "MTA",
         title: "Motion To Approve",
         released: "2024",
@@ -242,6 +250,56 @@ const projectDetails = [
         ytsrc: "https://www.youtube.com/watch?v=1Z1-KOE8qb0",
     },
     {
+        poster: "ShelfLife_Poster",
+        title: "Shelf Life",
+        released: "2025",
+        director: "Emmanuel Teji",
+        writer: "Emmanuel Teji",
+        producer: "Priyanka Shailendra, Emmanuel Teji",
+        imdb: "https://www.imdb.com/title/tt38561875/",
+    },
+    {
+        poster: "OnTheSurvivalOfSpecies_Poster",
+        title: "On the Survival Of Species",
+        released: "2025",
+        director: "Linda Ekaterincheva",
+        writer: "Linda Ekaterincheva",
+        producer: "Linda Ekaterincheva, Lorenza De Benedictis, Sasha Zvereva",
+    },
+    {
+        poster: "DoYouSeeHer_Poster",
+        title: "Do You See Her",
+        released: "2025",
+        director: "Janet-Rose Nguyen",
+        writer: "Janet-Rose Nguyen",
+        producer: "Janet-Rose Nguyen, Connie Wang",
+        imdb: "https://www.imdb.com/title/tt36959611/",
+    },
+    {
+        poster: "TheBore_Poster",
+        title: "The Bore",
+        released: "2025",
+        director: "Daniel Stewart",
+        producer: "Raymond Martin (Executive Producer), Cynthia Preston",
+    },
+    {
+        poster: "DuebackHustle_Poster",
+        title: "The Dueback Hustle",
+        released: "2025",
+        director: "Ryan Vergara",
+        writer: "Reid Robison",
+        producer: "Nick Heffelfinger, Ryan Vergara, Reid Robison",
+    },
+    {
+        poster: "Boygirl_Poster",
+        title: "Boy Girl",
+        released: "2026",
+        director: "Michal Heuston",
+        writer: "Ari Conrad Birch, Michal Heuston",
+        producer: "Ari Conrad Birch, Michal Heuston",
+        imdb: "https://www.imdb.com/title/tt43197120/",
+    },
+    {
         poster: "Threadbare_Poster",
         title: "Threadbare",
         released: "2026",
@@ -273,9 +331,15 @@ const collageOrder = [
     "Alice is Asian",
     // "Sacred Space", // hidden pending client approval
     "Second Coming",
+    "Shelf Life",
+    "Boy Girl",
     "Milk of Human Kindness",
     "Tomato Frog",
+    "On the Survival Of Species",
     "Trapped",
+    "Do You See Her",
+    "The Bore",
+    "The Dueback Hustle",
     "Noodles",
     "Dimes",
     "When You Know You Know",
@@ -285,6 +349,7 @@ const collageOrder = [
     "Eyes Wide Open",
     "I'm A Big Fan",
     "Motion To Approve",
+    "The Fire That You Are",
     "Faces",
     "DIABOLIKA",
     "FIGURES",
@@ -301,7 +366,8 @@ function shuffleArray(array) {
     return arr;
 }
 
-function resolveImages() {
+// eslint-disable-next-line react-refresh/only-export-components
+export function resolveImages() {
     const img_paths = Object.values(
         import.meta.glob("@projects/*.webp", { eager: true, query: "?url" }),
     ).map((x) => x.default);
@@ -311,14 +377,6 @@ function resolveImages() {
         if (!src) return [];
         return [{ ...project, posterSrc: src }];
     });
-}
-
-function useResolvedImages() {
-    const [images, setImages] = useState([]);
-    useEffect(() => {
-        setImages(shuffleArray(resolveImages()));
-    }, []);
-    return images;
 }
 
 function useOrderedImages() {

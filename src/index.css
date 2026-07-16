@@ -47,6 +47,17 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Keep anchored sections clear of the fixed header */
+main section[id] {
+    scroll-margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+    main section[id] {
+        scroll-margin-top: 8rem;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

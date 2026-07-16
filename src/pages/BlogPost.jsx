@@ -1,7 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
 import { getPostBySlug } from '../utils/posts';
 
 export default function BlogPost() {
@@ -20,8 +18,7 @@ export default function BlogPost() {
     return (
         <>
             <main className="flex min-h-screen w-full flex-col select-none">
-                <NavBar />
-                <div className="ml-0 md:ml-[15%] lg:ml-[12%] xl:ml-[10%]">
+                <div className="pt-20 md:pt-36">
                     {post.cover && (
                         <img src={post.cover} alt={post.title} className="h-72 w-full object-cover md:h-96" />
                     )}
@@ -43,7 +40,6 @@ export default function BlogPost() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

@@ -38,20 +38,6 @@ export default function Footer() {
             <div className="flex flex-col gap-5">
                 <img className="m-auto select-none max-md:w-10/12" src={logoHorizontal} draggable="false" alt="Safe and Sound logo - Horizontal version" />
                 <p className="w-full text-center text-xs font-bold uppercase md:text-base">&#64; safe &#38; sound {new Date(Date.now()).getFullYear()}</p>
-                <div className="flex flex-col gap-2">
-                    <p className="w-full text-center text-xs font-bold md:text-base">
-                        Website Design by:{" "}
-                        <a className="link link-secondary link-hover" href="https://www.maxinelemieux.com/">
-                            Maxine Lemieux
-                        </a>
-                    </p>
-                    <p className="w-full text-center text-xs font-bold md:text-base">
-                        Website Build by:{" "}
-                        <a className="link link-secondary link-hover" href="https://www.bruno-ramirez.com/">
-                            Bruno Ramirez
-                        </a>
-                    </p>
-                </div>
             </div>
             <img className="h-full w-1/4 md:w-1/6" src={footerCheckers} alt="Footer decorator" />
         </footer>

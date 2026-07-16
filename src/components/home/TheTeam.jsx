@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { createRef, useEffect, useState } from "react";
-import text from "../../assets/images/team/who-we-are-text.png";
 import teamData from "./teamdata";
 import PropTypes from "prop-types";
 import { HiExternalLink } from "react-icons/hi";
@@ -10,8 +9,8 @@ export default function TheTeam() {
     const modal = createRef(null);
     const [currentTeam, setCurrentTeam] = useState(null);
 
-    const [leftColumn, setLeftColumn] = useState([]);
-    const [rightColumn, setRightColumn] = useState([]);
+    const [topRow, setTopRow] = useState([]);
+    const [bottomRow, setBottomRow] = useState([]);
 
     useEffect(() => {
         const img_paths = Object.values(
@@ -24,8 +23,8 @@ export default function TheTeam() {
             const img = img_paths.find((x) => x.includes(project.pic));
             project.pic = img;
         });
-        setLeftColumn(teamData.filter((x) => x.column === 1).sort((a, b) => a.order - b.order));
-        setRightColumn(teamData.filter((x) => x.column === 2).sort((a, b) => a.order - b.order));
+        setTopRow(teamData.filter((x) => x.mobileRow === 1).sort((a, b) => a.mobileColumn - b.mobileColumn));
+        setBottomRow(teamData.filter((x) => x.mobileRow === 2).sort((a, b) => a.mobileColumn - b.mobileColumn));
     }, []);
 
     const onHeadshotClick = (_val) => {
@@ -34,68 +33,53 @@ export default function TheTeam() {
     };
 
     return (
-        <section id="the-team" className="flex w-full flex-col items-center justify-center gap-10 px-5 pt-5 align-middle md:px-16 xl:px-5">
-            <h2 className="text-secondary w-full py-0 text-center text-4xl font-bold tracking-widest uppercase md:pt-10">who we are</h2>
-
+        <section id="the-team" className="flex w-full flex-col items-center justify-center gap-10 px-5 align-middle md:px-16 xl:px-5">
             <dialog ref={modal} className="modal">
                 <TeamModal currentTeam={currentTeam} />
             </dialog>
 
-            <div className="flex h-fit w-full flex-col justify-center gap-5 lg:flex-row">
-                <div className="hidden w-auto grow grid-flow-col gap-3 md:gap-2 lg:grid lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
-                    {leftColumn.map((val, index) => (
+            <div className="flex h-fit w-full flex-col justify-center gap-3 md:gap-5">
+                {/* equal columns up front — auto-flow columns size to the first
+                    image that loads, flashing it full-width on slow networks */}
+                <div className="grid w-auto grow gap-3 md:gap-5" style={{ gridTemplateColumns: `repeat(${topRow.length || 1}, minmax(0, 1fr))` }}>
+                    {topRow.map((val, index) => (
                         <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
                 </div>
-                <div className="hidden h-fit w-full lg:block">
-                    <img
-                        className="pointer-events-none w-full select-none"
-                        draggable="false"
-                        src={text}
-                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. As passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
-                    />
-                </div>
-                <div className="hidden w-auto grow grid-flow-col gap-3 md:gap-2 lg:grid lg:max-w-[10%] lg:grid-flow-row lg:gap-2 xl:gap-5">
-                    {rightColumn.map((val, index) => (
+                <div className="grid w-auto grow gap-3 md:gap-5" style={{ gridTemplateColumns: `repeat(${bottomRow.length || 1}, minmax(0, 1fr))` }}>
+                    {bottomRow.map((val, index) => (
                         <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
                     ))}
                 </div>
-
-                <div className="grid w-auto grow grid-flow-col gap-3 lg:hidden">
-                    {leftColumn
-                        .concat(rightColumn)
-                        .filter((x) => x.mobileRow === 1)
-                        .sort((a, b) => a.mobileColumn - b.mobileColumn)
-                        .map((val, index) => (
-                            <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
-                        ))}
-                </div>
-                <div className="grid w-auto grow grid-flow-col gap-3 lg:hidden">
-                    {leftColumn
-                        .concat(rightColumn)
-                        .filter((x) => x.mobileRow === 2)
-                        .sort((a, b) => a.mobileColumn - b.mobileColumn)
-                        .map((val, index) => (
-                            <TeamHeadshot key={index} pic={val.pic} onClick={() => onHeadshotClick(val)} alt={val.name} />
-                        ))}
-                </div>
-                <div className="h-fit w-full shrink lg:hidden">
-                    <img
-                        className="pointer-events-none mx-auto select-none"
-                        draggable="false"
-                        src={text}
-                        alt="Supporting the needs of diverse and emerging filmmakers is the driving force here at Safe & Sound. As passionate artists ourselves we know the obsession that goes into crafting that perfect story, and how important it is to feel safe and empowered in out decisions. Our small team comes with the work experience and technical ability of a large post-studio studio without sacrificint that fun, personalized atmosphere you can only find with people truly invested in seeing your art succeed. We're forever dedicated to learning and creating a space free of hate discrimination and 'bar ideas'. With us, you are always Safe & Sound."
-                    />
+                <div className="mt-5 h-fit w-full">
+                    <MissionStatement />
                 </div>
             </div>
         </section>
     );
 }
 
+function MissionStatement() {
+    return (
+        <div className="text-primary space-y-6 text-center text-sm font-normal tracking-[0.2em] md:text-base xl:text-lg">
+            <p>
+                Supporting diverse and emerging filmmakers is the driving force here at Safe &amp; Sound. As passionate artists ourselves, we
+                know the obsession that goes into crafting that perfect story, and how important it is to feel{" "}
+                <span className="text-accent">safe and empowered in your decisions</span>. Our small team brings the experience and technical
+                ability of a large post-audio studio with the fun, personalized atmosphere of people truly invested in seeing your art succeed,
+                in a space <span className="text-accent">free of hate and discrimination</span>.
+            </p>
+            <p>
+                With us, you are always <span className="text-accent">Safe &amp; Sound</span>.
+            </p>
+        </div>
+    );
+}
+
 function TeamHeadshot({ pic, onClick, alt }) {
     return (
         <img
-            className="aspect-[500/543] w-fit grayscale transition-all select-none hover:cursor-pointer hover:grayscale-0 md:m-0 lg:m-0 lg:mr-0 lg:ml-auto lg:p-0"
+            className="aspect-[500/543] w-full grayscale transition-all select-none hover:cursor-pointer hover:grayscale-0"
             onClick={onClick}
             draggable="false"
             src={pic}

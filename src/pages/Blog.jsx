@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
 import { getAllPosts } from '../utils/posts';
 
 export default function Blog() {
@@ -9,8 +7,7 @@ export default function Blog() {
     return (
         <>
             <main className="flex min-h-screen w-full flex-col select-none">
-                <NavBar />
-                <div className="ml-0 md:ml-[15%] lg:ml-[12%] xl:ml-[10%] px-6 py-24 md:py-16">
+                <div className="px-6 pt-28 pb-16 md:pt-44">
                     <h1 className="text-secondary mb-12 text-4xl font-bold tracking-widest uppercase">Behind the Scenes</h1>
                     {posts.length === 0 && (
                         <p className="text-gray-400 tracking-widest uppercase text-sm">No posts yet — check back soon.</p>
@@ -39,7 +36,6 @@ export default function Blog() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }
