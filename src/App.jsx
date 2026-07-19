@@ -4,6 +4,7 @@ import SectionPage from "./components/SectionPage";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import HorrorSoundBox from "./pages/HorrorSoundBox";
 import Projects from "./components/home/Projects";
 import Services from "./components/home/Services";
 import TheTeam from "./components/home/TheTeam";
@@ -83,6 +84,7 @@ function App() {
                         />
                         <Route path="/blog" element={<Blog />} />
                         <Route path="/blog/:slug" element={<BlogPost />} />
+                        <Route path="/horror-box" element={<HorrorSoundBox />} />
                         <Route path="*" element={<Home />} />
                     </Route>
                 </Routes>

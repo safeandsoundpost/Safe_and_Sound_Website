@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import CsaWin from "../components/home/CsaWin";
 import FeaturedPosters from "../components/home/FeaturedPosters";
+import HorrorBox from "../components/home/HorrorBox";
 import { FeaturedClients, PartnerClients } from "../components/home/Clients";
 import Reviews from "../components/home/Reviews";
 import Contact from "../components/home/Contact";
@@ -11,6 +12,7 @@ export default function Home() {
             <Banner />
             <CsaWin />
             <FeaturedPosters />
+            <HorrorBox />
             <FeaturedClients />
             <div className="hidden md:block md:pt-14">
                 <PartnerClients />

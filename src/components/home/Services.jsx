@@ -40,6 +40,8 @@ const services = [
         message: "Booking Inquiry – Sound Design Services - PROJECT TITLE",
         description:
             "Whether it's creating an otherworldly sound we have never heard before, to making that old door creak just right. We can offer blockbuster level quality with our personality engrained in every sound.",
+        // Cards may carry one secondary link to a deeper page.
+        feature: { to: "/horror-box", label: "play the horror box →" },
     },
     {
         title: "foley",
@@ -84,6 +86,7 @@ export default function Services() {
                         imgSrc={images[service.image]}
                         serviceDescription={service.description}
                         message={service.message}
+                        feature={service.feature}
                         open={openTitles.has(service.title)}
                         onToggle={() => toggleCard(service.title)}
                     />
@@ -128,7 +131,7 @@ export default function Services() {
     );
 }
 
-function ServiceCard({ title, imgSrc, serviceDescription, message, open, onToggle }) {
+function ServiceCard({ title, imgSrc, serviceDescription, message, feature, open, onToggle }) {
     return (
         <div className="flex w-full flex-col gap-4 md:gap-5 md:text-[#f3f3f4]">
             <button
@@ -170,6 +173,16 @@ function ServiceCard({ title, imgSrc, serviceDescription, message, open, onToggl
                 <span className="m-0 w-full p-0 text-center text-sm uppercase">safe&amp;sØundpost</span>
             </button>
             <span className="m-0 w-full p-0 text-center text-sm uppercase md:hidden">safe&amp;sØundpost</span>
+            {/* Secondary link sits below the barcode so the cards' images, buttons
+                and barcodes stay aligned across the row. */}
+            {feature && (
+                <Link
+                    to={feature.to}
+                    className="hover:text-secondary w-full text-center text-xs font-bold tracking-widest underline underline-offset-4 uppercase"
+                >
+                    {feature.label}
+                </Link>
+            )}
         </div>
     );
 }
@@ -179,6 +192,7 @@ ServiceCard.propTypes = {
     imgSrc: PropTypes.string,
     serviceDescription: PropTypes.string,
     message: PropTypes.string,
+    feature: PropTypes.shape({ to: PropTypes.string.isRequired, label: PropTypes.string.isRequired }),
     open: PropTypes.bool.isRequired,
     onToggle: PropTypes.func.isRequired,
 };
