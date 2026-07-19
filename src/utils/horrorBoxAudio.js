@@ -52,12 +52,19 @@ function pickSample(id) {
 
 // Panic button. Ramps each sounding take down over ~60ms and then stops it,
 // rather than cutting hard, which clicks.
+//
+// The countdown drives the loop, NOT a read-back of el.volume: iOS makes volume
+// read-only on media elements, so the writes below are silently ignored there
+// and waiting for the value to fall would never stop anything. On iOS this is
+// simply a hard stop after 60ms, which is the behaviour that matters.
 export function stopAll() {
     playing.forEach((el) => {
-        const step = el.volume / 6;
+        let steps = 6;
+        const step = el.volume / steps;
         const fade = setInterval(() => {
+            steps -= 1;
             el.volume = Math.max(0, el.volume - step);
-            if (el.volume <= 0.01) {
+            if (steps <= 0) {
                 clearInterval(fade);
                 el.pause();
                 el.currentTime = 0;
