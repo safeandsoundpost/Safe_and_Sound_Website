@@ -167,6 +167,9 @@ const HOTSPOTS = [
         id: "rodThin",
         x: 64,
         y: 27,
+        // The three rods land within ~20px of each other at phone width, so this
+        // one is perched in clear space with a leader line back to the rod.
+        leader: { x: 34, y: 12 },
         label: "Thin brass rod",
         title: "Thin brass rod",
         text: "Struck brass. The first ping that tells you the room is not empty.",
@@ -204,6 +207,9 @@ const HOTSPOTS = [
         id: "doorstop",
         x: 74.3,
         y: 30.4,
+        // Sits 27px from the rusty coil and 30px from the medium rod at phone
+        // width, so it gets perched too.
+        leader: { x: 58, y: 7 },
         label: "Spring door stop",
         title: "Spring door stop",
         text: "The doorstop boing, pitched down until it stops being funny.",
@@ -232,11 +238,16 @@ const eyebrow = "text-accent text-xs font-bold tracking-[.2rem] uppercase";
 const heading = "font-bold uppercase italic leading-none";
 
 function Hotspot({ spot, playing, picking, onPlay, onGrab }) {
+    // A spot with `leader` sits somewhere else on phones, where its real
+    // position is too crowded to tap, and a dotted line points back to the part.
+    const perch = spot.leader || spot;
     return (
         <button
             type="button"
-            className={`group absolute z-30 -mt-[23px] -ml-[23px] size-[46px] ${picking ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-pointer"}`}
-            style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+            className={`group absolute top-[var(--py)] left-[var(--px)] z-30 -mt-[23px] -ml-[23px] size-[46px] md:top-[var(--sy)] md:left-[var(--sx)] ${
+                picking ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-pointer"
+            }`}
+            style={{ "--sx": `${spot.x}%`, "--sy": `${spot.y}%`, "--px": `${perch.x}%`, "--py": `${perch.y}%` }}
             aria-label={`Play ${spot.label}`}
             onPointerDown={onGrab}
             onClick={onPlay}
@@ -418,6 +429,32 @@ export default function HorrorSoundBox() {
                                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(76%_76%_at_62%_55%,transparent_40%,rgba(0,0,0,0.6)_100%),linear-gradient(to_bottom,rgba(0,0,0,0.28),transparent_24%)]"
                                 aria-hidden="true"
                             />
+                            {/* Leader lines for perched rings, phones only. viewBox is
+                                0..100 with preserveAspectRatio none so the numbers are
+                                the same percentages the rings use. */}
+                            <svg
+                                className="pointer-events-none absolute inset-0 h-full w-full md:hidden"
+                                viewBox="0 0 100 100"
+                                preserveAspectRatio="none"
+                                aria-hidden="true"
+                            >
+                                {spots
+                                    .filter((spot) => spot.leader)
+                                    .map((spot) => (
+                                        <line
+                                            key={spot.id}
+                                            x1={spot.leader.x}
+                                            y1={spot.leader.y}
+                                            x2={spot.x}
+                                            y2={spot.y}
+                                            stroke="white"
+                                            strokeWidth="1"
+                                            strokeDasharray="3 3"
+                                            strokeOpacity="0.75"
+                                            vectorEffect="non-scaling-stroke"
+                                        />
+                                    ))}
+                            </svg>
                             {spots.map((spot) => (
                                 <Hotspot
                                     key={spot.id}
@@ -568,7 +605,6 @@ export default function HorrorSoundBox() {
                     ))}
                 </div>
             </section>
-
         </main>
     );
 }
