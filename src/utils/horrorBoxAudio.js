@@ -1,6 +1,10 @@
-// Sound for the Horror Box hotspots. Real one-shots recorded from the
-// instrument play where they exist; the synths below are the fallback for any
-// element with no recording yet.
+// Sound for the Horror Box hotspots.
+//
+// Playback goes through HTMLAudioElement rather than the Web Audio API on
+// purpose: iOS mutes Web Audio when the ringer switch is off, but lets media
+// elements through. The whole point of the page is hearing the instrument, and
+// most phones live on silent, so media elements win despite being the blunter
+// tool. The synths below remain as a fallback for any id with no recording.
 //
 // TO ADD OR SWAP RECORDINGS: drop files into src/assets/audio/horror-box named
 // <hotspotId>-<n>.mp3 (e.g. chamber-4.mp3). They are picked up automatically,
@@ -19,19 +23,60 @@ Object.keys(sampleUrls)
         (SAMPLES[id] = SAMPLES[id] || []).push(sampleUrls[path].default);
     });
 
-const buffers = {};
+// One reusable element per take, so a repeat tap does not refetch and the
+// browser keeps the decoded audio.
+const elements = {};
 const lastPlayed = {};
+const playing = new Set();
+
+function element(url) {
+    if (!elements[url]) {
+        const el = new Audio(url);
+        el.preload = "none";
+        el.addEventListener("ended", () => playing.delete(el));
+        elements[url] = el;
+    }
+    return elements[url];
+}
+
+// Avoid replaying the same take twice in a row when an element has several.
+function pickSample(id) {
+    const list = SAMPLES[id];
+    if (!list || !list.length) return null;
+    if (list.length === 1) return list[0];
+    let url = list[Math.floor(Math.random() * list.length)];
+    if (url === lastPlayed[id]) url = list[(list.indexOf(url) + 1) % list.length];
+    lastPlayed[id] = url;
+    return url;
+}
+
+// Panic button. Ramps each sounding take down over ~60ms and then stops it,
+// rather than cutting hard, which clicks.
+export function stopAll() {
+    playing.forEach((el) => {
+        const step = el.volume / 6;
+        const fade = setInterval(() => {
+            el.volume = Math.max(0, el.volume - step);
+            if (el.volume <= 0.01) {
+                clearInterval(fade);
+                el.pause();
+                el.currentTime = 0;
+                el.volume = 1;
+            }
+        }, 10);
+    });
+    playing.clear();
+    stopSynths();
+}
+
 const voices = new Set();
 let ctx = null;
 let master = null;
-let dry = null;
 
-// The AudioContext must be created inside a user gesture (autoplay policy),
-// so every entry point runs through initAudio() first.
+// Web Audio is now only used by the synth fallbacks below, for any hotspot
+// that has no recording yet. Recordings go through media elements instead.
 function initAudio() {
     if (ctx) {
-        // Safari re-suspends the context when the tab is backgrounded, so this
-        // runs on every tap, not just the first.
         if (ctx.state !== "running") ctx.resume();
         return;
     }
@@ -39,34 +84,17 @@ function initAudio() {
     if (!AC) return;
     ctx = new AC();
 
-    // Wrap the source factories on our own context so every voice that gets
-    // started is reachable by stopAll(). Doing it here rather than at each
-    // call site means a new synth can never forget to register itself.
+    // Wrap the source factories so every synth voice is reachable by stopAll().
     const makeOsc = ctx.createOscillator.bind(ctx);
     ctx.createOscillator = () => hold(makeOsc());
     const makeBuf = ctx.createBufferSource.bind(ctx);
     ctx.createBufferSource = () => hold(makeBuf());
 
-    // iOS hands back a suspended context even when it is constructed inside the
-    // tap, and our recordings only start after an async fetch and decode, by
-    // which time the gesture has expired. So resume immediately and push a
-    // silent buffer through while the gesture is still valid: that is what
-    // actually unlocks output, and without it the first tap is silent.
     ctx.resume();
-    const unlock = makeBuf();
-    unlock.buffer = ctx.createBuffer(1, 1, ctx.sampleRate);
-    unlock.connect(ctx.destination);
-    unlock.start(0);
 
     master = ctx.createGain();
     master.gain.value = 0.85;
     master.connect(ctx.destination);
-
-    // Recordings already carry the room they were captured in, so they bypass
-    // the plate below and go straight out.
-    dry = ctx.createGain();
-    dry.gain.value = 0.9;
-    dry.connect(ctx.destination);
 
     // A short synthetic plate so the synth fallbacks sit in a room rather than
     // right on top of the listener.
@@ -79,29 +107,17 @@ function initAudio() {
     wet.connect(ctx.destination);
 }
 
-// Every live source, so the panic button can silence the page. Nodes remove
-// themselves once they finish so the set does not grow without bound.
+// Every live synth voice, so the panic button can silence them too.
 function hold(node) {
     voices.add(node);
     node.addEventListener("ended", () => voices.delete(node));
     return node;
 }
 
-// Panic button. Fades each live voice out over its own gain and then stops it.
-// The shared master/dry gains are deliberately left alone: ducking and
-// restoring them is a single point of failure that leaves the page mute if the
-// restore does not land, and it did exactly that.
-export function stopAll() {
+function stopSynths() {
     if (!ctx) return;
     const t = ctx.currentTime;
-
     voices.forEach((v) => {
-        const fade = v.__fade;
-        if (fade) {
-            fade.gain.cancelScheduledValues(t);
-            fade.gain.setValueAtTime(fade.gain.value, t);
-            fade.gain.linearRampToValueAtTime(0.0001, t + 0.06);
-        }
         try {
             v.stop(t + 0.07);
         } catch {
@@ -109,17 +125,6 @@ export function stopAll() {
         }
     });
     voices.clear();
-}
-
-// Avoid replaying the same take twice in a row when an element has several.
-function pickSample(id) {
-    const list = SAMPLES[id];
-    if (!list || !list.length) return null;
-    if (list.length === 1) return list[0];
-    let url = list[Math.floor(Math.random() * list.length)];
-    if (url === lastPlayed[id]) url = list[(list.indexOf(url) + 1) % list.length];
-    lastPlayed[id] = url;
-    return url;
 }
 
 function impulse(seconds, decay) {
@@ -441,40 +446,27 @@ export function hasSound(id) {
     return Boolean(SYNTH[id] || (SAMPLES[id] && SAMPLES[id].length));
 }
 
-// Cached by URL, so each take is fetched and decoded at most once.
-function loadSample(url) {
-    if (buffers[url]) return Promise.resolve(buffers[url]);
-    return fetch(url)
-        .then((r) => r.arrayBuffer())
-        .then((ab) => ctx.decodeAudioData(ab))
-        .then((buf) => {
-            buffers[url] = buf;
-            return buf;
-        });
-}
-
-function playBuffer(buf) {
-    const src = ctx.createBufferSource();
-    src.buffer = buf;
-    // Its own gain stage purely so the panic button has something local to fade
-    // before stopping it. Thrown away with the voice, so nothing can get stuck.
-    const fade = ctx.createGain();
-    src.__fade = fade;
-    src.connect(fade).connect(dry);
-    src.start();
-    return buf.duration;
-}
-
 // The one switch every hotspot goes through. Resolves with the sound's
 // duration in seconds so the caller can time the ring's active state.
 export function playSound(id) {
+    const url = pickSample(id);
+
+    if (url) {
+        const el = element(url);
+        // Restart rather than ignore a rapid second tap on the same take.
+        el.pause();
+        el.currentTime = 0;
+        el.volume = 1;
+        playing.add(el);
+        const started = el.play();
+        if (started && started.catch) started.catch(() => {});
+        // duration is unknown until metadata loads; fall back to a sane guess
+        // so the ring highlight still clears.
+        return Promise.resolve(isFinite(el.duration) && el.duration ? el.duration : 4);
+    }
+
+    // No recording for this id: fall back to the synth, which needs Web Audio.
     initAudio();
     if (!ctx) return Promise.resolve(0);
-    const url = pickSample(id);
-    if (url) {
-        return loadSample(url)
-            .then(playBuffer)
-            .catch(() => (SYNTH[id] ? SYNTH[id](ctx.currentTime) : 0));
-    }
     return Promise.resolve(SYNTH[id] ? SYNTH[id](ctx.currentTime) : 0);
 }
