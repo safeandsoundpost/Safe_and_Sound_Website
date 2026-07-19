@@ -30,7 +30,9 @@ let dry = null;
 // so every entry point runs through initAudio() first.
 function initAudio() {
     if (ctx) {
-        if (ctx.state === "suspended") ctx.resume();
+        // Safari re-suspends the context when the tab is backgrounded, so this
+        // runs on every tap, not just the first.
+        if (ctx.state !== "running") ctx.resume();
         return;
     }
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -44,6 +46,17 @@ function initAudio() {
     ctx.createOscillator = () => hold(makeOsc());
     const makeBuf = ctx.createBufferSource.bind(ctx);
     ctx.createBufferSource = () => hold(makeBuf());
+
+    // iOS hands back a suspended context even when it is constructed inside the
+    // tap, and our recordings only start after an async fetch and decode, by
+    // which time the gesture has expired. So resume immediately and push a
+    // silent buffer through while the gesture is still valid: that is what
+    // actually unlocks output, and without it the first tap is silent.
+    ctx.resume();
+    const unlock = makeBuf();
+    unlock.buffer = ctx.createBuffer(1, 1, ctx.sampleRate);
+    unlock.connect(ctx.destination);
+    unlock.start(0);
 
     master = ctx.createGain();
     master.gain.value = 0.85;
