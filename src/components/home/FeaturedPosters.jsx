@@ -139,6 +139,7 @@ function FeaturedPoster({ project, onOpen }) {
         >
             <img
                 className={`h-full w-full object-cover transition-opacity duration-300 select-none ${videoId && playing ? "opacity-0" : "opacity-100"}`}
+                style={project.posterPosition ? { objectPosition: project.posterPosition } : undefined}
                 draggable="false"
                 src={project.posterSrc}
                 alt={`${project.title} poster`}

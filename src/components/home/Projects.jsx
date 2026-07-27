@@ -47,14 +47,16 @@ export function ProjectModal({ currentProject }) {
                     </button>
                 </form>
                 <div className="grid grid-cols-2 gap-3 md:gap-5">
-                    <img className="aspect-auto rounded-3xl" src={image.posterSrc} alt={image.poster} />
+                    <img className="aspect-auto rounded-3xl" src={project.fullSrc ?? image.posterSrc} alt={image.poster} />
                     <div className="flex flex-col items-center justify-center gap-2 align-middle md:gap-12">
                         <h3 className="text-primary text-xl font-bold tracking-widest uppercase md:text-4xl">{project.title}</h3>
                         <div className="flex w-full flex-col gap-5 text-xs font-semibold md:w-5/6 md:text-xl">
-                            <div className="flex w-full justify-between gap-3">
-                                <p className="w-2/5 shrink-0">Released:</p>
-                                <p className="w-3/5 text-left">{project.released}</p>
-                            </div>
+                            {project.released && (
+                                <div className="flex w-full justify-between gap-3">
+                                    <p className="w-2/5 shrink-0">Released:</p>
+                                    <p className="w-3/5 text-left">{project.released}</p>
+                                </div>
+                            )}
                             {project.writer && (
                                 <div className="flex w-full justify-between gap-3">
                                     <p className="w-2/5 shrink-0">{project.writer.includes(",") ? "Writers/Creators:" : "Writer/Creator:"}</p>
@@ -167,7 +169,8 @@ ProjectModal.propTypes = {
     currentProject: PropTypes.shape({
         project: PropTypes.shape({
             title: PropTypes.string.isRequired,
-            released: PropTypes.string.isRequired,
+            released: PropTypes.string,
+            fullSrc: PropTypes.string,
             writer: PropTypes.string,
             director: PropTypes.string,
             producer: PropTypes.string,

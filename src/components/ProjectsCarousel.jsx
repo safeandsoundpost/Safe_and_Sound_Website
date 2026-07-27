@@ -5,9 +5,28 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const projectDetails = [
+    // Poster-only entries for now — no credits supplied yet.
+    {
+        poster: "GoLive_Poster",
+        title: "Go Live",
+    },
+    {
+        poster: "AFamilyAffair_Poster",
+        title: "A Family Affair",
+    },
+    {
+        poster: "UndressingThem_Poster",
+        title: "Undressing Them",
+        // Tiles are portrait, so they show a title-only crop; the modal has
+        // room for the full landscape key art with its credits.
+        posterFull: "UndressingThem_Full",
+    },
     {
         poster: "YouAreHere",
         title: "You Are Here",
+        // Laurels sit at the very top edge, and the 12/16 tiles crop a taller
+        // poster from both ends — anchor the crop up so they survive.
+        posterPosition: "top",
         released: "2025",
         director: "Spencer Lackey",
         producer: "Ryan Vergara",
@@ -102,6 +121,10 @@ const projectDetails = [
     {
         poster: "cowscomehome",
         title: "Cows Come Home",
+        // Title runs to the top edge and the CSA laurels to the bottom, so the
+        // 12/16 crop can't clear both — favour the laurels and let the
+        // hand-drawn title sit tight against the top.
+        posterPosition: "50% 58%",
         released: "2025",
         director: "Katie Uhlmann",
         producer: "David Carruthers (Executive Producer), Keri Ferencz (Executive Producer), Lindsey Middleton (Executive Producer), Katie Uhlmann (Executive Producer)",
@@ -184,6 +207,10 @@ const projectDetails = [
     {
         poster: "AiA_Poster_Final",
         title: "Alice is Asian",
+        // Tagline sits at the top and the CFC logo at the bottom, and the V3
+        // logo is close enough to the edge that the 12/16 crop can't clear
+        // both — this splits the 11px shortfall so neither is visibly cut.
+        posterPosition: "50% 80%",
         released: "2026",
         director: "Andrew Hamilton",
         writer: "Isabella Shibuta",
@@ -341,6 +368,9 @@ const collageOrder = [
     "The Bore",
     "The Dueback Hustle",
     "Noodles",
+    "Go Live",
+    "A Family Affair",
+    "Undressing Them",
     "Dimes",
     "When You Know You Know",
     "A great big terrible dream",
@@ -375,7 +405,8 @@ export function resolveImages() {
     return projectDetails.flatMap((project) => {
         const src = img_paths.find((x) => x.includes(project.poster));
         if (!src) return [];
-        return [{ ...project, posterSrc: src }];
+        const full = project.posterFull && img_paths.find((x) => x.includes(project.posterFull));
+        return [{ ...project, posterSrc: src, ...(full && { fullSrc: full }) }];
     });
 }
 
@@ -407,6 +438,7 @@ export function ProjectsCollage({ onClick }) {
                     <img
                         draggable="false"
                         className="aspect-[12/16] w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105 select-none"
+                        style={img.posterPosition ? { objectPosition: img.posterPosition } : undefined}
                         src={img.posterSrc}
                         alt={img.title}
                     />
@@ -474,6 +506,7 @@ export function ProjectsCarousel(props) {
                                     <img
                                         draggable="false"
                                         className="aspect-12/16 h-[22rem] w-fit object-cover transition-transform duration-300 ease-in-out select-none hover:scale-105 md:max-w-48 lg:max-w-52 xl:max-w-56"
+                                        style={x.posterPosition ? { objectPosition: x.posterPosition } : undefined}
                                         src={x.posterSrc}
                                         alt={x.poster}
                                     />
