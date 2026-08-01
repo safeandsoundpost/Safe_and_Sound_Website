@@ -4,6 +4,7 @@ import Hls from "hls.js";
 import { PiPlayCircleLight } from "react-icons/pi";
 import boxPhoto from "../assets/images/horror-box/box.webp";
 import { hasSound, playSound, stopAll } from "../utils/horrorBoxAudio";
+import { useSeo, PAGE_SEO } from "../utils/seo";
 
 const STREAM_HOST = "https://customer-542wgslfba2pjmw7.cloudflarestream.com";
 const DEMO_VIDEO_ID = "6f730e381652629067251e2d51cf0b4f";
@@ -282,6 +283,8 @@ Hotspot.propTypes = {
 };
 
 export default function HorrorSoundBox() {
+    useSeo(PAGE_SEO.horrorBox);
+
     const [active, setActive] = useState(null);
     const [playing, setPlaying] = useState(null);
     const [touched, setTouched] = useState(false);

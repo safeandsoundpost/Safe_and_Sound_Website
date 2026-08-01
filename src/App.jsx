@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import HorrorSoundBox from "./pages/HorrorSoundBox";
+import NotFound from "./pages/NotFound";
+import { PAGE_SEO } from "./utils/seo";
 import Projects from "./components/home/Projects";
 import Services from "./components/home/Services";
 import TheTeam from "./components/home/TheTeam";
@@ -37,7 +39,7 @@ function App() {
                         <Route
                             path="/projects"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.projects}>
                                     <Projects />
                                 </SectionPage>
                             }
@@ -45,7 +47,7 @@ function App() {
                         <Route
                             path="/services"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.services}>
                                     <Services />
                                 </SectionPage>
                             }
@@ -53,7 +55,7 @@ function App() {
                         <Route
                             path="/team"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.team}>
                                     <TheTeam />
                                 </SectionPage>
                             }
@@ -61,7 +63,7 @@ function App() {
                         <Route
                             path="/clients"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.clients}>
                                     <Clients />
                                 </SectionPage>
                             }
@@ -69,7 +71,7 @@ function App() {
                         <Route
                             path="/reviews"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.reviews}>
                                     <Reviews />
                                 </SectionPage>
                             }
@@ -77,7 +79,7 @@ function App() {
                         <Route
                             path="/contact"
                             element={
-                                <SectionPage>
+                                <SectionPage seo={PAGE_SEO.contact}>
                                     <Contact />
                                 </SectionPage>
                             }
@@ -85,7 +87,7 @@ function App() {
                         <Route path="/blog" element={<Blog />} />
                         <Route path="/blog/:slug" element={<BlogPost />} />
                         <Route path="/horror-box" element={<HorrorSoundBox />} />
-                        <Route path="*" element={<Home />} />
+                        <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

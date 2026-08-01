@@ -1,10 +1,22 @@
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug } from '../utils/posts';
+import { useSeo, PAGE_SEO } from '../utils/seo';
 
 export default function BlogPost() {
     const { slug } = useParams();
     const post = getPostBySlug(slug);
+
+    // Called before the missing-post branch so the hook order stays stable.
+    useSeo(
+        post
+            ? {
+                  title: `${post.title} | Safe & Sound Post`,
+                  description: post.excerpt ?? PAGE_SEO.blog.description,
+                  path: `/blog/${post.slug}`,
+              }
+            : PAGE_SEO.notFound,
+    );
 
     if (!post) {
         return (

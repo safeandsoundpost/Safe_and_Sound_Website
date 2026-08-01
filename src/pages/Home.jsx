@@ -5,8 +5,11 @@ import HorrorBox from "../components/home/HorrorBox";
 import { FeaturedClients, PartnerClients } from "../components/home/Clients";
 import Reviews from "../components/home/Reviews";
 import Contact from "../components/home/Contact";
+import { useSeo, PAGE_SEO } from "../utils/seo";
 
 export default function Home() {
+    useSeo(PAGE_SEO.home);
+
     return (
         <main className="flex w-full flex-col select-none">
             <Banner />

@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../utils/posts';
+import { useSeo, PAGE_SEO } from '../utils/seo';
 
 export default function Blog() {
     const posts = getAllPosts();
+
+    useSeo(PAGE_SEO.blog);
 
     return (
         <>

@@ -13,7 +13,15 @@ export default defineConfig({
         tailwindcss(),
         VitePluginRadar({ analytics: { id: "G-JQBCWM4YT4" } }),
         ViteImageOptimizer(),
-        Sitemap({ hostname: "https://safeandsoundpost.com/" }),
+        // The app is a single page build, so the plugin can only discover "/".
+        // Every other route has to be listed here or it never reaches the
+        // sitemap. Keep in step with PAGE_SEO in src/utils/seo.js.
+        Sitemap({
+            hostname: "https://safeandsoundpost.com",
+            dynamicRoutes: ["/projects", "/services", "/team", "/clients", "/reviews", "/contact", "/blog", "/horror-box"],
+            changefreq: "monthly",
+            priority: 0.7,
+        }),
     ],
     resolve: {
         alias: {
