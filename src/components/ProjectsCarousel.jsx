@@ -351,6 +351,13 @@ const projectDetails = [
         producer: "Cheverny Baluca, Kieran Barbaza, Riel Flack, Ariana Karzai, Mitchell Jaramillo (Executive Producer), Siddharth Sharma (Executive Producer), Michael Wamara (Executive Producer), Marisa Roggeveen (Executive Producer), Josh Zimel (Executive Producer)",
         imdb: "https://www.imdb.com/title/tt37536260/",
     },
+    {
+        poster: "DontForgetMe_Poster",
+        title: "Don't Forget Me",
+        director: "Sohaib Ghani",
+        writer: "Sohaib Ghani",
+        producer: "Sohaib Ghani",
+    },
 ];
 
 const collageOrder = [
@@ -365,6 +372,7 @@ const collageOrder = [
     "Fluid",
     "Alice is Asian",
     "Diana",
+    "Don't Forget Me",
     // "Sacred Space", // hidden pending client approval
     "Second Coming",
     "Shelf Life",
