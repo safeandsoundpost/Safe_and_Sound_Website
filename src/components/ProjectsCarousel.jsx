@@ -343,6 +343,14 @@ const projectDetails = [
         producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
         ytsrc: "https://www.youtube.com/watch?v=F9CBJAEWLGI",
     },
+    {
+        poster: "Diana_Poster",
+        title: "Diana",
+        director: "Cheverny Baluca",
+        writer: "Cheverny Baluca, Patrick Smietanka",
+        producer: "Cheverny Baluca, Kieran Barbaza, Riel Flack, Ariana Karzai, Mitchell Jaramillo (Executive Producer), Siddharth Sharma (Executive Producer), Michael Wamara (Executive Producer), Marisa Roggeveen (Executive Producer), Josh Zimel (Executive Producer)",
+        imdb: "https://www.imdb.com/title/tt37536260/",
+    },
 ];
 
 const collageOrder = [
@@ -356,6 +364,7 @@ const collageOrder = [
     "Hockey Night in Canada",
     "Fluid",
     "Alice is Asian",
+    "Diana",
     // "Sacred Space", // hidden pending client approval
     "Second Coming",
     "Shelf Life",
