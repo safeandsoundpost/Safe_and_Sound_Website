@@ -5,7 +5,7 @@ import { IoVolumeHigh, IoVolumeMute } from "react-icons/io5";
 import { resolveImages } from "../ProjectsCarousel";
 import { ProjectModal } from "./Projects";
 
-const featured_titles = ["Cows Come Home", "Alice is Asian", "You Are Here", "Burdened"];
+const featured_titles = ["Cows Come Home", "Alice is Asian", "You Are Here", "Driftwood"];
 
 // Posters that play a muted trailer (Cloudflare Stream ID) inside their bounds on hover.
 const hover_videos = {
@@ -13,6 +13,7 @@ const hover_videos = {
     "Alice is Asian": "abffa9b0c39fa0029d7c692a2c3e5bae",
     "You Are Here": "e297a32bdcf0893ad01077a85a1664c3",
     Burdened: "f25110454cd2cd70733b29474bb05429",
+    Driftwood: "4d1c466e622c684509d4cce399c995b7",
 };
 
 // Posters that show a watch banner on hover. Links default to the project's
@@ -21,6 +22,7 @@ const watch_banners = {
     "Cows Come Home": { label: "watch on bell tv1", href: "https://tv1.bell.ca/fibetv1/shows/cows-come-home" },
     "Alice is Asian": {},
     "You Are Here": {},
+    Driftwood: { label: "watch trailer", href: "https://www.youtube.com/watch?v=RwfeC2ILpG8" },
 };
 
 // clientBandwidthHint pins the manifest to the top rendition so the preview

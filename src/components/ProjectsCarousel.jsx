@@ -157,6 +157,15 @@ const projectDetails = [
         ytsrc: "https://www.youtube.com/watch?v=ofyil4Fa33o&t=1s",
     },
     {
+        poster: "driftwood",
+        title: "Driftwood",
+        released: "2026",
+        director: "A.C. Birch",
+        writer: "A.C. Birch",
+        producer: "A.C. Birch, Emmett McCourt, Michal Heuston",
+        trailer: "https://www.youtube.com/watch?v=RwfeC2ILpG8",
+    },
+    {
         poster: "burdened",
         title: "Burdened",
         released: "2025",
@@ -203,6 +212,7 @@ const projectDetails = [
         director: "Paul Persic",
         producer: "Devon Codrington, Lex Emanuel, Paul Persic",
         imdb: "https://www.imdb.com/title/tt37364469/",
+        trailer: "https://www.youtube.com/watch?v=eqeVtM_Bcxo",
     },
     {
         poster: "AiA_Poster_Final",
@@ -363,6 +373,7 @@ const projectDetails = [
 const collageOrder = [
     "You Are Here",
     "Cows Come Home",
+    "Driftwood",
     "Burdened",
     "Li Chun",
     "These Triggas",

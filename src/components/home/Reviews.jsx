@@ -18,6 +18,14 @@ const reviews = [
         ig_url: "https://www.instagram.com/aqfarrell/",
     },
     {
+        name: "Christian Jacobsen",
+        photo: "christian.webp",
+        credentials: "Post Production & Technical Manager, Canadian Film Centre",
+        content:
+            "Safe & Sound Post are fantastic! They have provided sound services and support on a number of the Canadian Film Centre's program projects for our resident filmmakers, and all of their support certainly shows. They are dedicated, knowledgeable and remarkably intuitive of what our teams need and envision for their projects. A talented bunch making their mark and will be back again!",
+        ig_url: "https://www.instagram.com/cfccreates/",
+    },
+    {
         name: "Spencer Lackey",
         photo: "spencer.webp",
         credentials: "Director of You Are Here",
@@ -106,12 +114,12 @@ const reviews = [
 ];
 
 // Names shown in the home-page rotation; the reviews page shows the full list.
-const featured_names = ["Anthony Q. Farrell", "Katie Uhlmann", "Spencer Lackey", "Connie Wang"];
+const featured_names = ["Spencer Lackey", "Christian Jacobsen", "Anthony Q. Farrell", "Katie Uhlmann", "Connie Wang"];
 const featured_rotation = featured_names.map((name) => reviews.find((x) => x.name === name)).filter(Boolean);
 
 // Reviews page hierarchy: these lead as full-width pull quotes, the rest
 // flow into the compact masonry wall below.
-const marquee_names = ["Anthony Q. Farrell", "Katie Uhlmann", "Bryn McAuley"];
+const marquee_names = ["Spencer Lackey", "Christian Jacobsen", "Anthony Q. Farrell", "Katie Uhlmann", "Bryn McAuley"];
 const marquee_reviews = marquee_names.map((name) => reviews.find((x) => x.name === name)).filter(Boolean);
 const wall_reviews = reviews.filter((x) => !marquee_names.includes(x.name));
 
