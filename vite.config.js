@@ -12,8 +12,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         VitePluginRadar({ analytics: { id: "G-JQBCWM4YT4" } }),
-        // The game's pixel art has to stay exact, and the optimizer's PNG pass is lossy.
-        ViteImageOptimizer({ test: /^(?!.*game).*\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i }),
+        ViteImageOptimizer(),
         // The app is a single page build, so the plugin can only discover "/".
         // Every other route has to be listed here or it never reaches the
         // sitemap. Keep in step with PAGE_SEO in src/utils/seo.js.
