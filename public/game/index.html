@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Safe & Sound: The Final Mix</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <img class="brand" src="assets/logo-site.png" alt="Safe &amp; Sound Post" draggable="false">
+    <button class="mute" id="mute" aria-label="Toggle sound">SOUND ON</button>
+  </div>
+  <div class="screen"><canvas id="c" width="160" height="144" aria-label="Game screen"></canvas></div>
+  <div class="controls">
+    <div class="dpad">
+      <button class="btn dir u" data-k="u" aria-label="Up">▲</button>
+      <button class="btn dir l" data-k="l" aria-label="Left">◀</button>
+      <div class="hub"></div>
+      <button class="btn dir r" data-k="r" aria-label="Right">▶</button>
+      <button class="btn dir d" data-k="d" aria-label="Down">▼</button>
+    </div>
+    <div class="ab">
+      <button class="btn round b" data-k="b" aria-label="Menu or back">B<small>MENU</small></button>
+      <button class="btn round a" data-k="a" aria-label="Talk or confirm">A<small>TALK</small></button>
+    </div>
+  </div>
+  <div class="hint">Arrows move · Z / space talk · X menu</div>
+</div>
+<script src="js/core.js"></script>
+<script src="js/font.js"></script>
+<script src="js/logo.js"></script>
+<script src="js/characters.js"></script>
+<script src="js/monsters.js"></script>
+<script src="js/map.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/state.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/story.js"></script>
+<script src="js/world.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/adr.js"></script>
+<script src="js/screens.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ import autoScroll from "embla-carousel-auto-scroll";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { GameTile } from "./home/GameEasterEgg";
 
 const projectDetails = [
     // Poster-only entries for now — no credits supplied yet.
@@ -472,6 +473,7 @@ export function ProjectsCollage({ onClick }) {
                     />
                 </div>
             ))}
+            {images.length > 0 && <GameTile />}
         </div>
     );
 }
