@@ -267,16 +267,15 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt42903699/?ref_=fn_t_1",
         ytsrc: "https://www.youtube.com/watch?v=33IWPBDeorE",
     },
-    // Hidden pending client approval — restore when ready
-    // {
-    //     poster: "Sacred_Space_Poster",
-    //     title: "Sacred Space",
-    //     released: "2026",
-    //     director: "Aisha Evelyna",
-    //     writer: "Yemie Sonuga",
-    //     producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
-    //     ytsrc: "https://www.youtube.com/watch?v=o7QlFVR3c_A",
-    // },
+    {
+        poster: "Sacred_Space_Poster",
+        title: "Sacred Space",
+        released: "2026",
+        director: "Aisha Evelyna",
+        writer: "Yemie Sonuga",
+        producer: "Kathryn Emslie (Executive Producer), Lee Marshall (Supervising Producer)",
+        ytsrc: "https://www.youtube.com/watch?v=o7QlFVR3c_A",
+    },
     {
         poster: "Second_Coming_Poster",
         title: "Second Coming",
@@ -382,9 +381,9 @@ const collageOrder = [
     "Hockey Night in Canada",
     "Fluid",
     "Alice is Asian",
+    "Sacred Space",
     "Diana",
     "Don't Forget Me",
-    // "Sacred Space", // hidden pending client approval
     "Second Coming",
     "Shelf Life",
     "Boy Girl",
