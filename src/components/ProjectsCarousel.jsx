@@ -361,6 +361,17 @@ const projectDetails = [
         imdb: "https://www.imdb.com/title/tt37536260/",
     },
     {
+        poster: "MyDinnerWithVictor_Poster",
+        title: "My Dinner With Victor",
+        // Text runs to both the top and bottom edges, so the tile uses a copy
+        // widened to 12/16 with the background colour; the modal gets the original.
+        posterFull: "MyDinnerWithVictor_Full",
+        released: "2026",
+        director: "Andrew Chiu",
+        writer: "Raki Madurapperuma, Tristen Huang, Andrew Chiu",
+        producer: "Andrew Chiu",
+    },
+    {
         poster: "DontForgetMe_Poster",
         title: "Don't Forget Me",
         director: "Sohaib Ghani",
@@ -383,6 +394,7 @@ const collageOrder = [
     "Alice is Asian",
     "Sacred Space",
     "Diana",
+    "My Dinner With Victor",
     "Don't Forget Me",
     "Second Coming",
     "Shelf Life",
