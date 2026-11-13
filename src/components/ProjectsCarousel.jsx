@@ -372,6 +372,19 @@ const projectDetails = [
         producer: "Andrew Chiu",
     },
     {
+        poster: "TwoHander_Poster",
+        title: "Two Hander",
+        // Laurel sits near the bottom edge; anchor the crop down so only sky is lost.
+        posterPosition: "bottom",
+        released: "2026",
+        director: "Norah Sadava",
+    },
+    {
+        poster: "ItGirl_Poster",
+        title: "IT Girl",
+        director: "Shani McKenzie",
+    },
+    {
         poster: "DontForgetMe_Poster",
         title: "Don't Forget Me",
         director: "Sohaib Ghani",
@@ -395,6 +408,8 @@ const collageOrder = [
     "Sacred Space",
     "Diana",
     "My Dinner With Victor",
+    "Two Hander",
+    "IT Girl",
     "Don't Forget Me",
     "Second Coming",
     "Shelf Life",
